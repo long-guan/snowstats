@@ -1,9 +1,8 @@
-import React from "react";
 import ImageMapper from "react-img-mapper";
 import stevens_pass_map from "./assets/stevens_pass_map.jpg";
 import stevens_pass_runs from "./assets/stevens_pass_runs.json";
 
-function StevensPassMap(props) {
+function StevensPassMap() {
   const MAP = {
     name: "stevenspassmap",
     areas: stevens_pass_runs,

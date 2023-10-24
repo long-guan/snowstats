@@ -1,13 +1,13 @@
 volumes:
-  postgres-data:
+  postgres-snowstat-data:
     external: true
 services:
   frontend:
     image: node:lts-bullseye
     command: /bin/bash run.sh
-    working_dir: /frontend
+    working_dir: /frontend_react
     volumes:
-      - ./frontend:/frontend
+      - ./frontend_react:/frontend_react
     ports:
       - "3000:3000"
     environment:
@@ -27,11 +27,11 @@ services:
   #   environment:
   #     DATABASE_URL: postgres://wardrobe:password@database:5432/wardrobe
   #     WAIT_HOSTS: database:5432
-      # WAIT_TIMEOUT: 240
+  # WAIT_TIMEOUT: 240
   database:
     image: postgres:14.5-bullseye
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres-snowstat-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: snowstat_sadmin
       POSTGRES_USER: snowstats_admin

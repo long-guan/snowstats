@@ -2,7 +2,11 @@ import StevensPassMap from "./StevensPassMap";
 import "./App.css";
 
 function App() {
-  return <StevensPassMap />;
+  return (
+    <div>
+      <StevensPassMap />
+    </div>
+  );
 }
 
 export default App;

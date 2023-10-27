@@ -11,11 +11,31 @@ area:hover {
 }
 
 .hud {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 3;
   margin-top: 20px;
   display: flex;
   justify-content: flex-end;
+}
+
+.popuphud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.popup {
+  width: 5px;
+  height: 5px;
+  border-radius: 20px;
+  position: absolute;
+  z-index: 0;
+}
+
+.popup-content {
+  text-align: center;
+  font-weight: bold;
 }

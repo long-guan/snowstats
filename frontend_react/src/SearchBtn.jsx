@@ -1,21 +1,13 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 function SearchBtn(props) {
-  const [search, setSearch] = useState("");
-
-  console.log(props.runSelection);
-
-  useEffect(() => {
-    setSearch(props.runSelection);
-  }, [props.runSelection]);
-
   return (
     <input
       type="text"
       placeholder="Search Stevens Pass"
       className="input input-bordered input-primary max-w-xs"
-      onChange={(e) => setSearch(e.target.value)}
-      value={search}
+      onChange={(e) => props.setRunSelection(e.target.value)}
+      value={props.runSelection}
     />
   );
 }

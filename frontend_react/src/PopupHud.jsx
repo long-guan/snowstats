@@ -242,7 +242,7 @@ function PopupHud(props) {
         name="Rock Garden"
         scaleRatio={props.scaleRatio}
         open={props.open[29]}
-        position="top right"
+        position="top center"
         left="1825"
         top="355"
       />
@@ -250,7 +250,7 @@ function PopupHud(props) {
         name="Lower Rock Garden"
         scaleRatio={props.scaleRatio}
         open={props.open[30]}
-        position="top right"
+        position="top center"
         left="1775"
         top="397"
       />
@@ -258,7 +258,7 @@ function PopupHud(props) {
         name="Little Tree"
         scaleRatio={props.scaleRatio}
         open={props.open[31]}
-        position="bottom left"
+        position="bottom center"
         left="1700"
         top="530"
       />
@@ -266,7 +266,7 @@ function PopupHud(props) {
         name="Cloud 9"
         scaleRatio={props.scaleRatio}
         open={props.open[32]}
-        position="bottom left"
+        position="bottom center"
         left="1935"
         top="325"
       />
@@ -274,7 +274,7 @@ function PopupHud(props) {
         name="Bobby Chute"
         scaleRatio={props.scaleRatio}
         open={props.open[33]}
-        position="bottom right"
+        position="bottom center"
         left="2175"
         top="425"
       />
@@ -282,7 +282,7 @@ function PopupHud(props) {
         name="Nancy Chute"
         scaleRatio={props.scaleRatio}
         open={props.open[34]}
-        position="bottom right"
+        position="bottom center"
         left="2210"
         top="400"
       />
@@ -290,7 +290,7 @@ function PopupHud(props) {
         name="Solitude"
         scaleRatio={props.scaleRatio}
         open={props.open[35]}
-        position="bottom right"
+        position="bottom center"
         left="2225"
         top="320"
       />
@@ -298,7 +298,7 @@ function PopupHud(props) {
         name="Headwall"
         scaleRatio={props.scaleRatio}
         open={props.open[36]}
-        position="bottom left"
+        position="bottom center"
         left="2100"
         top="600"
       />
@@ -306,7 +306,7 @@ function PopupHud(props) {
         name="Lower Terminal"
         scaleRatio={props.scaleRatio}
         open={props.open[37]}
-        position="bottom right"
+        position="bottom center"
         left="2290"
         top="630"
       />
@@ -314,7 +314,7 @@ function PopupHud(props) {
         name="Exhibition"
         scaleRatio={props.scaleRatio}
         open={props.open[38]}
-        position="bottom left"
+        position="bottom center"
         left="1835"
         top="860"
       />
@@ -322,7 +322,7 @@ function PopupHud(props) {
         name="Panorama"
         scaleRatio={props.scaleRatio}
         open={props.open[39]}
-        position="top right"
+        position="top center"
         left="1840"
         top="830"
       />
@@ -346,7 +346,7 @@ function PopupHud(props) {
         name="Kehr's Chair"
         scaleRatio={props.scaleRatio}
         open={props.open[42]}
-        position="right bottom"
+        position="right center"
         left="750"
         top="950"
       />
@@ -354,7 +354,7 @@ function PopupHud(props) {
         name="Double Diamond Lift"
         scaleRatio={props.scaleRatio}
         open={props.open[43]}
-        position="right bottom"
+        position="right center"
         left="355"
         top="450"
       />
@@ -362,7 +362,7 @@ function PopupHud(props) {
         name="Tye Mill"
         scaleRatio={props.scaleRatio}
         open={props.open[44]}
-        position="left top"
+        position="left center"
         left="980"
         top="450"
       />
@@ -370,7 +370,7 @@ function PopupHud(props) {
         name="Daisy"
         scaleRatio={props.scaleRatio}
         open={props.open[45]}
-        position="left bottom"
+        position="left center"
         left="1275"
         top="900"
       />
@@ -378,7 +378,7 @@ function PopupHud(props) {
         name="Hogsback Express"
         scaleRatio={props.scaleRatio}
         open={props.open[46]}
-        position="right top"
+        position="right center"
         left="1500"
         top="840"
       />
@@ -386,7 +386,7 @@ function PopupHud(props) {
         name="Skyline Express"
         scaleRatio={props.scaleRatio}
         open={props.open[47]}
-        position="left bottom"
+        position="left center"
         left="2050"
         top="645"
       />
@@ -394,7 +394,7 @@ function PopupHud(props) {
         name="Brooks Express"
         scaleRatio={props.scaleRatio}
         open={props.open[48]}
-        position="left bottom"
+        position="left center"
         left="2050"
         top="802"
       />
@@ -402,7 +402,7 @@ function PopupHud(props) {
         name="7th Heaven"
         scaleRatio={props.scaleRatio}
         open={props.open[49]}
-        position="left top"
+        position="left center"
         left="2100"
         top="320"
       />

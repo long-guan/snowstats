@@ -4,19 +4,30 @@ const InfoPopup = (props) => {
   return (
     <Popup
       trigger={
-        <button
-          className="popup"
+        <div
+          className="popup-dot-locator"
           style={{
             left: props.scaleRatio * props.left,
             top: props.scaleRatio * props.top,
           }}
-        >
-          <div></div>
-        </button>
+        ></div>
       }
       position={props.position}
-      on={["hover", "focus"]}
       open={props.open}
+      contentStyle={{
+        width: "auto",
+        backgroundColor: "#FFF",
+        textAlign: "center",
+        fontWeight: "bold",
+        position: "absolute",
+        boxShadow:
+          "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        borderRadius: "10px",
+      }}
+      arrowStyle={{
+        color: "beige",
+      }}
+      closeOnDocumentClick={false}
     >
       <div>{props.name}</div>
     </Popup>

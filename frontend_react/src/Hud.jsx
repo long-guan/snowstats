@@ -1,9 +1,9 @@
-import SearchBtn from "./SearchBtn";
+import SearchBar from "./SearchBar";
 
 function Hud(props) {
   return (
     <div className="hud">
-      <SearchBtn
+      <SearchBar
         runSelection={props.runSelection}
         setRunSelection={props.setRunSelection}
       />

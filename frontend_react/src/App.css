@@ -4,6 +4,7 @@
 
 body {
   margin: 0;
+  font-family: Roboto, Arial, sans-serif;
 }
 
 area:hover {
@@ -25,17 +26,13 @@ area:hover {
   top: 0;
   left: 0;
   z-index: 0;
+  background-color: #fff;
 }
 
-.popup {
+.popup-dot-locator {
   width: 5px;
   height: 5px;
   border-radius: 20px;
   position: absolute;
-  z-index: 0;
-}
-
-.popup-content {
-  text-align: center;
-  font-weight: bold;
+  background-color: red;
 }

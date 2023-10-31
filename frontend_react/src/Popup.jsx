@@ -1,6 +1,9 @@
 import Popup from "reactjs-popup";
+import { useState } from "react";
 
 const InfoPopup = (props) => {
+  const [underline, setUnderline] = useState("");
+
   return (
     <Popup
       trigger={
@@ -29,7 +32,18 @@ const InfoPopup = (props) => {
       }}
       closeOnDocumentClick={false}
     >
-      <div className="flex flex-row items-center gap-1">
+      <div
+        className={
+          "flex flex-row items-center gap-1 cursor-pointer " + underline
+        }
+        onClick={() => props.setRunSelection(props.name)}
+        onMouseEnter={() => {
+          setUnderline("underline");
+        }}
+        onMouseLeave={() => {
+          setUnderline("");
+        }}
+      >
         <img src={props.icon} alt="" style={{ height: "20px" }} />
         {props.name}
       </div>

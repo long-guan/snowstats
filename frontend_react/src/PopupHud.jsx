@@ -16,6 +16,7 @@ function PopupHud(props) {
         icon={green_circle}
         scaleRatio={props.scaleRatio}
         open={props.open[0]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="1100"
         top="880"
@@ -25,6 +26,7 @@ function PopupHud(props) {
         icon={green_circle}
         scaleRatio={props.scaleRatio}
         open={props.open[1]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="1270"
         top="1050"
@@ -34,6 +36,7 @@ function PopupHud(props) {
         icon={green_circle}
         scaleRatio={props.scaleRatio}
         open={props.open[2]}
+        setRunSelection={props.setRunSelection}
         position="top center"
         left="1230"
         top="730"
@@ -43,6 +46,7 @@ function PopupHud(props) {
         icon={green_circle}
         scaleRatio={props.scaleRatio}
         open={props.open[3]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="1200"
         top="900"
@@ -52,6 +56,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[4]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="1990"
         top="975"
@@ -61,6 +66,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[5]}
+        setRunSelection={props.setRunSelection}
         position="top center"
         left="380"
         top="880"
@@ -70,6 +76,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[6]}
+        setRunSelection={props.setRunSelection}
         position="bottom center"
         left="1780"
         top="1035"
@@ -79,6 +86,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[7]}
+        setRunSelection={props.setRunSelection}
         position="top center"
         left="2050"
         top="850"
@@ -88,6 +96,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[8]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="2150"
         top="760"
@@ -97,6 +106,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[9]}
+        setRunSelection={props.setRunSelection}
         position="top center"
         left="2150"
         top="520"
@@ -106,6 +116,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[10]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="2150"
         top="585"
@@ -115,6 +126,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[11]}
+        setRunSelection={props.setRunSelection}
         position="top center"
         left="2000"
         top="710"
@@ -124,6 +136,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[12]}
+        setRunSelection={props.setRunSelection}
         position="top center"
         left="1760"
         top="580"
@@ -133,6 +146,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[13]}
+        setRunSelection={props.setRunSelection}
         position="top center"
         left="1450"
         top="1065"
@@ -142,6 +156,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[14]}
+        setRunSelection={props.setRunSelection}
         position="bottom center"
         left="1710"
         top="810"
@@ -151,6 +166,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[15]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="1450"
         top="950"
@@ -160,6 +176,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[16]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="1350"
         top="850"
@@ -169,6 +186,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[17]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="1430"
         top="718"
@@ -178,6 +196,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[18]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="1270"
         top="760"
@@ -187,6 +206,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[19]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="1430"
         top="630"
@@ -196,6 +216,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[20]}
+        setRunSelection={props.setRunSelection}
         position="top center"
         left="1430"
         top="610"
@@ -205,6 +226,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[21]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="1175"
         top="450"
@@ -214,6 +236,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[22]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="1200"
         top="520"
@@ -223,6 +246,7 @@ function PopupHud(props) {
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[23]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="800"
         top="950"
@@ -232,6 +256,7 @@ function PopupHud(props) {
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[24]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="1610"
         top="725"
@@ -242,6 +267,7 @@ function PopupHud(props) {
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[25]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="605"
         top="770"
@@ -251,6 +277,7 @@ function PopupHud(props) {
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[26]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="670"
         top="770"
@@ -261,6 +288,7 @@ function PopupHud(props) {
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[27]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="1040"
         top="425"
@@ -270,6 +298,7 @@ function PopupHud(props) {
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[28]}
+        setRunSelection={props.setRunSelection}
         position="bottom center"
         left="1835"
         top="860"
@@ -279,6 +308,7 @@ function PopupHud(props) {
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[29]}
+        setRunSelection={props.setRunSelection}
         position="top center"
         left="1840"
         top="830"
@@ -288,6 +318,7 @@ function PopupHud(props) {
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[30]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="1660"
         top="650"
@@ -297,6 +328,7 @@ function PopupHud(props) {
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[31]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="2100"
         top="600"
@@ -306,6 +338,7 @@ function PopupHud(props) {
         icon={double_black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[32]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="1850"
         top="340"
@@ -315,6 +348,7 @@ function PopupHud(props) {
         icon={double_black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[33]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="1775"
         top="397"
@@ -324,6 +358,7 @@ function PopupHud(props) {
         icon={double_black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[34]}
+        setRunSelection={props.setRunSelection}
         position="bottom center"
         left="1700"
         top="530"
@@ -333,6 +368,7 @@ function PopupHud(props) {
         icon={double_black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[35]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="1900"
         top="375"
@@ -342,6 +378,7 @@ function PopupHud(props) {
         icon={double_black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[36]}
+        setRunSelection={props.setRunSelection}
         position="bottom center"
         left="2175"
         top="425"
@@ -351,6 +388,7 @@ function PopupHud(props) {
         icon={double_black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[37]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="2170"
         top="310"
@@ -360,6 +398,7 @@ function PopupHud(props) {
         icon={double_black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[38]}
+        setRunSelection={props.setRunSelection}
         position="top center"
         left="2175"
         top="285"
@@ -369,6 +408,7 @@ function PopupHud(props) {
         icon={double_black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[39]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="750"
         top="665"
@@ -379,6 +419,7 @@ function PopupHud(props) {
         icon={double_black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[40]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="2290"
         top="630"
@@ -389,6 +430,7 @@ function PopupHud(props) {
         icon={double_black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[41]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="485"
         top="600"
@@ -398,6 +440,7 @@ function PopupHud(props) {
         icon={chair_lift}
         scaleRatio={props.scaleRatio}
         open={props.open[42]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="750"
         top="950"
@@ -407,6 +450,7 @@ function PopupHud(props) {
         icon={chair_lift}
         scaleRatio={props.scaleRatio}
         open={props.open[43]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="355"
         top="450"
@@ -416,6 +460,7 @@ function PopupHud(props) {
         icon={chair_lift}
         scaleRatio={props.scaleRatio}
         open={props.open[44]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="980"
         top="450"
@@ -425,6 +470,7 @@ function PopupHud(props) {
         icon={chair_lift}
         scaleRatio={props.scaleRatio}
         open={props.open[45]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="1275"
         top="900"
@@ -434,6 +480,7 @@ function PopupHud(props) {
         icon={chair_lift}
         scaleRatio={props.scaleRatio}
         open={props.open[46]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="1500"
         top="840"
@@ -443,6 +490,7 @@ function PopupHud(props) {
         icon={chair_lift}
         scaleRatio={props.scaleRatio}
         open={props.open[47]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="2050"
         top="645"
@@ -452,6 +500,7 @@ function PopupHud(props) {
         icon={chair_lift}
         scaleRatio={props.scaleRatio}
         open={props.open[48]}
+        setRunSelection={props.setRunSelection}
         position="right center"
         left="2050"
         top="802"
@@ -461,6 +510,7 @@ function PopupHud(props) {
         icon={chair_lift}
         scaleRatio={props.scaleRatio}
         open={props.open[49]}
+        setRunSelection={props.setRunSelection}
         position="left center"
         left="2100"
         top="320"

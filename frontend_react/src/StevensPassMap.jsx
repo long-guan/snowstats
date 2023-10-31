@@ -88,6 +88,7 @@ function StevensPassMap() {
         mapperHeight={mapperHeight}
         mapperWidth={mapperWidth}
         open={open}
+        setRunSelection={setRunSelection}
       />
     </div>
   );

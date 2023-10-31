@@ -4,18 +4,76 @@ import GreenRunsBtn from "./GreenRunsBtn";
 import BlueRunsBtn from "./BlueRunsBtn";
 import BlackRunsBtn from "./BlackRunsBtn";
 import DoubleBlackRunsBtn from "./DoubleBlackRunsBtn";
-import ChairLiftsBtn from "./ChairLifts";
+import ChairLiftsBtn from "./ChairLiftsBtn";
+import { useState } from "react";
 
 function Hud(props) {
+  const [toggle, setToggle] = useState(["", "", "", "", ""]);
+
+  function openPopups(indexStart, indexEnd) {
+    let openArray = [];
+    for (let i = 0; i <= 49; i++) {
+      if (i >= indexStart && i <= indexEnd) {
+        openArray.push(true);
+      } else {
+        openArray.push(false);
+      }
+    }
+    props.setOpen(openArray);
+  }
+
+  function closePopups() {
+    let openArray = [];
+    for (let i = 0; i <= 49; i++) {
+      openArray.push(false);
+    }
+    return openArray;
+  }
+
+  function toggleOnOff(idx) {
+    if (toggle[idx] === "") {
+      props.setDisabled(true);
+      props.setImgClickDisabled(true);
+      let newToggle = ["", "", "", "", ""];
+      newToggle[idx] = "underline decoration-2";
+      setToggle(newToggle);
+      // green runs
+      if (idx === 0) {
+        openPopups(0, 3);
+      }
+      // blue runs
+      else if (idx === 1) {
+        openPopups(4, 22);
+      }
+      // black runs
+      else if (idx === 2) {
+        openPopups(23, 31);
+      }
+      // double black runs
+      else if (idx === 3) {
+        openPopups(32, 41);
+      }
+      // chairlifts
+      else {
+        openPopups(42, 49);
+      }
+    } else {
+      props.setDisabled(false);
+      props.setImgClickDisabled(false);
+      setToggle(["", "", "", "", ""]);
+      props.setOpen(closePopups());
+    }
+  }
+
   return (
     <div className="hud">
       <ProfileSignIn />
       <div className="flex flex-row gap-1">
-        <GreenRunsBtn />
-        <BlueRunsBtn />
-        <BlackRunsBtn />
-        <DoubleBlackRunsBtn />
-        <ChairLiftsBtn />
+        <GreenRunsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
+        <BlueRunsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
+        <BlackRunsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
+        <DoubleBlackRunsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
+        <ChairLiftsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
       </div>
       <SearchBar
         runSelection={props.runSelection}

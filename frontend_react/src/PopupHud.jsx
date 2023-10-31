@@ -16,7 +16,7 @@ function PopupHud(props) {
         icon={green_circle}
         scaleRatio={props.scaleRatio}
         open={props.open[0]}
-        position="top center"
+        position="left center"
         left="1100"
         top="880"
       />
@@ -25,7 +25,7 @@ function PopupHud(props) {
         icon={green_circle}
         scaleRatio={props.scaleRatio}
         open={props.open[1]}
-        position="bottom center"
+        position="right center"
         left="1270"
         top="1050"
       />
@@ -43,7 +43,7 @@ function PopupHud(props) {
         icon={green_circle}
         scaleRatio={props.scaleRatio}
         open={props.open[3]}
-        position="top center"
+        position="right center"
         left="1200"
         top="900"
       />
@@ -52,9 +52,9 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[4]}
-        position="bottom center"
-        left="2050"
-        top="925"
+        position="right center"
+        left="1990"
+        top="975"
       />
       <InfoPopup
         name="Showcase"
@@ -70,9 +70,9 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[6]}
-        position="top center"
-        left="1900"
-        top="975"
+        position="bottom center"
+        left="1780"
+        top="1035"
       />
       <InfoPopup
         name="Waterfall"
@@ -88,7 +88,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[8]}
-        position="top center"
+        position="right center"
         left="2150"
         top="760"
       />
@@ -106,7 +106,7 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[10]}
-        position="bottom center"
+        position="left center"
         left="2150"
         top="585"
       />
@@ -152,8 +152,8 @@ function PopupHud(props) {
         scaleRatio={props.scaleRatio}
         open={props.open[15]}
         position="left center"
-        left="1465"
-        top="850"
+        left="1450"
+        top="950"
       />
       <InfoPopup
         name="Rock N Blue"
@@ -178,16 +178,16 @@ function PopupHud(props) {
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[18]}
-        position="top center"
-        left="1430"
-        top="650"
+        position="left center"
+        left="1270"
+        top="760"
       />
       <InfoPopup
         name="Slow Poke"
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[19]}
-        position="top center"
+        position="right center"
         left="1430"
         top="630"
       />
@@ -206,15 +206,15 @@ function PopupHud(props) {
         scaleRatio={props.scaleRatio}
         open={props.open[21]}
         position="right center"
-        left="1250"
-        top="510"
+        left="1175"
+        top="450"
       />
       <InfoPopup
         name="Crest Trail"
         icon={blue_square}
         scaleRatio={props.scaleRatio}
         open={props.open[22]}
-        position="right center"
+        position="left center"
         left="1200"
         top="520"
       />
@@ -223,19 +223,20 @@ function PopupHud(props) {
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[23]}
-        position="left center"
-        left="520"
-        top="800"
+        position="right center"
+        left="800"
+        top="950"
       />
       <InfoPopup
-        name="Double Diamond"
-        icon={double_black_diamond}
+        name="Parachute 2"
+        icon={black_diamond}
         scaleRatio={props.scaleRatio}
         open={props.open[24]}
-        position="right center"
-        left="495"
-        top="625"
+        position="left center"
+        left="1610"
+        top="725"
       />
+
       <InfoPopup
         name="Lower Diamond"
         icon={black_diamond}
@@ -254,110 +255,21 @@ function PopupHud(props) {
         left="670"
         top="770"
       />
-      <InfoPopup
-        name="Wild Katz"
-        icon={double_black_diamond}
-        scaleRatio={props.scaleRatio}
-        open={props.open[27]}
-        position="right center"
-        left="750"
-        top="665"
-      />
+
       <InfoPopup
         name="Roller Coaster"
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
-        open={props.open[28]}
+        open={props.open[27]}
         position="right center"
         left="1040"
         top="425"
       />
       <InfoPopup
-        name="Rock Garden"
-        icon={double_black_diamond}
-        scaleRatio={props.scaleRatio}
-        open={props.open[29]}
-        position="top center"
-        left="1825"
-        top="355"
-      />
-      <InfoPopup
-        name="Lower Rock Garden"
-        icon={double_black_diamond}
-        scaleRatio={props.scaleRatio}
-        open={props.open[30]}
-        position="top center"
-        left="1775"
-        top="397"
-      />
-      <InfoPopup
-        name="Little Tree"
-        icon={double_black_diamond}
-        scaleRatio={props.scaleRatio}
-        open={props.open[31]}
-        position="bottom center"
-        left="1700"
-        top="530"
-      />
-      <InfoPopup
-        name="Cloud 9"
-        icon={double_black_diamond}
-        scaleRatio={props.scaleRatio}
-        open={props.open[32]}
-        position="bottom center"
-        left="1935"
-        top="325"
-      />
-      <InfoPopup
-        name="Bobby Chute"
-        icon={double_black_diamond}
-        scaleRatio={props.scaleRatio}
-        open={props.open[33]}
-        position="bottom center"
-        left="2175"
-        top="425"
-      />
-      <InfoPopup
-        name="Nancy Chute"
-        icon={double_black_diamond}
-        scaleRatio={props.scaleRatio}
-        open={props.open[34]}
-        position="bottom center"
-        left="2210"
-        top="400"
-      />
-      <InfoPopup
-        name="Solitude"
-        icon={double_black_diamond}
-        scaleRatio={props.scaleRatio}
-        open={props.open[35]}
-        position="bottom center"
-        left="2225"
-        top="320"
-      />
-      <InfoPopup
-        name="Headwall"
-        icon={black_diamond}
-        scaleRatio={props.scaleRatio}
-        open={props.open[36]}
-        position="bottom center"
-        left="2100"
-        top="600"
-      />
-      <InfoPopup
-        name="Lower Terminal"
-        icon={double_black_diamond}
-        scaleRatio={props.scaleRatio}
-        open={props.open[37]}
-        position="bottom center"
-        left="2290"
-        top="630"
-      />
-      <InfoPopup
         name="Exhibition"
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
-        open={props.open[38]}
+        open={props.open[28]}
         position="bottom center"
         left="1835"
         top="860"
@@ -366,7 +278,7 @@ function PopupHud(props) {
         name="Panorama"
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
-        open={props.open[39]}
+        open={props.open[29]}
         position="top center"
         left="1840"
         top="830"
@@ -375,19 +287,111 @@ function PopupHud(props) {
         name="Parachute 1"
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
-        open={props.open[40]}
+        open={props.open[30]}
         position="left center"
-        left="1655"
-        top="670"
+        left="1660"
+        top="650"
       />
       <InfoPopup
-        name="Parachute 2"
+        name="Headwall"
         icon={black_diamond}
         scaleRatio={props.scaleRatio}
-        open={props.open[41]}
+        open={props.open[31]}
         position="left center"
-        left="1610"
-        top="725"
+        left="2100"
+        top="600"
+      />
+      <InfoPopup
+        name="Rock Garden"
+        icon={double_black_diamond}
+        scaleRatio={props.scaleRatio}
+        open={props.open[32]}
+        position="left center"
+        left="1850"
+        top="340"
+      />
+      <InfoPopup
+        name="Lower Rock Garden"
+        icon={double_black_diamond}
+        scaleRatio={props.scaleRatio}
+        open={props.open[33]}
+        position="left center"
+        left="1775"
+        top="397"
+      />
+      <InfoPopup
+        name="Little Tree"
+        icon={double_black_diamond}
+        scaleRatio={props.scaleRatio}
+        open={props.open[34]}
+        position="bottom center"
+        left="1700"
+        top="530"
+      />
+      <InfoPopup
+        name="Cloud 9"
+        icon={double_black_diamond}
+        scaleRatio={props.scaleRatio}
+        open={props.open[35]}
+        position="right center"
+        left="1900"
+        top="375"
+      />
+      <InfoPopup
+        name="Bobby Chute"
+        icon={double_black_diamond}
+        scaleRatio={props.scaleRatio}
+        open={props.open[36]}
+        position="bottom center"
+        left="2175"
+        top="425"
+      />
+      <InfoPopup
+        name="Nancy Chute"
+        icon={double_black_diamond}
+        scaleRatio={props.scaleRatio}
+        open={props.open[37]}
+        position="left center"
+        left="2170"
+        top="310"
+      />
+      <InfoPopup
+        name="Solitude"
+        icon={double_black_diamond}
+        scaleRatio={props.scaleRatio}
+        open={props.open[38]}
+        position="top center"
+        left="2175"
+        top="285"
+      />
+      <InfoPopup
+        name="Wild Katz"
+        icon={double_black_diamond}
+        scaleRatio={props.scaleRatio}
+        open={props.open[39]}
+        position="right center"
+        left="750"
+        top="665"
+      />
+
+      <InfoPopup
+        name="Lower Terminal"
+        icon={double_black_diamond}
+        scaleRatio={props.scaleRatio}
+        open={props.open[40]}
+        position="left center"
+        left="2290"
+        top="630"
+      />
+
+      <InfoPopup
+        name="Double Diamond"
+        icon={double_black_diamond}
+        scaleRatio={props.scaleRatio}
+        open={props.open[41]}
+        position="right center"
+        left="485"
+        top="600"
       />
       <InfoPopup
         name="Kehr's Chair"
@@ -448,7 +452,7 @@ function PopupHud(props) {
         icon={chair_lift}
         scaleRatio={props.scaleRatio}
         open={props.open[48]}
-        position="left center"
+        position="right center"
         left="2050"
         top="802"
       />

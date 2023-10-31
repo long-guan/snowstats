@@ -25,7 +25,7 @@ const InfoPopup = (props) => {
         borderRadius: "10px",
       }}
       arrowStyle={{
-        color: "beige",
+        color: "#FFF",
       }}
       closeOnDocumentClick={false}
     >

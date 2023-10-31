@@ -1,9 +1,20 @@
 import green_circle from "./assets/green_circle.png";
 
-function GreenRunsBtn() {
+function GreenRunsBtn(props) {
+  function handleClick() {
+    props.toggleOnOff(0);
+  }
+
   return (
-    <div className="text-sm category-btn">
-      <img src={green_circle} alt="green runs" style={{ height: "20px" }} />{" "}
+    <div
+      className={"text-sm category-btn " + props.toggle[0]}
+      onClick={handleClick}
+    >
+      <img
+        src={green_circle}
+        alt="green runs"
+        style={{ height: "20px", backgroundColor: props.toggle }}
+      />{" "}
       Easiest
     </div>
   );

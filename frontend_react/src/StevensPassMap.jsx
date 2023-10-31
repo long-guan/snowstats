@@ -19,6 +19,8 @@ function StevensPassMap() {
   const [runSelection, setRunSelection] = useState("");
   const [scaleRatio, setScaleRatio] = useState(null); // used to scale the HUD and PopupHud
   const [open, setOpen] = useState(() => createOpenArray()); // array to toggle tooltip where index associates to the area name
+  const [disabled, setDisabled] = useState(false);
+  const [imgClickDisabled, setImgClickDisabled] = useState(false);
 
   const MAP = {
     name: "stevenspassmap",
@@ -65,13 +67,21 @@ function StevensPassMap() {
         src={stevens_pass_map}
         map={MAP}
         active={false}
-        // disabled={true}
+        onImageClick={() => {
+          if (imgClickDisabled === false) {
+            setOpen(createOpenArray());
+          }
+        }}
+        disabled={disabled}
       />
       <Hud
         runSelection={runSelection}
         setRunSelection={setRunSelection}
         mapperHeight={mapperHeight}
         mapperWidth={mapperWidth}
+        setOpen={setOpen}
+        setDisabled={setDisabled}
+        setImgClickDisabled={setImgClickDisabled}
       />
       <PopupHud
         scaleRatio={scaleRatio}

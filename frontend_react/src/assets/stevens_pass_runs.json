@@ -329,16 +329,16 @@
     ]
   },
   {
-    "id": "doublediamond",
-    "title": "Double Diamond",
+    "id": "parachute2",
+    "title": "Parachute 2",
     "shape": "poly",
     "name": "24",
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "coords": [
-      382, 399, 423, 401, 454, 433, 476, 463, 512, 514, 522, 558, 520, 609, 522,
-      641, 548, 654, 569, 685, 584, 715, 590, 724, 567, 751, 533, 724, 514, 711,
-      482, 622, 437, 543, 399, 488
+      1637, 668, 1646, 689, 1635, 740, 1646, 797, 1652, 837, 1640, 863, 1618,
+      890, 1601, 911, 1553, 926, 1504, 943, 1485, 950, 1483, 916, 1519, 890,
+      1563, 873, 1606, 846, 1608, 801, 1599, 765, 1589, 738
     ]
   },
   {
@@ -365,24 +365,12 @@
       777, 711, 767, 673, 756, 630, 743, 596, 728, 592, 741, 652, 773, 753, 868
     ]
   },
-  {
-    "id": "wildkatz",
-    "title": "Wild Katz",
-    "shape": "poly",
-    "name": "27",
-    "fillColor": "#eab54d4d",
-    "strokeColor": "black",
-    "coords": [
-      469, 379, 531, 385, 543, 421, 580, 440, 611, 476, 645, 506, 671, 548, 709,
-      606, 758, 652, 813, 709, 889, 769, 948, 805, 1014, 843, 1095, 887, 1088,
-      924, 1001, 881, 921, 828, 830, 760, 743, 688, 618, 523, 531, 449, 497, 425
-    ]
-  },
+
   {
     "id": "rollercoaster",
     "title": "Roller Coaster",
     "shape": "poly",
-    "name": "28",
+    "name": "27",
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "coords": [
@@ -391,10 +379,61 @@
     ]
   },
   {
+    "id": "exhibition",
+    "title": "Exhibition",
+    "shape": "poly",
+    "name": "28",
+    "fillColor": "#eab54d4d",
+    "strokeColor": "black",
+    "coords": [
+      1871, 842, 1843, 842, 1794, 876, 1763, 904, 1737, 923, 1750, 938, 1826,
+      897, 1869, 866
+    ]
+  },
+  {
+    "id": "panorama",
+    "title": "Panorama",
+    "shape": "poly",
+    "name": "29",
+    "fillColor": "#eab54d4d",
+    "strokeColor": "black",
+    "coords": [
+      1894, 844, 1972, 791, 1902, 785, 1864, 815, 1784, 846, 1745, 872, 1714,
+      895, 1692, 916, 1682, 938, 1675, 982, 1711, 957, 1733, 912, 1765, 893,
+      1854, 832
+    ]
+  },
+  {
+    "id": "parachute1",
+    "title": "Parachute 1",
+    "shape": "poly",
+    "name": "30",
+    "fillColor": "#eab54d4d",
+    "strokeColor": "black",
+    "coords": [
+      1667, 624, 1688, 628, 1680, 651, 1682, 673, 1690, 696, 1697, 721, 1712,
+      749, 1714, 772, 1712, 793, 1688, 842, 1686, 779, 1671, 751, 1650, 707,
+      1644, 660
+    ]
+  },
+  {
+    "id": "headwall",
+    "title": "Headwall",
+    "shape": "poly",
+    "name": "31",
+    "fillColor": "#eab54d4d",
+    "strokeColor": "black",
+    "coords": [
+      2278, 479, 2271, 466, 2223, 494, 2197, 509, 2176, 524, 2155, 541, 2136,
+      555, 2127, 566, 2117, 583, 2106, 596, 2102, 617, 2165, 568, 2208, 536,
+      2259, 502
+    ]
+  },
+  {
     "id": "rockgarden",
     "title": "Rock Garden",
     "shape": "poly",
-    "name": "29",
+    "name": "32",
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "coords": [
@@ -406,7 +445,7 @@
     "id": "lowerrockgarden",
     "title": "Lower Rock Garden",
     "shape": "poly",
-    "name": "30",
+    "name": "33",
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "coords": [
@@ -418,7 +457,7 @@
     "id": "littletree",
     "title": "Little Tree",
     "shape": "poly",
-    "name": "31",
+    "name": "34",
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "coords": [
@@ -430,7 +469,7 @@
     "id": "cloud9",
     "title": "Cloud 9",
     "shape": "poly",
-    "name": "32",
+    "name": "35",
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "coords": [
@@ -444,7 +483,7 @@
     "id": "bobbychute",
     "title": "Bobby Chute",
     "shape": "poly",
-    "name": "33",
+    "name": "36",
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "coords": [
@@ -457,7 +496,7 @@
     "id": "nancychute",
     "title": "Nancy Chute",
     "shape": "poly",
-    "name": "34",
+    "name": "37",
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "coords": [
@@ -470,7 +509,7 @@
     "id": "solitude",
     "title": "Solitude",
     "shape": "poly",
-    "name": "35",
+    "name": "38",
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "coords": [
@@ -479,23 +518,24 @@
     ]
   },
   {
-    "id": "headwall",
-    "title": "Headwall",
+    "id": "wildkatz",
+    "title": "Wild Katz",
     "shape": "poly",
-    "name": "36",
+    "name": "39",
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "coords": [
-      2278, 479, 2271, 466, 2223, 494, 2197, 509, 2176, 524, 2155, 541, 2136,
-      555, 2127, 566, 2117, 583, 2106, 596, 2102, 617, 2165, 568, 2208, 536,
-      2259, 502
+      469, 379, 531, 385, 543, 421, 580, 440, 611, 476, 645, 506, 671, 548, 709,
+      606, 758, 652, 813, 709, 889, 769, 948, 805, 1014, 843, 1095, 887, 1088,
+      924, 1001, 881, 921, 828, 830, 760, 743, 688, 618, 523, 531, 449, 497, 425
     ]
   },
+
   {
     "id": "lowerterminal",
     "title": "Lower Terminal",
     "shape": "poly",
-    "name": "37",
+    "name": "40",
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "coords": [
@@ -503,57 +543,21 @@
       608, 2324, 629, 2299, 637, 2282, 650, 2288, 606, 2303, 567, 2310, 523
     ]
   },
+
   {
-    "id": "exhibition",
-    "title": "Exhibition",
-    "shape": "poly",
-    "name": "38",
-    "fillColor": "#eab54d4d",
-    "strokeColor": "black",
-    "coords": [
-      1871, 842, 1843, 842, 1794, 876, 1763, 904, 1737, 923, 1750, 938, 1826,
-      897, 1869, 866
-    ]
-  },
-  {
-    "id": "panorama",
-    "title": "Panorama",
-    "shape": "poly",
-    "name": "39",
-    "fillColor": "#eab54d4d",
-    "strokeColor": "black",
-    "coords": [
-      1894, 844, 1972, 791, 1902, 785, 1864, 815, 1784, 846, 1745, 872, 1714,
-      895, 1692, 916, 1682, 938, 1675, 982, 1711, 957, 1733, 912, 1765, 893,
-      1854, 832
-    ]
-  },
-  {
-    "id": "parachute1",
-    "title": "Parachute 1",
-    "shape": "poly",
-    "name": "40",
-    "fillColor": "#eab54d4d",
-    "strokeColor": "black",
-    "coords": [
-      1667, 624, 1688, 628, 1680, 651, 1682, 673, 1690, 696, 1697, 721, 1712,
-      749, 1714, 772, 1712, 793, 1688, 842, 1686, 779, 1671, 751, 1650, 707,
-      1644, 660
-    ]
-  },
-  {
-    "id": "parachute2",
-    "title": "Parachute 2",
+    "id": "doublediamond",
+    "title": "Double Diamond",
     "shape": "poly",
     "name": "41",
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "coords": [
-      1637, 668, 1646, 689, 1635, 740, 1646, 797, 1652, 837, 1640, 863, 1618,
-      890, 1601, 911, 1553, 926, 1504, 943, 1485, 950, 1483, 916, 1519, 890,
-      1563, 873, 1606, 846, 1608, 801, 1599, 765, 1589, 738
+      382, 399, 423, 401, 454, 433, 476, 463, 512, 514, 522, 558, 520, 609, 522,
+      641, 548, 654, 569, 685, 584, 715, 590, 724, 567, 751, 533, 724, 514, 711,
+      482, 622, 437, 543, 399, 488
     ]
   },
+
   {
     "id": "kehrschair",
     "title": "Kehr's Chair",

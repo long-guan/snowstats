@@ -29,7 +29,10 @@ const InfoPopup = (props) => {
       }}
       closeOnDocumentClick={false}
     >
-      <div>{props.name}</div>
+      <div className="flex flex-row items-center gap-1">
+        <img src={props.icon} alt="" style={{ height: "20px" }} />
+        {props.name}
+      </div>
     </Popup>
   );
 };

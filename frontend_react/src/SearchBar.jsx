@@ -1,5 +1,3 @@
-// import { useState, useEffect } from "react";
-
 function SearchBar(props) {
   return (
     <form>
@@ -31,8 +29,14 @@ function SearchBar(props) {
           type="search"
           id="default-search"
           className="block w-full p-1 pl-10 text-sm border focus:outline-none shadow-lg"
-          style={{ borderRadius: "14px" }}
-          placeholder="Search Trails..."
+          style={{
+            borderRadius: "20px",
+            maxWidth: "200px",
+            paddingTop: "10px",
+            paddingBottom: "10px",
+            backgroundColor: "#fff",
+          }}
+          placeholder="Search..."
           required
           onChange={(e) => props.setRunSelection(e.target.value)}
           value={props.runSelection}

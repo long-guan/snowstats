@@ -71,3 +71,8 @@ area:hover {
   cursor: pointer;
   background-color: #f3f3f3;
 }
+
+.searchbar-option {
+  display: grid;
+  grid-template-columns: 41px 1fr;
+}

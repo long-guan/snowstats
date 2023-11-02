@@ -1,5 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import stevens_pass_runs from "./assets/stevens_pass_runs.json";
+import green_circle from "./assets/green_circle.png";
+import blue_square from "./assets/blue_square.png";
+import black_diamond from "./assets/black_diamond.png";
+import double_black_diamond from "./assets/double_black_diamond.png";
+import chair_lift from "./assets/chair_lift.png";
 
 const notFocusedStyle = {
   borderRadius: "20px",
@@ -24,10 +29,42 @@ function SearchBar(props) {
   // doesn't close it when trying to select an option
   const [selectClick, setSelectClick] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
+  const [options, setOptions] = useState(stevens_pass_runs);
 
   function handleSubmit(e) {
     e.preventDefault();
   }
+
+  // returns icon depending on category in stevens_pass_runs json file
+  function returnIcon(category) {
+    if (category === "green") {
+      return green_circle;
+    } else if (category === "blue") {
+      return blue_square;
+    } else if (category === "black") {
+      return black_diamond;
+    } else if (category === "doubleblack") {
+      return double_black_diamond;
+    } else {
+      return chair_lift;
+    }
+  }
+
+  function filterOption() {
+    let filteredOption = [];
+    stevens_pass_runs.forEach((run) => {
+      if (run.title.toLowerCase().includes(props.runSelection.toLowerCase())) {
+        filteredOption.push(run);
+      }
+    });
+    setOptions(filteredOption);
+  }
+
+  useEffect(() => {
+    if (props.runSelection !== "") {
+      filterOption();
+    }
+  }, [props.runSelection]);
 
   return (
     <form onSubmit={handleSubmit} style={{ alignSelf: "start" }}>
@@ -79,42 +116,48 @@ function SearchBar(props) {
           }}
         />
         {showDropDown === true ? (
-          <select
+          <div
             className="focus:outline-none"
             size="4"
             style={{
-              width: "100%",
+              maxWidth: "191.5px",
+              maxHeight: "200px",
               boxShadow:
                 "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
               borderBottomLeftRadius: "20px",
               borderBottomRightRadius: "20px",
-            }}
-            onClick={() => {
-              setShowDropDown(false);
-              setStyle(notFocusedStyle);
+              backgroundColor: "#fff",
+              overflowY: "scroll",
             }}
             onMouseEnter={() => setSelectClick(true)}
             onMouseLeave={() => setSelectClick(false)}
-            onChange={(e) => {
-              props.setRunSelection(e.target.value);
-            }}
             name="search"
           >
-            {stevens_pass_runs.map((run) => (
-              <option
-                className="text-sm searchbar-option"
-                style={{
-                  height: "42px",
-                  textAlign: "center",
-                  paddingTop: "10px",
-                }}
-                key={run.name}
-                value={run.title}
-              >
-                {run.title}
-              </option>
-            ))}
-          </select>
+            <ul>
+              {options.map((run) => (
+                <li
+                  className="text-sm searchbar-option"
+                  style={{
+                    height: "42px",
+                    paddingTop: "10px",
+                  }}
+                  key={run.name}
+                  onClick={() => {
+                    setShowDropDown(false);
+                    setStyle(notFocusedStyle);
+                    props.setRunSelection(run.title);
+                  }}
+                >
+                  <img
+                    style={{ height: "20px", paddingLeft: "10px" }}
+                    src={returnIcon(run.category)}
+                    alt=""
+                  />
+                  <div>{run.title}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
         ) : null}
       </div>
     </form>

@@ -76,8 +76,11 @@ function Hud(props) {
         <ChairLiftsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
       </div>
       <SearchBar
+        openRunSelection={props.openRunSelection}
         runSelection={props.runSelection}
         setRunSelection={props.setRunSelection}
+        setDisabled={props.setDisabled}
+        setOpen={props.setOpen}
       />
     </div>
   );

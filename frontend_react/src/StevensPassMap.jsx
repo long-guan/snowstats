@@ -4,14 +4,7 @@ import stevens_pass_runs from "./assets/stevens_pass_runs.json";
 import { useState, useEffect } from "react";
 import Hud from "./Hud";
 import PopupHud from "./PopupHud";
-
-function createOpenArray() {
-  let openArray = [];
-  for (let i = 0; i <= 49; i++) {
-    openArray.push(false);
-  }
-  return openArray;
-}
+import { createOpenArray } from "./helperFunctions";
 
 function StevensPassMap() {
   const [mapperWidth, setMapperWidth] = useState(null); // sets the width of the client screen
@@ -19,8 +12,8 @@ function StevensPassMap() {
   const [runSelection, setRunSelection] = useState("");
   const [scaleRatio, setScaleRatio] = useState(null); // used to scale the HUD and PopupHud
   const [open, setOpen] = useState(() => createOpenArray()); // array to toggle tooltip where index associates to the area name
-  const [disabled, setDisabled] = useState(false);
-  const [imgClickDisabled, setImgClickDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(false); // toggles the hover to show tooltips
+  const [imgClickDisabled, setImgClickDisabled] = useState(false); // allows clicking of runs/lifts
 
   const MAP = {
     name: "stevenspassmap",
@@ -32,6 +25,17 @@ function StevensPassMap() {
     document.documentElement.clientWidth || 0,
     window.innerWidth || 0
   );
+
+  // toogles on the tooltip of the searched run inside runSelection
+  function openRunSelection(runName = runSelection) {
+    stevens_pass_runs.forEach((run) => {
+      if (run.title.toLowerCase() === runName.toLowerCase()) {
+        let openArray = createOpenArray();
+        openArray[run.name] = true;
+        setOpen(openArray);
+      }
+    });
+  }
 
   // turns on the tooltip when hover over the area
   const handleEnterHover = (area) => {
@@ -69,10 +73,11 @@ function StevensPassMap() {
         active={false}
         onImageClick={() => {
           if (imgClickDisabled === false) {
-            setOpen(createOpenArray());
+            setOpen(createOpenArray()); // closes all tooltips
+            setDisabled(false); // enables hover to show tooltip
           }
         }}
-        disabled={disabled}
+        disabled={disabled} // toggles hover for tooltips
       />
       <Hud
         runSelection={runSelection}
@@ -82,6 +87,7 @@ function StevensPassMap() {
         setOpen={setOpen}
         setDisabled={setDisabled}
         setImgClickDisabled={setImgClickDisabled}
+        openRunSelection={openRunSelection}
       />
       <PopupHud
         scaleRatio={scaleRatio}

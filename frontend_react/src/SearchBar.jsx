@@ -5,6 +5,7 @@ import blue_square from "./assets/blue_square.png";
 import black_diamond from "./assets/black_diamond.png";
 import double_black_diamond from "./assets/double_black_diamond.png";
 import chair_lift from "./assets/chair_lift.png";
+import { createOpenArray } from "./helperFunctions";
 
 const notFocusedStyle = {
   borderRadius: "20px",
@@ -33,6 +34,7 @@ function SearchBar(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    props.openRunSelection();
   }
 
   // returns icon depending on category in stevens_pass_runs json file
@@ -63,6 +65,8 @@ function SearchBar(props) {
   useEffect(() => {
     if (props.runSelection !== "") {
       filterOption();
+    } else {
+      setOptions(stevens_pass_runs);
     }
   }, [props.runSelection]);
 
@@ -105,11 +109,15 @@ function SearchBar(props) {
           onChange={(e) => props.setRunSelection(e.target.value)}
           value={props.runSelection}
           onFocus={() => {
+            props.setDisabled(true); // disables tooltips hover
+            props.setOpen(createOpenArray()); // closes all tooltips
             setStyle(focusedStyle);
             setShowDropDown(true);
           }}
           onBlur={() => {
             if (selectClick !== true) {
+              props.setDisabled(false); // disables tooltips hover
+              props.setOpen(createOpenArray()); // closes all tooltips
               setStyle(notFocusedStyle);
               setShowDropDown(false);
             }
@@ -143,9 +151,11 @@ function SearchBar(props) {
                   }}
                   key={run.name}
                   onClick={() => {
-                    setShowDropDown(false);
+                    setShowDropDown(false); // disables tooltips hover
+                    props.setOpen(createOpenArray()); // closes all tooltips
                     setStyle(notFocusedStyle);
                     props.setRunSelection(run.title);
+                    props.openRunSelection(run.title);
                   }}
                 >
                   <img

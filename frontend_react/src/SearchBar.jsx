@@ -44,6 +44,7 @@ function SearchBar(props) {
   function handleKeyDown(e) {
     // arrow down
     if (e.keyCode === 40) {
+      // setArrowPressed("down");
       if (optionIdx === options.length) {
         setOptionIdx(0);
       } else {
@@ -52,6 +53,7 @@ function SearchBar(props) {
     }
     // arrow up
     else if (e.keyCode == 38) {
+      // setArrowPressed("up");
       if (optionIdx === 0) {
         setOptionIdx(options.length);
       } else {
@@ -60,13 +62,24 @@ function SearchBar(props) {
     }
   }
 
-  // scrolls the drop down
+  // scrolls the drop down so the option is in view
   function scroll() {
     // scroll to top
     if (optionIdx === 0 && showDropDown === true) {
       document.getElementById("drop-down").scroll(0, 0);
-    } else if (optionIdx >= 5) {
-      document.getElementById("drop-down").scroll(0, (optionIdx - 4) * 42);
+    } else if (optionIdx > 0) {
+      // currentOptionY is the relative position of selected option to the top of dropdown
+      let currentOptionY = document
+        .getElementById(options[optionIdx - 1].id)
+        .getBoundingClientRect().y;
+      // 62 is the top of the dropdown view, if currentOptionY is less than 62, then scroll up one
+      if (currentOptionY < 62) {
+        document.getElementById(options[optionIdx - 1].id).scrollIntoView();
+      }
+      // 188 is the bottom of dropdown view, if currentOption Y is greater than 182, then scroll down one
+      else if (currentOptionY > 188) {
+        document.getElementById("drop-down").scroll(0, (optionIdx - 4) * 42);
+      }
     }
   }
 
@@ -86,8 +99,6 @@ function SearchBar(props) {
   }
 
   useEffect(() => {
-    console.log(options);
-    console.log(optionIdx);
     scroll();
     removeFocusSelectionOption();
     if (optionIdx >= 1) {

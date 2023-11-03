@@ -88,5 +88,21 @@ area:hover {
   right: 0;
   height: 100%;
   box-shadow: -10px 0px 10px 1px rgba(0, 0, 0, 0.243);
-  transition: width 0.5s ease-in-out;
+  transition: width 0.25s ease-in-out;
+}
+
+.close-panel-btn {
+  background-color: #fff;
+  position: absolute;
+  top: 48%;
+  border-width: 1px;
+  width: 20px;
+  height: 40px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -10px 0px 10px 1px rgba(0, 0, 0, 0.243);
+  transition: right 0.25s ease-in-out;
 }

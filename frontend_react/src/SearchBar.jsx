@@ -259,6 +259,7 @@ function SearchBar(props) {
                     setStyle(notFocusedStyle);
                     props.setRunSelection(run.title);
                     props.openRunSelection(run.title);
+                    setShowPanelDisplay(true);
                   }}
                 >
                   <img

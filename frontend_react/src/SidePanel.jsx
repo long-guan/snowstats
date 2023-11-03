@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import right_arrow from "./assets/right_arrow.png";
 
 function SidePanel(props) {
   const [sidePanelWidth, setPanelWidth] = useState(0);
@@ -35,15 +36,17 @@ function SidePanel(props) {
   return (
     <div className="side-panel" style={{ width: sidePanelWidth }}>
       <button
+        className="close-panel-btn"
+        style={{ right: sidePanelWidth }}
         onClick={() => {
           setPanelWidth(0);
           // allows for sliding animation before setting display to false
           setTimeout(() => {
             props.setShowPanelDisplay(false);
-          }, 500);
+          }, 250);
         }}
       >
-        Close
+        <img style={{ height: "10px" }} src={right_arrow} alt="" />
       </button>
     </div>
   );

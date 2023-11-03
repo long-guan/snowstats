@@ -7,6 +7,7 @@ import double_black_diamond from "./assets/double_black_diamond.png";
 import chair_lift from "./assets/chair_lift.png";
 import { createOpenArray } from "./helperFunctions";
 
+// style for when search bar is not focused
 const notFocusedStyle = {
   borderRadius: "20px",
   maxWidth: "200px",
@@ -15,6 +16,7 @@ const notFocusedStyle = {
   backgroundColor: "#fff",
 };
 
+// style for when search bar is focused
 const focusedStyle = {
   borderTopLeftRadius: "20px",
   borderTopRightRadius: "20px",
@@ -25,17 +27,73 @@ const focusedStyle = {
 };
 
 function SearchBar(props) {
-  const [style, setStyle] = useState(notFocusedStyle);
+  const [style, setStyle] = useState(notFocusedStyle); // styles the search bar
   // used to track focus on drop down select so the onBlur from the input
   // doesn't close it when trying to select an option
-  const [selectClick, setSelectClick] = useState(false);
-  const [showDropDown, setShowDropDown] = useState(false);
-  const [options, setOptions] = useState(stevens_pass_runs);
+  const [selectClick, setSelectClick] = useState(false); // track when mouse is hovering over dropdown
+  const [showDropDown, setShowDropDown] = useState(false); // shows or hides drop down
+  const [options, setOptions] = useState(stevens_pass_runs); // stores the options for drop down
+  const [optionIdx, setOptionIdx] = useState(0); // used to track arrow up and arrow down for options
 
   function handleSubmit(e) {
     e.preventDefault();
     props.openRunSelection();
   }
+
+  // uses optionIdx to track drop down selection. optionIdx = 0 is no selection
+  function handleKeyDown(e) {
+    // arrow down
+    if (e.keyCode === 40) {
+      if (optionIdx === options.length) {
+        setOptionIdx(0);
+      } else {
+        setOptionIdx(optionIdx + 1);
+      }
+    }
+    // arrow up
+    else if (e.keyCode == 38) {
+      if (optionIdx === 0) {
+        setOptionIdx(options.length);
+      } else {
+        setOptionIdx(optionIdx - 1);
+      }
+    }
+  }
+
+  // scrolls the drop down
+  function scroll() {
+    // scroll to top
+    if (optionIdx === 0 && showDropDown === true) {
+      document.getElementById("drop-down").scroll(0, 0);
+    } else if (optionIdx >= 5) {
+      document.getElementById("drop-down").scroll(0, (optionIdx - 4) * 42);
+    }
+  }
+
+  // add background hover color to selected drop down option
+  function addFocusSelectOption() {
+    document
+      .getElementById(options[optionIdx - 1].id)
+      .classList.add("hover-background");
+  }
+
+  // remove background hover color
+  function removeFocusSelectionOption() {
+    let selectedOption = document.querySelector(".hover-background");
+    if (selectedOption !== null) {
+      selectedOption.classList.remove("hover-background");
+    }
+  }
+
+  useEffect(() => {
+    console.log(options);
+    console.log(optionIdx);
+    scroll();
+    removeFocusSelectionOption();
+    if (optionIdx >= 1) {
+      addFocusSelectOption();
+    }
+  }, [optionIdx]);
 
   // returns icon depending on category in stevens_pass_runs json file
   function returnIcon(category) {
@@ -108,6 +166,7 @@ function SearchBar(props) {
           required
           onChange={(e) => props.setRunSelection(e.target.value)}
           value={props.runSelection}
+          onKeyDown={handleKeyDown}
           onFocus={() => {
             props.setDisabled(true); // disables tooltips hover
             props.setOpen(createOpenArray()); // closes all tooltips
@@ -120,16 +179,18 @@ function SearchBar(props) {
               props.setOpen(createOpenArray()); // closes all tooltips
               setStyle(notFocusedStyle);
               setShowDropDown(false);
+              setOptionIdx(0); // reset scroll idx
             }
           }}
         />
         {showDropDown === true ? (
           <div
             className="focus:outline-none"
+            id="drop-down"
             size="4"
             style={{
               maxWidth: "191.5px",
-              maxHeight: "200px",
+              maxHeight: "168px",
               boxShadow:
                 "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
               borderBottomLeftRadius: "20px",
@@ -145,6 +206,7 @@ function SearchBar(props) {
               {options.map((run) => (
                 <li
                   className="text-sm searchbar-option"
+                  id={run.id}
                   style={{
                     height: "42px",
                     paddingTop: "10px",

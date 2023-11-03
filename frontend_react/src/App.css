@@ -76,3 +76,7 @@ area:hover {
   display: grid;
   grid-template-columns: 41px 1fr;
 }
+
+.hover-background {
+  background-color: #f3f3f3;
+}

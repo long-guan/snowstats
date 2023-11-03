@@ -6,6 +6,7 @@ import black_diamond from "./assets/black_diamond.png";
 import double_black_diamond from "./assets/double_black_diamond.png";
 import chair_lift from "./assets/chair_lift.png";
 import { createOpenArray } from "./helperFunctions";
+import SidePanel from "./SidePanel";
 
 // style for when search bar is not focused
 const notFocusedStyle = {
@@ -34,10 +35,15 @@ function SearchBar(props) {
   const [showDropDown, setShowDropDown] = useState(false); // shows or hides drop down
   const [options, setOptions] = useState(stevens_pass_runs); // stores the options for drop down
   const [optionIdx, setOptionIdx] = useState(0); // used to track arrow up and arrow down for options
+  const [showPanelDisplay, setShowPanelDisplay] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.openRunSelection();
+    setShowPanelDisplay(true);
+    setShowDropDown(false); // close drop down
+    setStyle(notFocusedStyle);
+    document.activeElement.blur(); // unfocuses the search and also resets optionIdx to 0
+    props.openRunSelection(); // search run
   }
 
   // uses optionIdx to track drop down selection. optionIdx = 0 is no selection
@@ -59,6 +65,15 @@ function SearchBar(props) {
       } else {
         setOptionIdx(optionIdx - 1);
       }
+    }
+  }
+
+  // sets the highlighted option as the runSelection
+  function keySelection() {
+    if (optionIdx === 0 && showDropDown === true) {
+      props.setRunSelection(""); // set runSelection to be empty
+    } else if (optionIdx >= 1) {
+      props.setRunSelection(options[optionIdx - 1].title); // set runSelection to be highlighted dropdown
     }
   }
 
@@ -100,6 +115,7 @@ function SearchBar(props) {
 
   useEffect(() => {
     scroll();
+    keySelection();
     removeFocusSelectionOption();
     if (optionIdx >= 1) {
       addFocusSelectOption();
@@ -131,8 +147,10 @@ function SearchBar(props) {
     setOptions(filteredOption);
   }
 
+  // filters the options
   useEffect(() => {
-    if (props.runSelection !== "") {
+    // optionIdx === 0 means user is not using the dropDown selection
+    if (props.runSelection !== "" && optionIdx === 0) {
       filterOption();
     } else {
       setOptions(stevens_pass_runs);
@@ -140,7 +158,17 @@ function SearchBar(props) {
   }, [props.runSelection]);
 
   return (
-    <form onSubmit={handleSubmit} style={{ alignSelf: "start" }}>
+    <form
+      onSubmit={handleSubmit}
+      style={{ alignSelf: "start" }}
+      className="searchbar-cont"
+    >
+      {showPanelDisplay === true ? (
+        <SidePanel
+          panelDisplay={showPanelDisplay}
+          setShowPanelDisplay={setShowPanelDisplay}
+        />
+      ) : null}
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -183,6 +211,8 @@ function SearchBar(props) {
             props.setOpen(createOpenArray()); // closes all tooltips
             setStyle(focusedStyle);
             setShowDropDown(true);
+            filterOption();
+            props.setToggle(["", "", "", "", ""]); // turn off all category btns
           }}
           onBlur={() => {
             if (selectClick !== true) {
@@ -190,7 +220,7 @@ function SearchBar(props) {
               props.setOpen(createOpenArray()); // closes all tooltips
               setStyle(notFocusedStyle);
               setShowDropDown(false);
-              setOptionIdx(0); // reset scroll idx
+              setOptionIdx(0); // reset optionIdx so the filtering starts again
             }
           }}
         />

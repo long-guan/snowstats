@@ -68,7 +68,7 @@ function Hud(props) {
   return (
     <div className="hud">
       <ProfileSignIn />
-      <div className="flex flex-row gap-1">
+      <div className="flex flex-row gap-1 categorybtn-cont">
         <GreenRunsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
         <BlueRunsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
         <BlackRunsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
@@ -81,6 +81,7 @@ function Hud(props) {
         setRunSelection={props.setRunSelection}
         setDisabled={props.setDisabled}
         setOpen={props.setOpen}
+        setToggle={setToggle}
       />
     </div>
   );

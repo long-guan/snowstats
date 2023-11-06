@@ -3,10 +3,13 @@ import right_arrow from "./assets/right_arrow.png";
 import ski_lift_picture from "./assets/ski_lift_picture.webp";
 import stevens_pass_runs from "./assets/stevens_pass_runs.json";
 import { selectIcon } from "./helperFunctions";
+import youtube_social_icon from "./assets/youtube_social_icon_red.png";
+import news_icon from "./assets/news.png";
 
 function SidePanel(props) {
   const [sidePanelWidth, setPanelWidth] = useState(0);
   const [query, setQuery] = useState(stevens_pass_runs[0]);
+  const [hoverBackground, setHoverBackground] = useState(["", ""]);
 
   // calculates width of side panel
   function calcWidthSidePanel() {
@@ -92,9 +95,53 @@ function SidePanel(props) {
             </>
           ) : null}
           <hr />
-          <div>See Videos Button</div>
-          <hr />
-          <div>See Latest Updates</div>
+          <div className="flex justify-evenly">
+            <button
+              onMouseEnter={() => {
+                setHoverBackground(["hover-background", ""]);
+              }}
+              onMouseLeave={() => {
+                setHoverBackground(["", ""]);
+              }}
+              className="flex items-center flex-col side-panel-btn"
+            >
+              <div
+                className={
+                  "side-panel-btn-circle flex items-center justify-center " +
+                  hoverBackground[0]
+                }
+              >
+                <img
+                  style={{ height: "15px" }}
+                  src={youtube_social_icon}
+                  alt=""
+                />
+              </div>
+              <div>Videos</div>
+            </button>
+            <button
+              onMouseEnter={() => {
+                setHoverBackground(["", "hover-background"]);
+              }}
+              onMouseLeave={() => {
+                setHoverBackground(["", ""]);
+              }}
+              className="flex items-center flex-col side-panel-btn"
+            >
+              <div
+                className={
+                  "side-panel-btn-circle flex items-center justify-center " +
+                  hoverBackground[1]
+                }
+              >
+                <img style={{ height: "20px" }} src={news_icon} alt="" />
+              </div>
+              <div>
+                <div>Latest </div>
+                <div>Updates</div>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>

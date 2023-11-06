@@ -7,7 +7,8 @@ body {
   font-family: Roboto, Arial, sans-serif;
 }
 
-area:hover {
+area:hover,
+.side-panel-btn:hover {
   cursor: pointer;
 }
 
@@ -105,4 +106,17 @@ area:hover {
   justify-content: center;
   box-shadow: -10px 0px 10px 1px rgba(0, 0, 0, 0.243);
   transition: right 0.25s ease-in-out;
+}
+
+.side-panel-btn {
+  color: rgb(26, 115, 232);
+  font-size: small;
+}
+
+.side-panel-btn-circle {
+  border-width: 1px;
+  border-color: rgb(26, 115, 232);
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
 }

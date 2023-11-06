@@ -165,8 +165,9 @@ function SearchBar(props) {
     >
       {showPanelDisplay === true ? (
         <SidePanel
-          panelDisplay={showPanelDisplay}
+          showPanelDisplay={showPanelDisplay}
           setShowPanelDisplay={setShowPanelDisplay}
+          runSelection={props.runSelection}
         />
       ) : null}
       <label

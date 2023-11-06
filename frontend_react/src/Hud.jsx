@@ -5,11 +5,8 @@ import BlueRunsBtn from "./BlueRunsBtn";
 import BlackRunsBtn from "./BlackRunsBtn";
 import DoubleBlackRunsBtn from "./DoubleBlackRunsBtn";
 import ChairLiftsBtn from "./ChairLiftsBtn";
-import { useState } from "react";
 
 function Hud(props) {
-  const [toggle, setToggle] = useState(["", "", "", "", ""]);
-
   function openPopups(indexStart, indexEnd) {
     let openArray = [];
     for (let i = 0; i <= 49; i++) {
@@ -31,12 +28,12 @@ function Hud(props) {
   }
 
   function toggleOnOff(idx) {
-    if (toggle[idx] === "") {
+    if (props.toggle[idx] === "") {
       props.setDisabled(true);
-      props.setImgClickDisabled(true);
+      // props.setImgClickDisabled(true);
       let newToggle = ["", "", "", "", ""];
       newToggle[idx] = "underline decoration-2";
-      setToggle(newToggle);
+      props.setToggle(newToggle);
       // green runs
       if (idx === 0) {
         openPopups(0, 3);
@@ -60,7 +57,7 @@ function Hud(props) {
     } else {
       props.setDisabled(false);
       props.setImgClickDisabled(false);
-      setToggle(["", "", "", "", ""]);
+      props.setToggle(["", "", "", "", ""]);
       props.setOpen(closePopups());
     }
   }
@@ -69,11 +66,11 @@ function Hud(props) {
     <div className="hud">
       <ProfileSignIn />
       <div className="flex flex-row gap-1 categorybtn-cont">
-        <GreenRunsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
-        <BlueRunsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
-        <BlackRunsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
-        <DoubleBlackRunsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
-        <ChairLiftsBtn toggle={toggle} toggleOnOff={toggleOnOff} />
+        <GreenRunsBtn toggle={props.toggle} toggleOnOff={toggleOnOff} />
+        <BlueRunsBtn toggle={props.toggle} toggleOnOff={toggleOnOff} />
+        <BlackRunsBtn toggle={props.toggle} toggleOnOff={toggleOnOff} />
+        <DoubleBlackRunsBtn toggle={props.toggle} toggleOnOff={toggleOnOff} />
+        <ChairLiftsBtn toggle={props.toggle} toggleOnOff={toggleOnOff} />
       </div>
       <SearchBar
         openRunSelection={props.openRunSelection}
@@ -81,7 +78,7 @@ function Hud(props) {
         setRunSelection={props.setRunSelection}
         setDisabled={props.setDisabled}
         setOpen={props.setOpen}
-        setToggle={setToggle}
+        setToggle={props.setToggle}
       />
     </div>
   );

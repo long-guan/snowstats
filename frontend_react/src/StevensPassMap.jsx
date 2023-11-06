@@ -14,6 +14,7 @@ function StevensPassMap() {
   const [open, setOpen] = useState(() => createOpenArray()); // array to toggle tooltip where index associates to the area name
   const [disabled, setDisabled] = useState(false); // toggles the hover to show tooltips
   const [imgClickDisabled, setImgClickDisabled] = useState(false); // allows clicking of runs/lifts
+  const [toggle, setToggle] = useState(["", "", "", "", ""]); // toggle use to control category btn selection
 
   const MAP = {
     name: "stevenspassmap",
@@ -75,11 +76,14 @@ function StevensPassMap() {
           if (imgClickDisabled === false) {
             setOpen(createOpenArray()); // closes all tooltips
             setDisabled(false); // enables hover to show tooltip
+            setToggle(["", "", "", "", ""]); // turns off all category btn
           }
         }}
         disabled={disabled} // toggles hover for tooltips
       />
       <Hud
+        toggle={toggle}
+        setToggle={setToggle}
         runSelection={runSelection}
         setRunSelection={setRunSelection}
         mapperHeight={mapperHeight}

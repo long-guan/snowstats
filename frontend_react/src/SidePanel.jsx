@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import right_arrow from "./assets/right_arrow.png";
+import ski_lift_picture from "./assets/ski_lift_picture.webp";
+import stevens_pass_runs from "./assets/stevens_pass_runs.json";
 
 function SidePanel(props) {
   const [sidePanelWidth, setPanelWidth] = useState(0);
+  const [searchJson, setSearchJson] = useState({});
 
   // calculates width of side panel
   function calcWidthSidePanel() {
@@ -18,6 +21,22 @@ function SidePanel(props) {
       categoryContWidth +
       searchBarContWidth;
     return sidePanelWidth;
+  }
+
+  useState(() => {
+    if (props.showPanelDisplay === true) {
+      setSearchJson(getJson(props.runSelection));
+    }
+  }, [props.showPanelDisplay]);
+
+  function getJson(inputSearch) {
+    stevens_pass_runs.forEach((run) => {
+      console.log(run.title);
+      console.log(inputSearch);
+      if (run.title.toLowerCase() === inputSearch.toLowerCase()) {
+        return run;
+      }
+    });
   }
 
   // updates width of side panel whenever the screen resizes
@@ -48,6 +67,26 @@ function SidePanel(props) {
       >
         <img style={{ height: "10px" }} src={right_arrow} alt="" />
       </button>
+      <div>
+        <img src={ski_lift_picture} alt="" />
+        <div
+          className="flex flex-col gap-5"
+          style={{
+            paddingLeft: "10%",
+            paddingRight: "10%",
+            paddingTop: "20px",
+          }}
+        >
+          <div className="flex justify-between">
+            <div>{props.runSelection}</div>
+            <div>{searchJson.category}</div>
+          </div>
+          <hr />
+          <div>See Videos Button</div>
+          <hr />
+          <div>See Latest Updates</div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -35,11 +35,11 @@ function SearchBar(props) {
   const [showDropDown, setShowDropDown] = useState(false); // shows or hides drop down
   const [options, setOptions] = useState(stevens_pass_runs); // stores the options for drop down
   const [optionIdx, setOptionIdx] = useState(0); // used to track arrow up and arrow down for options
-  const [showPanelDisplay, setShowPanelDisplay] = useState(false);
+  const [showPanel, setShowPanel] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setShowPanelDisplay(true);
+    setShowPanel(true);
     setShowDropDown(false); // close drop down
     setStyle(notFocusedStyle);
     document.activeElement.blur(); // unfocuses the search and also resets optionIdx to 0
@@ -163,10 +163,10 @@ function SearchBar(props) {
       style={{ alignSelf: "start" }}
       className="searchbar-cont"
     >
-      {showPanelDisplay === true ? (
+      {showPanel === true ? (
         <SidePanel
-          showPanelDisplay={showPanelDisplay}
-          setShowPanelDisplay={setShowPanelDisplay}
+          showPanel={showPanel}
+          setShowPanel={setShowPanel}
           runSelection={props.runSelection}
         />
       ) : null}
@@ -204,7 +204,10 @@ function SearchBar(props) {
           style={style}
           placeholder="Search..."
           required
-          onChange={(e) => props.setRunSelection(e.target.value)}
+          onChange={(e) => {
+            props.setRunSelection(e.target.value);
+            setShowPanel(false); // closes the side panel
+          }}
           value={props.runSelection}
           onKeyDown={handleKeyDown}
           onFocus={() => {
@@ -260,7 +263,7 @@ function SearchBar(props) {
                     setStyle(notFocusedStyle);
                     props.setRunSelection(run.title);
                     props.openRunSelection(run.title);
-                    setShowPanelDisplay(true);
+                    setShowPanel(true);
                   }}
                 >
                   <img

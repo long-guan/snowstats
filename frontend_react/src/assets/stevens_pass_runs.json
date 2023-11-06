@@ -570,7 +570,6 @@
       924, 1001, 881, 921, 828, 830, 760, 743, 688, 618, 523, 531, 449, 497, 425
     ]
   },
-
   {
     "id": "lowerterminal",
     "title": "Lower Terminal",
@@ -584,7 +583,6 @@
       608, 2324, 629, 2299, 637, 2282, 650, 2288, 606, 2303, 567, 2310, 523
     ]
   },
-
   {
     "id": "doublediamond",
     "title": "Double Diamond",
@@ -599,7 +597,6 @@
       482, 622, 437, 543, 399, 488
     ]
   },
-
   {
     "id": "kehrschair",
     "title": "Kehr's Chair",
@@ -608,7 +605,12 @@
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "category": "chairlift",
-    "coords": [1046, 1184, 1059, 1174, 473, 735, 465, 748]
+    "coords": [1046, 1184, 1059, 1174, 473, 735, 465, 748],
+    "lift_data": {
+      "vertical_rise": "798",
+      "riders_per_hour": "1,300",
+      "type": "Quad"
+    }
   },
   {
     "id": "doublediamondlift",
@@ -618,7 +620,12 @@
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "category": "chairlift",
-    "coords": [507, 738, 518, 733, 331, 382, 317, 390]
+    "coords": [507, 738, 518, 733, 331, 382, 317, 390],
+    "lift_data": {
+      "vertical_rise": "682",
+      "riders_per_hour": "1,200",
+      "type": "Triple"
+    }
   },
   {
     "id": "tyemilll",
@@ -628,7 +635,12 @@
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "category": "chairlift",
-    "coords": [904, 367, 919, 361, 1188, 702, 1173, 713]
+    "coords": [904, 367, 919, 361, 1188, 702, 1173, 713],
+    "lift_data": {
+      "vertical_rise": "708",
+      "riders_per_hour": "1,680",
+      "type": "Triple"
+    }
   },
   {
     "id": "daisy",
@@ -638,7 +650,12 @@
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "category": "chairlift",
-    "coords": [1196, 1145, 1211, 1149, 1315, 816, 1298, 812]
+    "coords": [1196, 1145, 1211, 1149, 1315, 816, 1298, 812],
+    "lift_data": {
+      "vertical_rise": "309",
+      "riders_per_hour": "1,520",
+      "type": "Quad"
+    }
   },
   {
     "id": "hogsbackexpress",
@@ -648,7 +665,12 @@
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "category": "chairlift",
-    "coords": [1241, 1202, 1252, 1210, 1701, 585, 1688, 581]
+    "coords": [1241, 1202, 1252, 1210, 1701, 585, 1688, 581],
+    "lift_data": {
+      "vertical_rise": "789",
+      "riders_per_hour": "2,400",
+      "type": "Quad"
+    }
   },
   {
     "id": "skylineexpress",
@@ -658,7 +680,12 @@
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "category": "chairlift",
-    "coords": [1370, 1200, 1381, 1210, 2301, 458, 2290, 447]
+    "coords": [1370, 1200, 1381, 1210, 2301, 458, 2290, 447],
+    "lift_data": {
+      "vertical_rise": "1,209",
+      "riders_per_hour": "2,200",
+      "type": "Quad"
+    }
   },
   {
     "id": "brooksexpress",
@@ -668,7 +695,12 @@
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "category": "chairlift",
-    "coords": [1396, 1227, 1411, 1240, 2327, 638, 2316, 623]
+    "coords": [1396, 1227, 1411, 1240, 2327, 638, 2316, 623],
+    "lift_data": {
+      "vertical_rise": "793",
+      "riders_per_hour": "1,200",
+      "type": "Quad"
+    }
   },
   {
     "id": "7thheaven",
@@ -678,6 +710,11 @@
     "fillColor": "#eab54d4d",
     "strokeColor": "black",
     "category": "chairlift",
-    "coords": [2244, 471, 2259, 461, 2055, 259, 2038, 268]
+    "coords": [2244, 471, 2259, 461, 2055, 259, 2038, 268],
+    "lift_data": {
+      "vertical_rise": "444",
+      "riders_per_hour": "863",
+      "type": "Double"
+    }
   }
 ]

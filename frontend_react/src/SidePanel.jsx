@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import right_arrow from "./assets/right_arrow.png";
 import ski_lift_picture from "./assets/ski_lift_picture.webp";
 import stevens_pass_runs from "./assets/stevens_pass_runs.json";
+import { selectIcon } from "./helperFunctions";
 
 function SidePanel(props) {
   const [sidePanelWidth, setPanelWidth] = useState(0);
-  const [searchJson, setSearchJson] = useState({});
+  const [query, setQuery] = useState(stevens_pass_runs[0]);
 
   // calculates width of side panel
   function calcWidthSidePanel() {
@@ -23,18 +24,10 @@ function SidePanel(props) {
     return sidePanelWidth;
   }
 
-  useState(() => {
-    if (props.showPanelDisplay === true) {
-      setSearchJson(getJson(props.runSelection));
-    }
-  }, [props.showPanelDisplay]);
-
-  function getJson(inputSearch) {
+  function getQuery(runName) {
     stevens_pass_runs.forEach((run) => {
-      console.log(run.title);
-      console.log(inputSearch);
-      if (run.title.toLowerCase() === inputSearch.toLowerCase()) {
-        return run;
+      if (run.title.toLowerCase() === runName.toLowerCase()) {
+        setQuery(run);
       }
     });
   }
@@ -45,12 +38,13 @@ function SidePanel(props) {
   });
 
   useEffect(() => {
-    if (props.panelDisplay === true) {
+    if (props.showPanel === true) {
       setPanelWidth(calcWidthSidePanel());
+      getQuery(props.runSelection);
     } else {
       setPanelWidth(0);
     }
-  }, [props.pandelDisplay]);
+  }, [props.showPanel]);
 
   return (
     <div className="side-panel" style={{ width: sidePanelWidth }}>
@@ -61,7 +55,7 @@ function SidePanel(props) {
           setPanelWidth(0);
           // allows for sliding animation before setting display to false
           setTimeout(() => {
-            props.setShowPanelDisplay(false);
+            props.setShowPanel(false);
           }, 250);
         }}
       >
@@ -79,8 +73,24 @@ function SidePanel(props) {
         >
           <div className="flex justify-between">
             <div>{props.runSelection}</div>
-            <div>{searchJson.category}</div>
+            <div>
+              <img
+                style={{ height: "20px" }}
+                src={selectIcon(query.category)}
+                alt="category"
+              />
+            </div>
           </div>
+          {query.category === "chairlift" ? (
+            <>
+              <hr />
+              <div>
+                <div>Vertical Rise: {query.lift_data.vertical_rise}</div>
+                <div>Riders Per Hour: {query.lift_data.riders_per_hour}</div>
+                <div>Chair Type: {query.lift_data.type}</div>
+              </div>
+            </>
+          ) : null}
           <hr />
           <div>See Videos Button</div>
           <hr />

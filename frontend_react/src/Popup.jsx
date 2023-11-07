@@ -36,7 +36,10 @@ const InfoPopup = (props) => {
         className={
           "flex flex-row items-center gap-1 cursor-pointer " + underline
         }
-        onClick={() => props.setRunSelection(props.name)}
+        onClick={() => {
+          props.setRunSelection(props.name);
+          props.setShowPanel(true);
+        }}
         onMouseEnter={() => {
           setUnderline("underline");
         }}

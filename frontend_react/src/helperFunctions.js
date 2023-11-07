@@ -4,6 +4,7 @@ import black_diamond from "./assets/black_diamond.png";
 import double_black_diamond from "./assets/double_black_diamond.png";
 import chair_lift from "./assets/chair_lift.png";
 
+// returns icon depending on category in stevens_pass_runs json file
 export function selectIcon(category) {
   if (category === "green") {
     return green_circle;

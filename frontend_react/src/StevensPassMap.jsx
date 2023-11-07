@@ -15,6 +15,7 @@ function StevensPassMap() {
   const [disabled, setDisabled] = useState(false); // toggles the hover to show tooltips
   const [imgClickDisabled, setImgClickDisabled] = useState(false); // allows clicking of runs/lifts
   const [toggle, setToggle] = useState(["", "", "", "", ""]); // toggle use to control category btn selection
+  const [showPanel, setShowPanel] = useState(false); // shows or hides side panel
 
   const MAP = {
     name: "stevenspassmap",
@@ -47,6 +48,7 @@ function StevensPassMap() {
 
   const handleClick = (area) => {
     setRunSelection(area.title);
+    setShowPanel(true); // opens side panel
   };
 
   // updates dimensions whenever the screen resizes
@@ -77,6 +79,7 @@ function StevensPassMap() {
             setOpen(createOpenArray()); // closes all tooltips
             setDisabled(false); // enables hover to show tooltip
             setToggle(["", "", "", "", ""]); // turns off all category btn
+            setShowPanel(false); // hides the side panel
           }
         }}
         disabled={disabled} // toggles hover for tooltips
@@ -92,6 +95,8 @@ function StevensPassMap() {
         setDisabled={setDisabled}
         setImgClickDisabled={setImgClickDisabled}
         openRunSelection={openRunSelection}
+        showPanel={showPanel}
+        setShowPanel={setShowPanel}
       />
       <PopupHud
         scaleRatio={scaleRatio}
@@ -99,6 +104,8 @@ function StevensPassMap() {
         mapperWidth={mapperWidth}
         open={open}
         setRunSelection={setRunSelection}
+        setShowPanel={setShowPanel}
+        showPanel={showPanel}
       />
     </div>
   );

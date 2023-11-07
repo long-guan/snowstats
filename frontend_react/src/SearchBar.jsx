@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
 import stevens_pass_runs from "./assets/stevens_pass_runs.json";
-import green_circle from "./assets/green_circle.png";
-import blue_square from "./assets/blue_square.png";
-import black_diamond from "./assets/black_diamond.png";
-import double_black_diamond from "./assets/double_black_diamond.png";
-import chair_lift from "./assets/chair_lift.png";
 import { createOpenArray } from "./helperFunctions";
 import SidePanel from "./SidePanel";
+import { selectIcon } from "./helperFunctions";
 
 // style for when search bar is not focused
 const notFocusedStyle = {
@@ -35,11 +31,10 @@ function SearchBar(props) {
   const [showDropDown, setShowDropDown] = useState(false); // shows or hides drop down
   const [options, setOptions] = useState(stevens_pass_runs); // stores the options for drop down
   const [optionIdx, setOptionIdx] = useState(0); // used to track arrow up and arrow down for options
-  const [showPanel, setShowPanel] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setShowPanel(true);
+    props.setShowPanel(true);
     setShowDropDown(false); // close drop down
     setStyle(notFocusedStyle);
     document.activeElement.blur(); // unfocuses the search and also resets optionIdx to 0
@@ -122,21 +117,6 @@ function SearchBar(props) {
     }
   }, [optionIdx]);
 
-  // returns icon depending on category in stevens_pass_runs json file
-  function returnIcon(category) {
-    if (category === "green") {
-      return green_circle;
-    } else if (category === "blue") {
-      return blue_square;
-    } else if (category === "black") {
-      return black_diamond;
-    } else if (category === "doubleblack") {
-      return double_black_diamond;
-    } else {
-      return chair_lift;
-    }
-  }
-
   function filterOption() {
     let filteredOption = [];
     stevens_pass_runs.forEach((run) => {
@@ -163,10 +143,10 @@ function SearchBar(props) {
       style={{ alignSelf: "start" }}
       className="searchbar-cont"
     >
-      {showPanel === true ? (
+      {props.showPanel === true ? (
         <SidePanel
-          showPanel={showPanel}
-          setShowPanel={setShowPanel}
+          showPanel={props.showPanel}
+          setShowPanel={props.setShowPanel}
           runSelection={props.runSelection}
         />
       ) : null}
@@ -206,7 +186,7 @@ function SearchBar(props) {
           required
           onChange={(e) => {
             props.setRunSelection(e.target.value);
-            setShowPanel(false); // closes the side panel
+            props.setShowPanel(false); // closes the side panel
           }}
           value={props.runSelection}
           onKeyDown={handleKeyDown}
@@ -263,12 +243,12 @@ function SearchBar(props) {
                     setStyle(notFocusedStyle);
                     props.setRunSelection(run.title);
                     props.openRunSelection(run.title);
-                    setShowPanel(true);
+                    props.setShowPanel(true);
                   }}
                 >
                   <img
                     style={{ height: "20px", paddingLeft: "10px" }}
-                    src={returnIcon(run.category)}
+                    src={selectIcon(run.category)}
                     alt=""
                   />
                   <div>{run.title}</div>

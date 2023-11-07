@@ -49,6 +49,10 @@ function SidePanel(props) {
     }
   }, [props.showPanel]);
 
+  useEffect(() => {
+    getQuery(props.runSelection);
+  }, [props.runSelection]);
+
   return (
     <div className="side-panel" style={{ width: sidePanelWidth }}>
       <button
@@ -75,7 +79,7 @@ function SidePanel(props) {
           }}
         >
           <div className="flex justify-between">
-            <div>{props.runSelection}</div>
+            <div style={{ fontWeight: "bold" }}>{query.title}</div>
             <div>
               <img
                 style={{ height: "20px" }}

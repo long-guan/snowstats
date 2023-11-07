@@ -79,6 +79,8 @@ function Hud(props) {
         setDisabled={props.setDisabled}
         setOpen={props.setOpen}
         setToggle={props.setToggle}
+        showPanel={props.showPanel}
+        setShowPanel={props.setShowPanel}
       />
     </div>
   );

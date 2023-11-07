@@ -22,12 +22,12 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app
-    # depends_on:
-    #   - database
-  #   environment:
-  #     DATABASE_URL: postgres://wardrobe:password@database:5432/wardrobe
-  #     WAIT_HOSTS: database:5432
-  # WAIT_TIMEOUT: 240
+    depends_on:
+      - database
+    environment:
+      DATABASE_URL: postgres://snowstats_admin:snowstat_sadmin@localhost:5432/snowstats_db
+      WAIT_HOSTS: database:5432
+      WAIT_TIMEOUT: 240
   database:
     image: postgres:14.5-bullseye
     volumes:

@@ -1,4 +1,4 @@
-from stevenspass.models import Run
+from stevenspass.models import Run, CategoryVO
 
 run_data = [
   {
@@ -195,7 +195,8 @@ run_data = [
       2261, 449, 2273, 464, 2252, 480, 2214, 497, 2191, 508, 2167, 527, 2129,
       557, 2100, 595, 2091, 629, 2085, 654, 2078, 682, 2066, 718, 2057, 739,
       2042, 758, 2008, 775, 2008, 798, 1970, 815, 1945, 854, 1858, 894, 1824,
-      928, 1780, 962, 1735, 987, 1684, 1015, 1650, 1027, 1616, 1046, 1591, 1068,
+      928, 1780, 962, 1735, 987, 1684, 1015, 1650, 1027, 1616, 1046, 1591,
+      1068,
       1546, 1082, 1502, 1097, 1472, 1110, 1425, 1138, 1400, 1161, 1375, 1182,
       1351, 1208, 1334, 1216, 1319, 1203, 1355, 1163, 1413, 1123, 1455, 1095,
       1523, 1061, 1597, 1036, 1678, 983, 1731, 949, 1777, 926, 1833, 896, 1871,
@@ -976,18 +977,19 @@ run_data = [
 
 def select_category(run_category):
     if run_category == "green":
-        return Run.Category.GREEN
+        return CategoryVO.objects.get(category="green")
     elif run_category == "blue":
-        return Run.Category.BLUE
+        return CategoryVO.objects.get(category="blue")
     elif run_category == "black":
-        return Run.Category.BLACK
+        return CategoryVO.objects.get(category="black")
     elif run_category == "doubleblack":
-        return Run.Category.DOUBLE_BLACK
+        return CategoryVO.objects.get(category="double black")
     else:
-        return Run.Category.CHAIRLIFT
+        return CategoryVO.objects.get(category="chairlift")
 
 
 def run():
     for run in run_data:
-        Run.objects.create(id=run["name"], title=run.title, category=select_category(run.category))
+        print(run)
+        Run.objects.create(id=run['name'], title=run['title'], category=select_category(run['category']))
     print("run_data successfully imported")

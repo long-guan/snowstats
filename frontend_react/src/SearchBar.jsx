@@ -148,6 +148,7 @@ function SearchBar(props) {
           showPanel={props.showPanel}
           setShowPanel={props.setShowPanel}
           runSelection={props.runSelection}
+          setOpen={props.setOpen}
         />
       ) : null}
       <label

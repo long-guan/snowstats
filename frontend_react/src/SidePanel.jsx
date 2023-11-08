@@ -5,11 +5,13 @@ import stevens_pass_runs from "./assets/stevens_pass_runs.json";
 import { selectIcon } from "./helperFunctions";
 import youtube_social_icon from "./assets/youtube_social_icon_red.png";
 import news_icon from "./assets/news.png";
+import VideoModal from "./VideoModal";
 
 function SidePanel(props) {
   const [sidePanelWidth, setPanelWidth] = useState(0);
   const [query, setQuery] = useState(stevens_pass_runs[0]);
   const [hoverBackground, setHoverBackground] = useState(["", ""]);
+  const [openVidMod, setOpenVidMod] = useState(false);
 
   // calculates width of side panel
   function calcWidthSidePanel() {
@@ -107,6 +109,9 @@ function SidePanel(props) {
               onMouseLeave={() => {
                 setHoverBackground(["", ""]);
               }}
+              onClick={() => {
+                setOpenVidMod(true); // open VideoModal
+              }}
               className="flex items-center flex-col side-panel-btn"
             >
               <div
@@ -118,7 +123,7 @@ function SidePanel(props) {
                 <img
                   style={{ height: "15px" }}
                   src={youtube_social_icon}
-                  alt=""
+                  alt="youtube"
                 />
               </div>
               <div>Videos</div>
@@ -137,6 +142,9 @@ function SidePanel(props) {
                   "side-panel-btn-circle flex items-center justify-center " +
                   hoverBackground[1]
                 }
+                onClick={() => {
+                  alert("sorry, this feature is coming soon 😔");
+                }}
               >
                 <img style={{ height: "20px" }} src={news_icon} alt="" />
               </div>
@@ -145,6 +153,12 @@ function SidePanel(props) {
                 <div>Updates</div>
               </div>
             </button>
+            <VideoModal
+              openVidMod={openVidMod}
+              setOpenVidMod={setOpenVidMod}
+              query={query}
+              setOpen={props.setOpen}
+            />
           </div>
         </div>
       </div>

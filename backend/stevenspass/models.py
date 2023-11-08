@@ -23,11 +23,11 @@ class Run(models.Model):
 
 
 class Video(models.Model):
-    id = models.IntegerField(primary_key=True)
     src = models.CharField(max_length=150)
-    vote = models.IntegerField()
+    vote = models.IntegerField(default=0)
     run = models.ForeignKey(
         Run,
         related_name="videos",
         on_delete=models.PROTECT
     )
+    time = models.TimeField(auto_now=False, auto_now_add=True)

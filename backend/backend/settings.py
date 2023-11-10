@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "snowstats-backend.us-west-2.elasticbeanstalk.com",
+    "localhost",
+    "'172.31.6.149'",
 ]
 
 CSRF_TRUSTED_ORIGINS = [

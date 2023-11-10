@@ -62,6 +62,7 @@ function StevensPassMap() {
     setMapperWidth(viewWidth); // sets initial screen width
     setMapperHeight(viewWidth * (1452 / 2400)); // trail map is 2400x1452
     setScaleRatio(viewWidth / 2400);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

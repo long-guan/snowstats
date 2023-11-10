@@ -149,8 +149,7 @@ function SidePanel(props) {
                 <img style={{ height: "20px" }} src={news_icon} alt="" />
               </div>
               <div>
-                <div>Latest </div>
-                <div>Updates</div>
+                <div>Conditions</div>
               </div>
             </button>
             <VideoModal

@@ -1,0 +1,2 @@
+env:
+  VITE_DJANGO_API: http://snowstats-backend.us-west-2.elasticbeanstalk.com

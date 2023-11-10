@@ -7,7 +7,9 @@ function VideoModal(props) {
   const [videos, setVideos] = useState([]);
 
   async function getVideos(runId) {
-    const response = await fetch(`http://localhost:8000/api/videos/${runId}/`);
+    const response = await fetch(
+      `${import.meta.env.VITE_DJANGO_API}/api/videos/${runId}/`
+    );
     if (response.ok) {
       const data = await response.json();
       setVideos(data.videos);

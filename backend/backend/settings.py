@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-d(g*+6zovdk(05=l&m1q37%)sfqg44y#zw_ign(qg1ca)uf!j2
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "*",
+    "snowstats-backend.us-west-2.elasticbeanstalk.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [

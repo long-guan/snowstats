@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "snowstats-backend.us-west-2.elasticbeanstalk.com",
-    "https://long-guan.github.io/snowstats/",
     "localhost",
     "172.31.6.149",
 ]
@@ -44,6 +43,7 @@ SECURE_SSL_REDIRECT = False
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://long-guan.github.io/snowstats/",
 ]
 
 # Application definition

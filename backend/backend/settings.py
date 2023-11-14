@@ -36,6 +36,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
 ]
 
+SECURE_SSL_REDIRECT = False
+
 # CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
 
 CORS_ALLOWED_ORIGINS = [

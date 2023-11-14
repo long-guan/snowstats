@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     "snowstats-backend.us-west-2.elasticbeanstalk.com",
     "localhost",
     "172.31.2.32",
+    "longproductionbackend.net",
 ]
 
 CSRF_TRUSTED_ORIGINS = [

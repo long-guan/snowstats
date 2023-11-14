@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "snowstats-backend.us-west-2.elasticbeanstalk.com",
-    "https://long-guan.github.io/snowstats/"
+    "https://long-guan.github.io/snowstats/",
     "localhost",
     "172.31.6.149",
 ]

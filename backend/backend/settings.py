@@ -37,8 +37,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
 ]
 
-SECURE_SSL_REDIRECT = True
-SECURE_REDIRECT_EXEMPT = [r"^snowstats-backend\.us-west-2\.elasticbeanstalk\.com$"]
+SECURE_SSL_REDIRECT = False
+# SECURE_REDIRECT_EXEMPT = [r"^snowstats-backend\.us-west-2\.elasticbeanstalk\.com$"]
 
 # CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
 

@@ -3,6 +3,7 @@ from .models import Run, Video
 from django.http import JsonResponse
 from common.json import ModelEncoder
 import json
+from django.contrib.auth.models import User
 
 
 class RunListEncoder(ModelEncoder):
@@ -77,6 +78,35 @@ def api_list_run_videos(request, id):
         return JsonResponse(
             {"videos": videos},
             encoder=VideoListEncoder,
+        )
+
+
+@require_http_methods(["POST"])
+def api_create_new_user(request):
+    if request.method == "POST":
+        content = json.loads(request.body)
+        if User.objects.filter(username=content["username"]).exists():
+            return JsonResponse(
+                {"message": "username already exists"},
+                status=400,
+            )
+        try:
+            User.objects.create_user(
+                content["username"],
+                email=None,
+                password=content["password"]
+            )
+        except Exception as e:
+            print("except")
+            return JsonResponse(
+                {"message": e},
+                status=400,
+                safe=False
+            )
+        print("success")
+        return JsonResponse(
+            {"message": "account successfully created"},
+            status=200,
         )
 
 

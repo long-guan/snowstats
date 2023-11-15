@@ -991,6 +991,414 @@ run_data = [
   }
 ]
 
+video_data = [
+  {
+    "id": 1,
+    "src": "https://www.youtube.com/embed/j_NGFvsrs4A?si=U2C0cRt56K4lO7B5",
+    "vote": 0,
+    "run": {
+      "title": "Promenade",
+      "id": 0
+    }
+  },
+  {
+    "id": 2,
+    "src": "https://www.youtube.com/embed/Dfu7cZZxTv8?si=ExqCUI1F_aXUp0t4",
+    "vote": 0,
+    "run": {
+      "title": "Easy Street",
+      "id": 1
+    }
+  },
+  {
+    "id": 3,
+    "src": "https://www.youtube.com/embed/OhFs-IQ_NP0?si=BUQxLSPmsc_3qxvV",
+    "vote": 0,
+    "run": {
+      "title": "76 Road",
+      "id": 2
+    }
+  },
+  {
+    "id": 5,
+    "src": "https://www.youtube.com/embed/RBh_gCs93xQ?si=Xlu9rTliqyZM-gcd",
+    "vote": 0,
+    "run": {
+      "title": "Brennan's Trail",
+      "id": 4
+    }
+  },
+  {
+    "id": 6,
+    "src": "https://www.youtube.com/embed/zkGpjJvBfoU?si=SU6YV57f_mggqnDe",
+    "vote": 0,
+    "run": {
+      "title": "Showcase",
+      "id": 5
+    }
+  },
+  {
+    "id": 7,
+    "src": "https://www.youtube.com/embed/pkt9KELDVVk?si=lmP3iUbQtVD5at1q",
+    "vote": 0,
+    "run": {
+      "title": "One Light",
+      "id": 6
+    }
+  },
+  {
+    "id": 8,
+    "src": "https://www.youtube.com/embed/u8SkmsiJkzY?si=ZToK9VCaOGR6EdSc",
+    "vote": 0,
+    "run": {
+      "title": "Broadway",
+      "id": 8
+    }
+  },
+  {
+    "id": 9,
+    "src": "https://www.youtube.com/embed/Z3hSyyD6t_o?si=9UcQ6onYAX3xA1b4",
+    "vote": 0,
+    "run": {
+      "title": "Skyline",
+      "id": 9
+    }
+  },
+  {
+    "id": 10,
+    "src": "https://www.youtube.com/embed/4i4-KhU4H_I?si=nKiRHHQOFXik9Qtr",
+    "vote": 0,
+    "run": {
+      "title": "Barrier Ridge",
+      "id": 10
+    }
+  },
+  {
+    "id": 11,
+    "src": "https://www.youtube.com/embed/4i4-KhU4H_I?si=nKiRHHQOFXik9Qtr",
+    "vote": 0,
+    "run": {
+      "title": "Marmot Meadows",
+      "id": 11
+    }
+  },
+  {
+    "id": 12,
+    "src": "https://www.youtube.com/embed/h-6JRALo09U?si=Gve9vMZk1eIxAH8k",
+    "vote": 0,
+    "run": {
+      "title": "Hog Heaven",
+      "id": 12
+    }
+  },
+  {
+    "id": 13,
+    "src": "https://www.youtube.com/embed/elL_dPHhGH8?si=xBS9-OWVXWC8SgTP",
+    "vote": 0,
+    "run": {
+      "title": "Hog Wild",
+      "id": 13
+    }
+  },
+  {
+    "id": 14,
+    "src": "https://www.youtube.com/embed/Y0FpYAlLf_A?si=1pIA9pc5iB6TQ6qw",
+    "vote": 0,
+    "run": {
+      "title": "Rock N Blue",
+      "id": 16
+    }
+  },
+  {
+    "id": 15,
+    "src": "https://www.youtube.com/embed/pyjYWJtWGYY?si=YCJtnt5VlW2pIxcj",
+    "vote": 0,
+    "run": {
+      "title": "Blue Trail",
+      "id": 15
+    }
+  },
+  {
+    "id": 16,
+    "src": "https://www.youtube.com/embed/kCJoLa3-sBY?si=Tqki90gIgXXROira",
+    "vote": 0,
+    "run": {
+      "title": "Wall St",
+      "id": 17
+    }
+  },
+  {
+    "id": 17,
+    "src": "https://www.youtube.com/embed/rd_ytDqs7TI?si=GZWxV4WA7r32DgYB",
+    "vote": 0,
+    "run": {
+      "title": "Hoot N Holler",
+      "id": 18
+    }
+  },
+  {
+    "id": 18,
+    "src": "https://www.youtube.com/embed/OhFs-IQ_NP0?si=RBf8O7TiP3AGWHfF",
+    "vote": 0,
+    "run": {
+      "title": "Slow Poke",
+      "id": 19
+    }
+  },
+  {
+    "id": 19,
+    "src": "https://www.youtube.com/embed/g-EP9TBveUI?si=jes0X9kQrVr6Awjs",
+    "vote": 0,
+    "run": {
+      "title": "Hagen Hill",
+      "id": 20
+    }
+  },
+  {
+    "id": 20,
+    "src": "https://www.youtube.com/embed/au5njHMECcs?si=jVmOBnMaMyj8aJ0C",
+    "vote": 0,
+    "run": {
+      "title": "Skid Road",
+      "id": 21
+    }
+  },
+  {
+    "id": 21,
+    "src": "https://www.youtube.com/embed/s_2s-IuNa28?si=h7gREn7f_kKlOi6i",
+    "vote": 0,
+    "run": {
+      "title": "Crest Trail",
+      "id": 22
+    }
+  },
+  {
+    "id": 22,
+    "src": "https://www.youtube.com/embed/Ts8JaZKI1e4?si=LVfg68BjGzKY8QkH",
+    "vote": 0,
+    "run": {
+      "title": "I-5",
+      "id": 23
+    }
+  },
+  {
+    "id": 23,
+    "src": "https://www.youtube.com/embed/-YwEZULZtVk?si=6erRqymLmWTrBmiA",
+    "vote": 0,
+    "run": {
+      "title": "Parachute 2",
+      "id": 24
+    }
+  },
+  {
+    "id": 24,
+    "src": "https://www.youtube.com/embed/Yaa4_VdvJ9U?si=0YAYNPEEfAYuBhaf",
+    "vote": 0,
+    "run": {
+      "title": "Lower Diamond",
+      "id": 25
+    }
+  },
+  {
+    "id": 25,
+    "src": "https://www.youtube.com/embed/Hh-PdsUWmtY?si=Mg8xyqA6UflLpe6s",
+    "vote": 0,
+    "run": {
+      "title": "Roller Coaster",
+      "id": 27
+    }
+  },
+  {
+    "id": 26,
+    "src": "https://www.youtube.com/embed/rlPjtqmNIpw?si=pCmcY4kuLkm2AZcn",
+    "vote": 0,
+    "run": {
+      "title": "Panorama",
+      "id": 29
+    }
+  },
+  {
+    "id": 27,
+    "src": "https://www.youtube.com/embed/gUe5mA522_o?si=Ywxq9VZaCUHc46u_",
+    "vote": 0,
+    "run": {
+      "title": "Parachute 1",
+      "id": 30
+    }
+  },
+  {
+    "id": 28,
+    "src": "https://www.youtube.com/embed/PNNigK7z5pM?si=CKpeLYPYDzQyyNnj",
+    "vote": 0,
+    "run": {
+      "title": "Headwall",
+      "id": 31
+    }
+  },
+  {
+    "id": 29,
+    "src": "https://www.youtube.com/embed/s_mtRtWHf64?si=tBPUkTqWErQOz7C2",
+    "vote": 0,
+    "run": {
+      "title": "Rock Garden",
+      "id": 32
+    }
+  },
+  {
+    "id": 30,
+    "src": "https://www.youtube.com/embed/c7zBtMYtZ10?si=GpaB5RkzFlHT7i5I",
+    "vote": 0,
+    "run": {
+      "title": "Lower Rock Garden",
+      "id": 33
+    }
+  },
+  {
+    "id": 32,
+    "src": "https://www.youtube.com/embed/Shg3uCYlf0Q?si=Ic-hnUXzQ00hDMjW",
+    "vote": 0,
+    "run": {
+      "title": "Little Tree",
+      "id": 34
+    }
+  },
+  {
+    "id": 33,
+    "src": "https://www.youtube.com/embed/tSQokWMKkkI?si=rVMj08f0JM59j0_u",
+    "vote": 0,
+    "run": {
+      "title": "Cloud 9",
+      "id": 35
+    }
+  },
+  {
+    "id": 34,
+    "src": "https://www.youtube.com/embed/13g6CtG1MNk?si=CvyO9u_QdfYA-g5t",
+    "vote": 0,
+    "run": {
+      "title": "Bobby Chute",
+      "id": 36
+    }
+  },
+  {
+    "id": 35,
+    "src": "https://www.youtube.com/embed/CFkugXNrH3Q?si=x0PR9CpwE1DYU6gk",
+    "vote": 0,
+    "run": {
+      "title": "Nancy Chute",
+      "id": 37
+    }
+  },
+  {
+    "id": 36,
+    "src": "https://www.youtube.com/embed/3PaacjEL_AQ?si=B6EeTjnUEk1XEGKp",
+    "vote": 0,
+    "run": {
+      "title": "Solitude",
+      "id": 38
+    }
+  },
+  {
+    "id": 37,
+    "src": "https://www.youtube.com/embed/uPWYIz4EK7M?si=4f221JZulVZYqk9C",
+    "vote": 0,
+    "run": {
+      "title": "Wild Katz",
+      "id": 39
+    }
+  },
+  {
+    "id": 38,
+    "src": "https://www.youtube.com/embed/crmzK4DDDBI?si=JHwtR_AKpszk_L7k",
+    "vote": 0,
+    "run": {
+      "title": "Lower Terminal",
+      "id": 40
+    }
+  },
+  {
+    "id": 39,
+    "src": "https://www.youtube.com/embed/PMCBL9NaC5Y?si=6AzVK180hjZUwVjg",
+    "vote": 0,
+    "run": {
+      "title": "Double Diamond Lift",
+      "id": 43
+    }
+  },
+  {
+    "id": 40,
+    "src": "https://www.youtube.com/embed/eirE9pRL08k?si=VM_1jDbJcw9Tnxk_",
+    "vote": 0,
+    "run": {
+      "title": "Kehr's Chair",
+      "id": 42
+    }
+  },
+  {
+    "id": 41,
+    "src": "https://www.youtube.com/embed/rB55DX-SAsw?si=tPAJwR1AKpIDsfIa",
+    "vote": 0,
+    "run": {
+      "title": "Double Diamond Lift",
+      "id": 43
+    }
+  },
+  {
+    "id": 42,
+    "src": "https://www.youtube.com/embed/LyVg-RHcefE?si=08adBotFS_mz0StA",
+    "vote": 0,
+    "run": {
+      "title": "Tye Mill",
+      "id": 44
+    }
+  },
+  {
+    "id": 43,
+    "src": "https://www.youtube.com/embed/1WIXkQXNk8k?si=LuEKdX6zYWD_bDSl",
+    "vote": 0,
+    "run": {
+      "title": "Daisy",
+      "id": 45
+    }
+  },
+  {
+    "id": 44,
+    "src": "https://www.youtube.com/embed/pdZcRJ0pzE8?si=PRZaNKk6wHTyR1jY",
+    "vote": 0,
+    "run": {
+      "title": "Hogsback Express",
+      "id": 46
+    }
+  },
+  {
+    "id": 45,
+    "src": "https://www.youtube.com/embed/YcdS7B6TxmA?si=OuCoUuIxn-dpE828",
+    "vote": 0,
+    "run": {
+      "title": "Skyline Express",
+      "id": 47
+    }
+  },
+  {
+    "id": 46,
+    "src": "https://www.youtube.com/embed/UYphbp78KhQ?si=SdnREb6hfA0wNfuC",
+    "vote": 0,
+    "run": {
+      "title": "Brooks Express",
+      "id": 48
+    }
+  },
+  {
+    "id": 47,
+    "src": "https://www.youtube.com/embed/2WrO1zC0T40?si=8AlqKIb6ANDw5Ed-",
+    "vote": 0,
+    "run": {
+      "title": "7th Heaven",
+      "id": 49
+    }
+  }
+]
+
 
 def select_category(run_category):
     if run_category == "green":

@@ -1,7 +1,34 @@
 import Popup from "reactjs-popup";
-// import { useState } from "react";
+import { useState } from "react";
 
 function LoginModal(props) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const user = {
+      username: username,
+      password: password,
+    };
+
+    const response = await fetch(`${import.meta.env.VITE_DJANGO_API}/token/`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      localStorage.clear();
+      localStorage.setItem("access_token", data.access);
+      localStorage.setItem("refresh_token", data.refresh);
+    } else {
+      console.log("error logging in");
+    }
+  };
+
   return (
     <Popup
       open={props.openLogMod}
@@ -35,12 +62,16 @@ function LoginModal(props) {
           style={{ height: "290px" }}
           className="flex flex-col items-center justify-center"
         >
-          <form className="content flex flex-col items-center gap-6">
+          <form
+            onSubmit={handleLogin}
+            className="content flex flex-col items-center gap-6"
+          >
             <div>
               <label htmlFor="username" className="block text-sm font-medium">
                 Username
               </label>
               <input
+                onChange={(e) => setUsername(e.target.value)}
                 type="text"
                 id="username"
                 className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -53,6 +84,7 @@ function LoginModal(props) {
                 Password
               </label>
               <input
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 id="password"
                 className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"

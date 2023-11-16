@@ -4,6 +4,9 @@ from django.http import JsonResponse
 from common.json import ModelEncoder
 import json
 from django.contrib.auth.models import User
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 
 class RunListEncoder(ModelEncoder):
@@ -108,9 +111,3 @@ def api_create_new_user(request):
             {"message": "account successfully created"},
             status=200,
         )
-
-
-# @require_http_methods(["PUT"])
-# def api_upvote_video(request, id):
-#     if request.method == "PUT":
-#         content = json.loads(request.)

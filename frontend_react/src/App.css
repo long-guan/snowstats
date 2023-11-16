@@ -157,3 +157,11 @@ area:hover,
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
+
+.acc-link {
+  color: #4285f4;
+}
+
+.acc-link:hover {
+  text-decoration: underline;
+}

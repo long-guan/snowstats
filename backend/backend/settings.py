@@ -45,6 +45,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://long-guan.github.io",
 ]
 
+CORS_ALLOW_CREDENTIALS = True
+
 # Application definition
 
 INSTALLED_APPS = [

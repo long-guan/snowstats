@@ -1,9 +1,16 @@
 import Popup from "reactjs-popup";
 import { useState } from "react";
 
+const normal =
+  "bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500";
+
+const error =
+  "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
+
 function SignInModal(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [inputClass, setInputClass] = useState(normal);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -31,6 +38,7 @@ function SignInModal(props) {
       props.setSignedIn(true);
     } else {
       console.log("error logging in");
+      setInputClass(error);
     }
   };
 
@@ -42,6 +50,7 @@ function SignInModal(props) {
       // onOpen={() => {}}
       onClose={() => {
         props.setOpenLogMod(false);
+        setInputClass(normal);
       }}
       contentStyle={{
         width: "50%",
@@ -79,7 +88,7 @@ function SignInModal(props) {
                 onChange={(e) => setUsername(e.target.value)}
                 type="text"
                 id="username"
-                className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className={inputClass}
                 placeholder="Username"
                 required
               />
@@ -92,11 +101,17 @@ function SignInModal(props) {
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 id="password"
-                className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className={inputClass}
+                placeholder="•••••••••"
                 required
               />
             </div>
             <div className="flex items-center justify-center flex-col gap-1">
+              {inputClass === error ? (
+                <p className="text-sm text-red-600 dark:text-red-500">
+                  Invalid Username or Password
+                </p>
+              ) : null}
               <div className="text-base cursor-pointer acc-link">
                 Create account
               </div>

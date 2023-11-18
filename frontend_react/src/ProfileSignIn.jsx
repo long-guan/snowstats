@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import SignInModal from "./SignInModal";
+import SignInModal from "./SignInMod";
+import SignUpModal from "./SignUpMod";
 
 function ProfileSignIn() {
   const [openLogMod, setOpenLogMod] = useState(false);
+  const [openSignUpMod, setOpenSignUpMod] = useState(false);
   const [signedIn, setSignedIn] = useState(false);
 
   useEffect(() => {
@@ -28,7 +30,6 @@ function ProfileSignIn() {
     if (response.ok) {
       setSignedIn(false);
       localStorage.clear();
-      console.log("logged out");
     } else {
       console.log("error");
     }
@@ -53,6 +54,12 @@ function ProfileSignIn() {
       <SignInModal
         setSignedIn={setSignedIn}
         openLogMod={openLogMod}
+        setOpenLogMod={setOpenLogMod}
+        setOpenSignUpMod={setOpenSignUpMod}
+      />
+      <SignUpModal
+        setOpenSignUpMod={setOpenSignUpMod}
+        openSignUpMod={openSignUpMod}
         setOpenLogMod={setOpenLogMod}
       />
     </div>

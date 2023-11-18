@@ -4,11 +4,6 @@ from django.http import JsonResponse
 from common.json import ModelEncoder
 import json
 from django.contrib.auth.models import User
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework import status
 
 
 class RunListEncoder(ModelEncoder):
@@ -86,8 +81,8 @@ def api_list_run_videos(request, id):
         )
 
 
-@require_http_methods(["POST"])
-def api_create_new_user(request):
+@require_http_methods(["POST", "GET"])
+def api_create_new_user(request, username=None):
     if request.method == "POST":
         content = json.loads(request.body)
         if User.objects.filter(username=content["username"]).exists():
@@ -108,8 +103,18 @@ def api_create_new_user(request):
                 status=400,
                 safe=False
             )
-        print("success")
         return JsonResponse(
             {"message": "account successfully created"},
             status=200,
         )
+    else:
+        if User.objects.filter(username=username).exists():
+            return JsonResponse(
+                {"message": "username already exists"},
+                status=200,
+            )
+        else:
+            return JsonResponse(
+                {"message": "username is available"},
+                status=404,
+            )

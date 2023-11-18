@@ -53,7 +53,7 @@ function SignInModal(props) {
         setInputClass(normal);
       }}
       contentStyle={{
-        width: "50%",
+        width: "30%",
         height: "50%",
         backgroundColor: "#FFF",
         boxShadow:
@@ -112,7 +112,13 @@ function SignInModal(props) {
                   Invalid Username or Password
                 </p>
               ) : null}
-              <div className="text-base cursor-pointer acc-link">
+              <div
+                onClick={() => {
+                  props.setOpenLogMod(false);
+                  props.setOpenSignUpMod(true);
+                }}
+                className="text-base cursor-pointer acc-link"
+              >
                 Create account
               </div>
               <button

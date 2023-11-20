@@ -165,3 +165,14 @@ area:hover,
 .acc-link:hover {
   text-decoration: underline;
 }
+
+.thumbs-up,
+.thumbs-down {
+  background-color: #fff;
+}
+
+.thumbs-up:hover,
+.thumbs-down:hover {
+  background-color: #b9b8b8;
+  cursor: pointer;
+}

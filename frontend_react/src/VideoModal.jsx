@@ -2,6 +2,8 @@ import Popup from "reactjs-popup";
 import { selectIcon } from "./helperFunctions";
 import { useState } from "react";
 import { createOpenArray } from "./helperFunctions";
+import thumbs_up from "./assets/thumbs_up.png";
+import thumbs_down from "./assets/thumbs_down.png";
 
 function VideoModal(props) {
   const [videos, setVideos] = useState([]);
@@ -60,16 +62,107 @@ function VideoModal(props) {
         >
           {videos.length > 0 ? (
             videos.map((video) => (
-              <iframe
+              <div
+                className="flex flex-col justify-center items-center gap-2"
+                style={{
+                  backgroundColor: "black",
+                  width: "600px",
+                  minHeight: "370px",
+                }}
                 key={video.id}
-                width="560"
-                height="315"
-                style={{ minHeight: "315px" }}
-                src={video.src}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
+              >
+                <iframe
+                  width="560"
+                  height="315"
+                  style={{ minHeight: "315px" }}
+                  src={video.src}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+                <div
+                  style={{
+                    width: "100%",
+                    paddingLeft: "20px",
+                    paddingRight: "20px",
+                  }}
+                  className="flex justify-between"
+                >
+                  <div
+                    style={{
+                      backgroundColor: "#FFF",
+                      borderRadius: "12px",
+                      paddingLeft: "10px",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    Added by:{" "}
+                    <span style={{ fontWeight: "bold" }}>username</span>
+                  </div>
+                  <div className="flex">
+                    <Popup
+                      trigger={() => (
+                        <div
+                          className="flex justify-center items-center thumbs-up"
+                          style={{
+                            minWidth: "60px",
+                            borderRightStyle: "solid",
+                            borderRightColor: "black",
+                            borderRightWidth: "1px",
+                            borderTopLeftRadius: "12px",
+                            borderBottomLeftRadius: "12px",
+                          }}
+                        >
+                          <img src={thumbs_up} alt="" />
+                        </div>
+                      )}
+                      position="bottom center"
+                      closeOnDocumentClick
+                      on={["hover", "focus"]}
+                      contentStyle={{
+                        textAlign: "center",
+                        boxShadow:
+                          "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+                      }}
+                    >
+                      <span>Like for accuracy and video quality</span>
+                    </Popup>
+                    <div
+                      className="flex justify-center items-center"
+                      style={{ minWidth: "30px", backgroundColor: "#fff" }}
+                    >
+                      <div>0</div>
+                    </div>
+                    <Popup
+                      trigger={() => (
+                        <div
+                          className="flex justify-center items-center thumbs-up"
+                          style={{
+                            minWidth: "60px",
+                            borderLeftStyle: "solid",
+                            borderLeftColor: "black",
+                            borderLeftWidth: "1px",
+                            borderTopRightRadius: "12px",
+                            borderBottomRightRadius: "12px",
+                          }}
+                        >
+                          <img src={thumbs_down} alt="" />
+                        </div>
+                      )}
+                      position="bottom center"
+                      closeOnDocumentClick
+                      on={["hover", "focus"]}
+                      contentStyle={{
+                        textAlign: "center",
+                        boxShadow:
+                          "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+                      }}
+                    >
+                      <span>Dislike for inaccuracy and poor video quality</span>
+                    </Popup>
+                  </div>
+                </div>
+              </div>
             ))
           ) : (
             <div>There are currently no videos 😔</div>

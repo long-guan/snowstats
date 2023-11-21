@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Run, CategoryVO, Video
+from .models import Run, CategoryVO, Video, Like, Dislike, Conditions
 
 
 # Register your models here.
@@ -24,6 +24,29 @@ class VideoAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "src",
-        "vote",
         "run",
+        "created_at",
+    )
+
+
+@admin.register(Like)
+class LikeAdmin(admin.ModelAdmin):
+    list_display = (
+        "video",
+    )
+
+
+@admin.register(Dislike)
+class DislikeAdmin(admin.ModelAdmin):
+    list_display = (
+        "video",
+    )
+
+
+@admin.register(Conditions)
+class ConditionsAdmin(admin.ModelAdmin):
+    list_display = (
+        "comment",
+        "run",
+        "created_at",
     )

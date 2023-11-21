@@ -1,4 +1,4 @@
-from stevenspass.models import Run, CategoryVO
+from stevenspass.models import Run, CategoryVO, Video, User
 
 run_data = [
   {
@@ -1426,5 +1426,11 @@ def run():
             id=run['name'],
             title=run['title'],
             category=select_category(run['category'])
+        )
+    for video in video_data:
+        Video.objects.create(
+            src=video["src"],
+            run=Run.objects.get(id=video["run"]["id"]),
+            user=User.objects.get(username="admin")
         )
     print("run_data successfully imported")

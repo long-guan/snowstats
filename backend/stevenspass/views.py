@@ -22,7 +22,6 @@ class VideoListEncoder(ModelEncoder):
     properties = [
         "id",
         "src",
-        "vote",
     ]
 
     def get_extra_data(self, o):
@@ -30,6 +29,13 @@ class VideoListEncoder(ModelEncoder):
             "run": {
                 "title": o.run.title,
                 "id": o.run.id,
+            },
+            "vote": {
+                "likes": o.get_total_likes(),
+                "dislikes": o.get_total_dislikes(),
+            },
+            "user": {
+                "username": o.user.username,
             }
         }
 
@@ -74,7 +80,7 @@ def api_list_videos(request):
 @require_http_methods(["GET"])
 def api_list_run_videos(request, id):
     if request.method == "GET":
-        videos = Video.objects.filter(run_id=id).order_by('vote')
+        videos = Video.objects.filter(run_id=id)
         return JsonResponse(
             {"videos": videos},
             encoder=VideoListEncoder,

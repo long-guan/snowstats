@@ -58,7 +58,11 @@ function VideoModal(props) {
         </div>
         <div
           className="content flex flex-col items-center gap-10"
-          style={{ overflowY: "scroll", maxHeight: "92%" }}
+          style={{
+            overflowY: "scroll",
+            maxHeight: "92%",
+            paddingBottom: "20px",
+          }}
         >
           {videos.length > 0 ? (
             videos.map((video) => (
@@ -68,6 +72,9 @@ function VideoModal(props) {
                   backgroundColor: "black",
                   width: "600px",
                   minHeight: "370px",
+
+                  boxShadow:
+                    "0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
                 }}
                 key={video.id}
               >
@@ -131,7 +138,9 @@ function VideoModal(props) {
                       className="flex justify-center items-center"
                       style={{ minWidth: "30px", backgroundColor: "#fff" }}
                     >
-                      <div>0</div>
+                      <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
+                        0
+                      </div>
                     </div>
                     <Popup
                       trigger={() => (

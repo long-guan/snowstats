@@ -1,7 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
-# Create your models here.
 class CategoryVO(models.Model):
     category = models.CharField(max_length=50)
 
@@ -15,7 +15,7 @@ class Run(models.Model):
     category = models.ForeignKey(
         CategoryVO,
         related_name="runs",
-        on_delete=models.PROTECT
+        on_delete=models.CASCADE
     )
 
     def __str__(self):
@@ -24,10 +24,64 @@ class Run(models.Model):
 
 class Video(models.Model):
     src = models.CharField(max_length=150)
-    vote = models.IntegerField(default=0)
     run = models.ForeignKey(
         Run,
         related_name="videos",
-        on_delete=models.PROTECT
+        on_delete=models.CASCADE
     )
-    time = models.TimeField(auto_now=False, auto_now_add=True)
+    created_at = models.DateTimeField(auto_now=False, auto_now_add=True)
+    user = models.ForeignKey(
+        User,
+        related_name="added_videos",
+        on_delete=models.CASCADE
+    )
+
+    def get_total_likes(self):
+        try:
+            return self.likes.users.count()
+        except:
+            return 0
+
+    def get_total_dislikes(self):
+        try:
+            return self.dislikes.users.count()
+        except:
+            return 0
+
+
+class Like(models.Model):
+    video = models.OneToOneField(
+        Video,
+        related_name="likes",
+        on_delete=models.CASCADE
+    )
+    users = models.ManyToManyField(
+        User,
+        related_name="users_likes",
+    )
+
+
+class Dislike(models.Model):
+    video = models.OneToOneField(
+        Video,
+        related_name="dislikes",
+        on_delete=models.CASCADE
+    )
+    users = models.ManyToManyField(
+        User,
+        related_name="user_dislikes",
+    )
+
+
+class Conditions(models.Model):
+    run = models.OneToOneField(
+        Run,
+        related_name="conditions",
+        on_delete=models.CASCADE
+    )
+    user = models.ManyToManyField(
+        User,
+        related_name="conditions",
+    )
+    comment = models.CharField(max_length=150)
+    created_at = models.DateTimeField(auto_now=False, auto_now_add=True)

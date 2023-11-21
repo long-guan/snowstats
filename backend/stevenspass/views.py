@@ -141,21 +141,14 @@ def api_like_video(request, video_id):
                 {"message": "username does not exists"},
                 status=404,
             )
-        # if user is in Dislike, remove
-        # if Dislike.objects.filter(video=video).exists():
-        #     print('video dislike exists')
-        #     dislikes = Dislike.objects.get(video=video_id)
-        #     print(dislikes)
-        #     user = User.objects.get(username=content["username"])
-        #     print(dislikes.users)
-        #     dislikes.users.remove(user)
-        #     if dislikes.users.filter(username=content["username"]).exists():
-        #         print("user disliked")
-        #         dislikes.users.remove(
-        #             User.objects.get(username=content["username"]))
+        video = Video.objects.get(id=video_id)
+        user = User.objects.get(username=content["username"])
+        #  if user is in Dislike, remove user from Dislike
+        if Dislike.objects.filter(video=video).exists():
+            dislikes = Dislike.objects.get(video=video)
+            if user in dislikes.users.all():
+                dislikes.users.remove(user)
         try:
-            video = Video.objects.get(id=video_id)
-            user = User.objects.get(username=content["username"])
             if Like.objects.filter(video=video).exists() is False:
                 likes = Like.objects.create(video=video)
                 likes.users.add(user)
@@ -192,9 +185,14 @@ def api_dislike_video(request, video_id):
                 {"message": "username does not exists"},
                 status=404,
             )
+        video = Video.objects.get(id=video_id)
+        user = User.objects.get(username=content["username"])
+        #  if user is in Like, remove user from Like
+        if Like.objects.filter(video=video).exists():
+            likes = Like.objects.get(video=video)
+            if user in likes.users.all():
+                likes.users.remove(user)
         try:
-            video = Video.objects.get(id=video_id)
-            user = User.objects.get(username=content["username"])
             if Dislike.objects.filter(video=video).exists() is False:
                 dislikes = Dislike.objects.create(video=video)
                 dislikes.users.add(user)

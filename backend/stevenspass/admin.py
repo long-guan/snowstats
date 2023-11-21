@@ -32,6 +32,7 @@ class VideoAdmin(admin.ModelAdmin):
 @admin.register(Like)
 class LikeAdmin(admin.ModelAdmin):
     list_display = (
+        "id",
         "video",
     )
 
@@ -39,6 +40,7 @@ class LikeAdmin(admin.ModelAdmin):
 @admin.register(Dislike)
 class DislikeAdmin(admin.ModelAdmin):
     list_display = (
+        "id",
         "video",
     )
 

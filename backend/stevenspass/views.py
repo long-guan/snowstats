@@ -1,5 +1,5 @@
 from django.views.decorators.http import require_http_methods
-from .models import Run, Video
+from .models import Run, Video, Like, Dislike
 from django.http import JsonResponse
 from common.json import ModelEncoder
 import json
@@ -103,7 +103,6 @@ def api_create_new_user(request, username=None):
                 password=content["password"]
             )
         except Exception as e:
-            print("except")
             return JsonResponse(
                 {"message": e},
                 status=400,
@@ -124,3 +123,92 @@ def api_create_new_user(request, username=None):
                 {"message": "username is available"},
                 status=404,
             )
+
+# removes the user from Dislike when adding to Like
+@require_http_methods(["POST"])
+def api_like_video(request, video_id):
+    if request.method == "POST":
+        content = json.loads(request.body)
+        # error handling if video_id doesn't exists
+        if Video.objects.filter(id=video_id).exists() is False:
+            return JsonResponse(
+                {"message": "video_id does not exists"},
+                status=404,
+            )
+        # error handling if username doesn't exists
+        if User.objects.filter(username=content["username"]).exists() is False:
+            return JsonResponse(
+                {"message": "username does not exists"},
+                status=404,
+            )
+        # if user is in Dislike, remove
+        # if Dislike.objects.filter(video=video).exists():
+        #     print('video dislike exists')
+        #     dislikes = Dislike.objects.get(video=video_id)
+        #     print(dislikes)
+        #     user = User.objects.get(username=content["username"])
+        #     print(dislikes.users)
+        #     dislikes.users.remove(user)
+        #     if dislikes.users.filter(username=content["username"]).exists():
+        #         print("user disliked")
+        #         dislikes.users.remove(
+        #             User.objects.get(username=content["username"]))
+        try:
+            video = Video.objects.get(id=video_id)
+            user = User.objects.get(username=content["username"])
+            if Like.objects.filter(video=video).exists() is False:
+                likes = Like.objects.create(video=video)
+                likes.users.add(user)
+            else:
+                likes = Like.objects.get(video=video)
+                likes.users.add(user)
+        except Exception as e:
+            print(e)
+            return JsonResponse(
+                {"message": "something went wrong"},
+                status=400,
+                safe=False
+            )
+        return JsonResponse(
+            {"message": "video liked"},
+            status=200,
+        )
+
+
+# removes the user from Like when adding to Dislike
+@require_http_methods(["POST"])
+def api_dislike_video(request, video_id):
+    if request.method == "POST":
+        content = json.loads(request.body)
+        # error handling if video_id doesn't exists
+        if Video.objects.filter(id=video_id).exists() is False:
+            return JsonResponse(
+                {"message": "video_id does not exists"},
+                status=404,
+            )
+        # error handling if username doesn't exists
+        if User.objects.filter(username=content["username"]).exists() is False:
+            return JsonResponse(
+                {"message": "username does not exists"},
+                status=404,
+            )
+        try:
+            video = Video.objects.get(id=video_id)
+            user = User.objects.get(username=content["username"])
+            if Dislike.objects.filter(video=video).exists() is False:
+                dislikes = Dislike.objects.create(video=video)
+                dislikes.users.add(user)
+            else:
+                dislikes = Dislike.objects.get(video=video)
+                dislikes.users.add(user)
+        except Exception as e:
+            print(e)
+            return JsonResponse(
+                {"message": "something went wrong"},
+                status=400,
+                safe=False
+            )
+        return JsonResponse(
+            {"message": "video disliked"},
+            status=200,
+        )

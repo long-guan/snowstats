@@ -39,13 +39,15 @@ class Video(models.Model):
     def get_total_likes(self):
         try:
             return self.likes.users.count()
-        except:
+        except Exception as e:
+            print(e)
             return 0
 
     def get_total_dislikes(self):
         try:
             return self.dislikes.users.count()
-        except:
+        except Exception as e:
+            print(e)
             return 0
 
 

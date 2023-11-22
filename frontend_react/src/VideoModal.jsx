@@ -4,9 +4,12 @@ import { useState } from "react";
 import { createOpenArray } from "./helperFunctions";
 import thumbs_up from "./assets/thumbs_up.png";
 import thumbs_down from "./assets/thumbs_down.png";
+import add_video from "./assets/add_video.png";
+import AddVideoModal from "./AddVideoMod";
 
 function VideoModal(props) {
   const [videos, setVideos] = useState([]);
+  const [openAddVideoMod, setOpenAddVideoMod] = useState(false);
 
   async function getVideos(runId) {
     const response = await fetch(
@@ -126,13 +129,24 @@ function VideoModal(props) {
         >
           &times;
         </button>
-        <div className="header flex items-center justify-center gap-1">
-          <div style={{ fontWeight: "bold" }}>{props.query.title}</div>
-          <img
-            style={{ height: "20px" }}
-            src={selectIcon(props.query.category)}
-            alt="category"
-          />
+        <div
+          style={{ paddingLeft: "25px", paddingRight: "25px" }}
+          className="header flex items-center justify-between"
+        >
+          <div className="flex items-center justify-center gap-1">
+            {" "}
+            <div style={{ fontWeight: "bold" }}>{props.query.title}</div>
+            <img
+              style={{ height: "20px" }}
+              src={selectIcon(props.query.category)}
+              alt="category"
+            />
+          </div>
+          <div onClick={() => setOpenAddVideoMod(true)}>
+            <button>
+              <img src={add_video} alt="add video" />
+            </button>
+          </div>
         </div>
         <div
           className="content flex flex-col items-center gap-10"
@@ -260,6 +274,10 @@ function VideoModal(props) {
           )}
         </div>
       </div>
+      <AddVideoModal
+        openAddVideoMod={openAddVideoMod}
+        setOpenAddVideoMod={setOpenAddVideoMod}
+      />
     </Popup>
   );
 }

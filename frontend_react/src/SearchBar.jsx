@@ -145,6 +145,7 @@ function SearchBar(props) {
     >
       {props.showPanel === true ? (
         <SidePanel
+          userInfo={props.userInfo}
           showPanel={props.showPanel}
           setShowPanel={props.setShowPanel}
           runSelection={props.runSelection}

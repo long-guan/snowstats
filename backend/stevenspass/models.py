@@ -50,6 +50,9 @@ class Video(models.Model):
             print(e)
             return 0
 
+    def get_overall(self):
+        return self.get_total_likes() - self.get_total_dislikes()
+
 
 class Like(models.Model):
     video = models.OneToOneField(

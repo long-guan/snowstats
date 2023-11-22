@@ -153,6 +153,7 @@ function SidePanel(props) {
               </div>
             </button>
             <VideoModal
+              userInfo={props.userInfo}
               openVidMod={openVidMod}
               setOpenVidMod={setOpenVidMod}
               query={query}

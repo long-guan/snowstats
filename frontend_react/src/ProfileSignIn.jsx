@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import SignInModal from "./SignInMod";
 import SignUpModal from "./SignUpMod";
 
-function ProfileSignIn() {
+function ProfileSignIn(props) {
   const [openLogMod, setOpenLogMod] = useState(false);
   const [openSignUpMod, setOpenSignUpMod] = useState(false);
   const [signedIn, setSignedIn] = useState(false);
@@ -52,6 +52,7 @@ function ProfileSignIn() {
         </button>
       )}
       <SignInModal
+        userInfo={props.userInfo}
         setSignedIn={setSignedIn}
         openLogMod={openLogMod}
         setOpenLogMod={setOpenLogMod}

@@ -9,13 +9,91 @@ function VideoModal(props) {
   const [videos, setVideos] = useState([]);
 
   async function getVideos(runId) {
-    console.log(import.meta.env.VITE_DJANGO_API);
     const response = await fetch(
       `${import.meta.env.VITE_DJANGO_API}/api/videos/${runId}/`
     );
     if (response.ok) {
       const data = await response.json();
       setVideos(data.videos);
+    }
+  }
+
+  function updateVideoLikes(video_id, apiData) {
+    for (let i = 0; i < videos.length; i++) {
+      if (videos[i].id === video_id) {
+        let copyVideos = Array.from(videos);
+        if (apiData.message === "video liked") {
+          copyVideos[i].vote.likes += 1;
+          copyVideos[i].vote.total += 1;
+        } else if (apiData.message === "video unliked") {
+          copyVideos[i].vote.likes -= 1;
+          copyVideos[i].vote.total -= 1;
+        } else if (
+          apiData.message === "video liked and removed user from Dislike"
+        ) {
+          copyVideos[i].vote.likes += 1;
+          copyVideos[i].vote.dislikes -= 1;
+          copyVideos[i].vote.total += 2;
+        } else if (apiData.message === "video disliked") {
+          copyVideos[i].vote.dislikes += 1;
+          copyVideos[i].vote.total -= 1;
+        } else if (apiData.message === "video undisliked") {
+          copyVideos[i].vote.dislikes -= 1;
+          copyVideos[i].vote.total += 1;
+        } else if (
+          apiData.message === "video disliked and removed user from Like"
+        ) {
+          copyVideos[i].vote.likes -= 1;
+          copyVideos[i].vote.dislikes += 1;
+          copyVideos[i].vote.total -= 2;
+        }
+        return setVideos(copyVideos);
+      }
+    }
+  }
+
+  async function likeVideo(video_id) {
+    if (localStorage.getItem("access_token") === null) {
+      alert("Please sign in to like a video");
+    } else {
+      const response = await fetch(
+        `${import.meta.env.VITE_DJANGO_API}/api/videos/like/${video_id}/`,
+        {
+          method: "POST",
+          headers: new Headers({
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+            "Content-type": "application/json",
+          }),
+          body: JSON.stringify({ username: localStorage.getItem("username") }),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        updateVideoLikes(video_id, data);
+      }
+    }
+  }
+
+  async function dislikeVideo(video_id) {
+    if (localStorage.getItem("access_token") === null) {
+      alert("Please sign in to dislike a video");
+    } else {
+      const response = await fetch(
+        `${import.meta.env.VITE_DJANGO_API}/api/videos/dislike/${video_id}/`,
+        {
+          method: "POST",
+          headers: new Headers({
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+            "Content-type": "application/json",
+          }),
+          body: JSON.stringify({ username: localStorage.getItem("username") }),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        updateVideoLikes(video_id, data);
+      }
     }
   }
 
@@ -104,7 +182,9 @@ function VideoModal(props) {
                     }}
                   >
                     Added by:{" "}
-                    <span style={{ fontWeight: "bold" }}>username</span>
+                    <span style={{ fontWeight: "bold" }}>
+                      {video.user.username}
+                    </span>
                   </div>
                   <div className="flex">
                     <Popup
@@ -119,6 +199,7 @@ function VideoModal(props) {
                             borderTopLeftRadius: "12px",
                             borderBottomLeftRadius: "12px",
                           }}
+                          onClick={() => likeVideo(video.id)}
                         >
                           <img src={thumbs_up} alt="" />
                         </div>
@@ -139,7 +220,7 @@ function VideoModal(props) {
                       style={{ minWidth: "30px", backgroundColor: "#fff" }}
                     >
                       <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
-                        0
+                        {video.vote.total}
                       </div>
                     </div>
                     <Popup
@@ -154,6 +235,7 @@ function VideoModal(props) {
                             borderTopRightRadius: "12px",
                             borderBottomRightRadius: "12px",
                           }}
+                          onClick={() => dislikeVideo(video.id)}
                         >
                           <img src={thumbs_down} alt="" />
                         </div>

@@ -1,18 +1,18 @@
 from django.urls import path
 from .views import (
     api_list_runs,
-    api_list_videos,
     api_list_run_videos,
     api_create_new_user,
     LikeView,
     DislikeView,
     LoginView,
+    VideoView,
 )
 
 
 urlpatterns = [
     path("runs/", api_list_runs, name="api_list_runs"),
-    path("videos/", api_list_videos, name="api_list_videos"),
+    path("videos/", VideoView.as_view(), name="api_add_video"),
     path("videos/<int:id>/", api_list_run_videos, name="api_list_run_videos"),
     path("videos/like/<int:video_id>/",
          LikeView.as_view(), name="api_like_video"),

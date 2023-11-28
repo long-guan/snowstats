@@ -5,7 +5,10 @@ from common.json import ModelEncoder
 import json
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import (
+    IsAuthenticated,
+    IsAuthenticatedOrReadOnly
+)
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -55,30 +58,50 @@ def api_list_runs(request):
         )
 
 
-@require_http_methods(["GET", "POST"])
-def api_list_videos(request):
-    if request.method == "GET":
-        videos = Video.objects.all()
-        return JsonResponse(
-            {"videos": videos},
-            encoder=VideoListEncoder,
-        )
-    else:
+class VideoView(APIView):
+    # allows unauthenticated users to view videos
+    # but only authenticated users to post
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+    def post(self, request):
         content = json.loads(request.body)
+        print(request.user)
+        video_input = {}
         try:
-            run = Run.objects.get(id=content["run_id"])
-            print(run)
-            content["run"] = run
+            run = Run.objects.get(id=content["runId"])
+            video_input["run"] = run
         except Run.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid run id"},
                 status=400,
             )
-        video = Video.objects.create(**content)
+        try:
+            user = User.objects.get(id=content["userId"])
+            if (request.user == user):
+                video_input["user"] = user
+            else:
+                return JsonResponse(
+                    {"message": "Unauthorized user"},
+                    status=401
+                )
+        except User.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid user id"},
+                status=400,
+            )
+        video_input["src"] = content["src"]
+        video = Video.objects.create(**video_input)
         return JsonResponse(
             video,
             encoder=VideoListEncoder,
             safe=False,
+        )
+
+    def get(self, request):
+        videos = Video.objects.all()
+        return JsonResponse(
+            {"videos": videos},
+            encoder=VideoListEncoder,
         )
 
 
@@ -146,13 +169,21 @@ class LikeView(APIView):
                     status=404,
                 )
             # error handling if username doesn't exists
-            if User.objects.filter(username=content["username"]).exists() is False:
+            if User.objects.filter(
+                username=content["username"]
+            ).exists() is False:
                 return JsonResponse(
                     {"message": "username does not exists"},
                     status=404,
                 )
             video = Video.objects.get(id=video_id)
             user = User.objects.get(username=content["username"])
+            # check if user token is the same as username
+            if (request.user != user):
+                return JsonResponse(
+                    {"message": "Unauthorized user"},
+                    status=401
+                )
             #  if user is in Dislike, remove user from Dislike
             remove_dislike = False
             if Dislike.objects.filter(video=video).exists():
@@ -211,13 +242,21 @@ class DislikeView(APIView):
                     status=404,
                 )
             # error handling if username doesn't exists
-            if User.objects.filter(username=content["username"]).exists() is False:
+            if User.objects.filter(
+                username=content["username"]
+            ).exists() is False:
                 return JsonResponse(
                     {"message": "username does not exists"},
                     status=404,
                 )
             video = Video.objects.get(id=video_id)
             user = User.objects.get(username=content["username"])
+            # check if user token is the same as username
+            if (request.user != user):
+                return JsonResponse(
+                    {"message": "Unauthorized user"},
+                    status=401
+                )
             #  if user is in Like, remove user from Like
             remove_like = False
             if Like.objects.filter(video=video).exists():

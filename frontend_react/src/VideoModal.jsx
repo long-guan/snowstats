@@ -72,7 +72,6 @@ function VideoModal(props) {
       );
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         updateVideoLikes(video_id, data);
       }
     }
@@ -142,11 +141,41 @@ function VideoModal(props) {
               alt="category"
             />
           </div>
-          <div onClick={() => setOpenAddVideoMod(true)}>
-            <button>
-              <img src={add_video} alt="add video" />
-            </button>
-          </div>
+          <Popup
+            trigger={() => (
+              <div
+                className="flex items-center justify-center cursor-pointer add-video-btn"
+                style={{
+                  borderRadius: "18px",
+                  borderStyle: "solid",
+                  borderWidth: "1px",
+                  borderColor: "rgb(26, 115, 232)",
+                  width: "36px",
+                  height: "36px",
+                }}
+                onClick={() => setOpenAddVideoMod(true)}
+              >
+                <button>
+                  <img
+                    style={{ height: "20px" }}
+                    src={add_video}
+                    alt="add video"
+                  />
+                </button>
+              </div>
+            )}
+            position="bottom center"
+            closeOnDocumentClick
+            on={["hover", "focus"]}
+            contentStyle={{
+              textAlign: "center",
+              maxWidth: "100px",
+              boxShadow:
+                "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+            }}
+          >
+            <span>Add video</span>
+          </Popup>
         </div>
         <div
           className="content flex flex-col items-center gap-10"
@@ -277,6 +306,7 @@ function VideoModal(props) {
       <AddVideoModal
         openAddVideoMod={openAddVideoMod}
         setOpenAddVideoMod={setOpenAddVideoMod}
+        query={props.query}
       />
     </Popup>
   );

@@ -36,6 +36,7 @@ function SignInModal(props) {
       localStorage.setItem("refresh_token", data.refresh);
       localStorage.setItem("username", data.username);
       localStorage.setItem("user_id", data.user_id);
+      localStorage.setItem("access_token_expiry", data.access_token_expiry);
       props.setOpenLogMod(false);
       props.setSignedIn(true);
     } else {

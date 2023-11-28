@@ -1,5 +1,6 @@
 import Popup from "reactjs-popup";
 import { useState } from "react";
+import { refreshToken } from "./helperFunctions";
 
 const normal =
   "bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500";
@@ -30,9 +31,7 @@ function AddVideoModal(props) {
     return `https://www.youtube.com/embed/${endUrl}`;
   }
 
-  const handleAddVideo = async (e) => {
-    e.preventDefault();
-
+  const handleAddVideo = async () => {
     if (checkLink() === true) {
       const data = {
         src: convertLink2Embed(videoLink),
@@ -106,7 +105,7 @@ function AddVideoModal(props) {
           className="flex flex-col items-center justify-center"
         >
           <form
-            onSubmit={handleAddVideo}
+            onSubmit={(e) => refreshToken(e, handleAddVideo)}
             className="content flex flex-col items-center gap-6"
           >
             <div

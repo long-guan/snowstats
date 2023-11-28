@@ -11,6 +11,7 @@ from rest_framework.permissions import (
 )
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
+from datetime import datetime
 
 
 class RunListEncoder(ModelEncoder):
@@ -310,12 +311,15 @@ class LoginView(APIView):
             username=username, password=password)
 
         refresh = RefreshToken.for_user(user)
-
+        access_token_expiry = str(
+            datetime.now() + refresh.access_token.lifetime
+        )
         return JsonResponse(
             {
                'refresh': str(refresh),
                'access': str(refresh.access_token),
                'username': username,
                "user_id": user.id,
+               "access_token_expiry": access_token_expiry
             }
         )

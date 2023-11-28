@@ -32,6 +32,8 @@ function ProfileSignIn(props) {
       localStorage.clear();
     } else {
       console.log("error");
+      localStorage.clear();
+      setSignedIn(false);
     }
   };
 

@@ -27,44 +27,49 @@ export function createOpenArray() {
   return openArray;
 }
 
-// check if access token is valid, if invalid, request new access token
-export async function refreshToken(e, nextHttpFn) {
+// check if access token is valid, if invalid,
+// request new access token before running the next HTTP request as nextHttpFn
+export async function refreshToken(e, nextHttpFn, nextParam = null) {
+  console.log("clicked");
   e.preventDefault();
   let currentDateTime = new Date();
   let accessTokenExpiry = localStorage.getItem("access_token_expiry");
+  if (accessTokenExpiry === null) {
+    nextHttpFn(nextParam);
+  }
   // check year
-  if (accessTokenExpiry.slice(0, 4) < currentDateTime.getFullYear()) {
+  else if (accessTokenExpiry.slice(0, 4) < currentDateTime.getFullYear()) {
     console.log("need refreshing");
-    return getNewAccessToken(nextHttpFn);
+    return getNewAccessToken(nextHttpFn, nextParam);
   }
   // check month
   else if (accessTokenExpiry.slice(5, 7) < currentDateTime.getMonth()) {
     console.log("need refreshing");
-    return getNewAccessToken(nextHttpFn);
+    return getNewAccessToken(nextHttpFn, nextParam);
   }
   // check date
   else if (accessTokenExpiry.slice(8, 10) < currentDateTime.getDate()) {
     console.log("need refreshing");
-    return getNewAccessToken(nextHttpFn);
+    return getNewAccessToken(nextHttpFn, nextParam);
   }
   // check hour
   else if (accessTokenExpiry.slice(11, 13) < currentDateTime.getHours()) {
     console.log("need refreshing");
-    return getNewAccessToken(nextHttpFn);
+    return getNewAccessToken(nextHttpFn, nextParam);
   }
   // check minutes
   else if (accessTokenExpiry.slice(14, 16) < currentDateTime.getMinutes()) {
     console.log("need refreshing");
-    return getNewAccessToken(nextHttpFn);
+    return getNewAccessToken(nextHttpFn, nextParam);
   }
-  // return true if access token does not need refreshing
+  // executes the nextHttpFn if access token is still valid
   else {
-    nextHttpFn();
+    nextHttpFn(nextParam);
   }
 }
 
-// sends refresh token to get new access token
-async function getNewAccessToken(nextHttpFn) {
+// sends refresh token to get new access token and executes the nextHttpFn
+async function getNewAccessToken(nextHttpFn, nextParam) {
   const response = await fetch(
     `${import.meta.env.VITE_DJANGO_API}/api/login/refresh/`,
     {
@@ -78,6 +83,12 @@ async function getNewAccessToken(nextHttpFn) {
   if (response.ok) {
     const data = await response.json();
     localStorage.setItem("access_token", data.access);
-    nextHttpFn();
+    localStorage.setItem("refresh_token", data.refresh);
+    nextHttpFn(nextParam);
+  }
+  // resets localStorage to force user to sign in again
+  else {
+    localStorage.clear();
+    nextHttpFn(nextParam);
   }
 }

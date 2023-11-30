@@ -2,22 +2,48 @@ import Popup from "reactjs-popup";
 import { selectIcon } from "./helperFunctions";
 import { useState } from "react";
 import { createOpenArray } from "./helperFunctions";
-import thumbs_up from "./assets/thumbs_up.png";
+import thumbs_up_selected from "./assets/thumbs_up_selected.png";
+import thumbs_up_unselected from "./assets/thumbs_up_unselected.png";
 import thumbs_down from "./assets/thumbs_down.png";
 import add_video from "./assets/add_video.png";
 import AddVideoModal from "./AddVideoMod";
+import { refreshToken } from "./helperFunctions";
 
 function VideoModal(props) {
   const [videos, setVideos] = useState([]);
   const [openAddVideoMod, setOpenAddVideoMod] = useState(false);
 
   async function getVideos(runId) {
+    // if logged in, send access_token to see which videos user liked/disliked
+    let header = new Headers({
+      "Content-type": "application/json",
+    });
+    if (localStorage.getItem("access_token") !== null) {
+      header = new Headers({
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        "Content-type": "application/json",
+      });
+    }
     const response = await fetch(
-      `${import.meta.env.VITE_DJANGO_API}/api/videos/${runId}/`
+      `${import.meta.env.VITE_DJANGO_API}/api/videos/${runId}/`,
+      {
+        method: "GET",
+        headers: header,
+      }
     );
     if (response.ok) {
       const data = await response.json();
-      setVideos(data.videos);
+      console.log(data);
+      let combineVideosLikes = [];
+      for (let i = 0; i < data.videos.length; i++) {
+        console.log(data.videos[i]);
+        console.log(data.like_status[i]);
+        combineVideosLikes.push(
+          Object.assign(data.videos[i], data.like_status[i])
+        );
+      }
+      setVideos(combineVideosLikes);
+      console.log(combineVideosLikes);
     }
   }
 
@@ -242,9 +268,21 @@ function VideoModal(props) {
                             borderTopLeftRadius: "12px",
                             borderBottomLeftRadius: "12px",
                           }}
-                          onClick={() => likeVideo(video.id)}
+                          onClick={(e) => {
+                            refreshToken(e, likeVideo, video.id);
+                          }}
                         >
-                          <img src={thumbs_up} alt="" />
+                          {video.like_status === true ? (
+                            <img
+                              src={thumbs_up_selected}
+                              alt="thumbs up filled in"
+                            />
+                          ) : (
+                            <img
+                              src={thumbs_up_unselected}
+                              alt="thumbs up outline"
+                            />
+                          )}
                         </div>
                       )}
                       position="bottom center"
@@ -278,7 +316,9 @@ function VideoModal(props) {
                             borderTopRightRadius: "12px",
                             borderBottomRightRadius: "12px",
                           }}
-                          onClick={() => dislikeVideo(video.id)}
+                          onClick={(e) => {
+                            refreshToken(e, dislikeVideo, video.id);
+                          }}
                         >
                           <img src={thumbs_down} alt="" />
                         </div>

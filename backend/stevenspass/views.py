@@ -10,8 +10,9 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly
 )
 from django.contrib.auth import authenticate
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from datetime import datetime
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
 class RunListEncoder(ModelEncoder):
@@ -42,6 +43,7 @@ class VideoListEncoder(ModelEncoder):
                 "likes": o.get_total_likes(),
                 "dislikes": o.get_total_dislikes(),
                 "total": o.get_overall(),
+                # "userliked": request.user
             },
             "user": {
                 "username": o.user.username,
@@ -66,7 +68,6 @@ class VideoView(APIView):
 
     def post(self, request):
         content = json.loads(request.body)
-        print(request.user)
         video_input = {}
         try:
             run = Run.objects.get(id=content["runId"])
@@ -106,12 +107,41 @@ class VideoView(APIView):
         )
 
 
-@require_http_methods(["GET"])
+@require_http_methods(['GET'])
 def api_list_run_videos(request, id):
     if request.method == "GET":
         videos = Video.objects.filter(run_id=id)
+        JWT_authenticator = JWTAuthentication()
+        like_status = []
+        # try to authenticate the request
+        # if user is authenticated, check if user liked/disliked
+        try:
+            response = JWT_authenticator.authenticate(request)
+            if response is not None:
+                user, token = response
+            for video in videos:
+                currentVid = {
+                    "like_status": False,
+                    "dislike_status": False
+                }
+                if Like.objects.filter(video=video).exists():
+                    if user in video.likes.users.all():
+                        currentVid["like_status"] = True
+                if Dislike.objects.filter(video=video).exists():
+                    if user in video.dislikes.users.all():
+                        currentVid["dislike_status"] = True
+                like_status.append(currentVid)
+        # return empty video_likes.videos if user not authenticated
+        except Exception as e:
+            print(e)
+            for x in range(len(videos) - 1):
+                like_status.append({
+                    "like_status": False,
+                    "dislike_status": False
+                })
         return JsonResponse(
-            {"videos": videos},
+            {"videos": videos,
+             "like_status": like_status},
             encoder=VideoListEncoder,
         )
 
@@ -159,10 +189,7 @@ class LikeView(APIView):
 
     def post(self, request, video_id):
         if request.method == "POST":
-            print(request.user.username)
-            print(request.user.id)
             content = json.loads(request.body)
-            print(content)
             # error handling if video_id doesn't exists
             if Video.objects.filter(id=video_id).exists() is False:
                 return JsonResponse(

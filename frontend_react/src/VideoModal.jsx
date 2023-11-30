@@ -4,7 +4,8 @@ import { useState } from "react";
 import { createOpenArray } from "./helperFunctions";
 import thumbs_up_selected from "./assets/thumbs_up_selected.png";
 import thumbs_up_unselected from "./assets/thumbs_up_unselected.png";
-import thumbs_down from "./assets/thumbs_down.png";
+import thumbs_down_selected from "./assets/thumbs_down_selected.png";
+import thumbs_down_unselected from "./assets/thumbs_down_unselected.png";
 import add_video from "./assets/add_video.png";
 import AddVideoModal from "./AddVideoMod";
 import { refreshToken } from "./helperFunctions";
@@ -36,14 +37,11 @@ function VideoModal(props) {
       console.log(data);
       let combineVideosLikes = [];
       for (let i = 0; i < data.videos.length; i++) {
-        console.log(data.videos[i]);
-        console.log(data.like_status[i]);
         combineVideosLikes.push(
           Object.assign(data.videos[i], data.like_status[i])
         );
       }
       setVideos(combineVideosLikes);
-      console.log(combineVideosLikes);
     }
   }
 
@@ -54,27 +52,35 @@ function VideoModal(props) {
         if (apiData.message === "video liked") {
           copyVideos[i].vote.likes += 1;
           copyVideos[i].vote.total += 1;
+          copyVideos[i].like_status = true;
         } else if (apiData.message === "video unliked") {
           copyVideos[i].vote.likes -= 1;
           copyVideos[i].vote.total -= 1;
+          copyVideos[i].like_status = false;
         } else if (
           apiData.message === "video liked and removed user from Dislike"
         ) {
           copyVideos[i].vote.likes += 1;
           copyVideos[i].vote.dislikes -= 1;
           copyVideos[i].vote.total += 2;
+          copyVideos[i].like_status = true;
+          copyVideos[i].dislike_status = false;
         } else if (apiData.message === "video disliked") {
           copyVideos[i].vote.dislikes += 1;
           copyVideos[i].vote.total -= 1;
+          copyVideos[i].dislike_status = true;
         } else if (apiData.message === "video undisliked") {
           copyVideos[i].vote.dislikes -= 1;
           copyVideos[i].vote.total += 1;
+          copyVideos[i].dislike_status = false;
         } else if (
           apiData.message === "video disliked and removed user from Like"
         ) {
           copyVideos[i].vote.likes -= 1;
           copyVideos[i].vote.dislikes += 1;
           copyVideos[i].vote.total -= 2;
+          copyVideos[i].dislike_status = true;
+          copyVideos[i].like_status = false;
         }
         return setVideos(copyVideos);
       }
@@ -274,11 +280,13 @@ function VideoModal(props) {
                         >
                           {video.like_status === true ? (
                             <img
+                              style={{ height: "20px" }}
                               src={thumbs_up_selected}
                               alt="thumbs up filled in"
                             />
                           ) : (
                             <img
+                              style={{ height: "20px" }}
                               src={thumbs_up_unselected}
                               alt="thumbs up outline"
                             />
@@ -320,7 +328,19 @@ function VideoModal(props) {
                             refreshToken(e, dislikeVideo, video.id);
                           }}
                         >
-                          <img src={thumbs_down} alt="" />
+                          {video.dislike_status === true ? (
+                            <img
+                              style={{ height: "20px" }}
+                              src={thumbs_down_selected}
+                              alt="thumbs down filled in"
+                            />
+                          ) : (
+                            <img
+                              style={{ height: "20px" }}
+                              src={thumbs_down_unselected}
+                              alt="thumbs down outline"
+                            />
+                          )}
                         </div>
                       )}
                       position="bottom center"

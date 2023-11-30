@@ -10,7 +10,7 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly
 )
 from django.contrib.auth import authenticate
-from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
+from rest_framework_simplejwt.tokens import RefreshToken
 from datetime import datetime
 from rest_framework_simplejwt.authentication import JWTAuthentication
 

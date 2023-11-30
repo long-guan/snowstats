@@ -30,7 +30,6 @@ export function createOpenArray() {
 // check if access token is valid, if invalid,
 // request new access token before running the next HTTP request as nextHttpFn
 export async function refreshToken(e, nextHttpFn, nextParam = null) {
-  console.log("clicked");
   e.preventDefault();
   let currentDateTime = new Date();
   let accessTokenExpiry = localStorage.getItem("access_token_expiry");
@@ -39,27 +38,25 @@ export async function refreshToken(e, nextHttpFn, nextParam = null) {
   }
   // check year
   else if (accessTokenExpiry.slice(0, 4) < currentDateTime.getFullYear()) {
-    console.log("need refreshing");
     return getNewAccessToken(nextHttpFn, nextParam);
   }
   // check month
   else if (accessTokenExpiry.slice(5, 7) < currentDateTime.getMonth()) {
-    console.log("need refreshing");
     return getNewAccessToken(nextHttpFn, nextParam);
   }
   // check date
   else if (accessTokenExpiry.slice(8, 10) < currentDateTime.getDate()) {
-    console.log("need refreshing");
     return getNewAccessToken(nextHttpFn, nextParam);
   }
   // check hour
   else if (accessTokenExpiry.slice(11, 13) < currentDateTime.getHours()) {
-    console.log("need refreshing");
     return getNewAccessToken(nextHttpFn, nextParam);
   }
   // check minutes
-  else if (accessTokenExpiry.slice(14, 16) < currentDateTime.getMinutes()) {
-    console.log("need refreshing");
+  else if (
+    accessTokenExpiry.slice(11, 13) <= currentDateTime.getHours() &&
+    accessTokenExpiry.slice(14, 16) <= currentDateTime.getMinutes()
+  ) {
     return getNewAccessToken(nextHttpFn, nextParam);
   }
   // executes the nextHttpFn if access token is still valid
@@ -83,11 +80,13 @@ async function getNewAccessToken(nextHttpFn, nextParam) {
   if (response.ok) {
     const data = await response.json();
     localStorage.setItem("access_token", data.access);
-    localStorage.setItem("refresh_token", data.refresh);
     nextHttpFn(nextParam);
   }
   // resets localStorage to force user to sign in again
   else {
+    alert(
+      "It's been 7 days since you last signed in, you have been logged out"
+    );
     localStorage.clear();
     nextHttpFn(nextParam);
   }

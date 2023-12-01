@@ -94,7 +94,13 @@ class VideoView(APIView):
         video_input["src"] = content["src"]
         video = Video.objects.create(**video_input)
         return JsonResponse(
-            video,
+            {
+                "video": video,
+                "like_status": {
+                    "like_status": False,
+                    "dislike_status": False
+                }
+            },
             encoder=VideoListEncoder,
             safe=False,
         )

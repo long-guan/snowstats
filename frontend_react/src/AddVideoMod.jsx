@@ -14,6 +14,7 @@ const error =
 function AddVideoModal(props) {
   const [videoLink, setVideoLink] = useState("");
   const [videoLinkInputClass, setVideoLinkInputClass] = useState(normal);
+  const [successMsg, setSuccessMsg] = useState(false); // used to track if form is successfully submitted
 
   // converts a normal youtube url into embed youtube url
   function convertLink2Embed(videoLink) {
@@ -50,7 +51,20 @@ function AddVideoModal(props) {
         }
       );
       if (response.ok) {
-        console.log("success");
+        setSuccessMsg(true);
+        setTimeout(() => {
+          props.setOpenAddVideoMod(false);
+          setSuccessMsg(false);
+          setVideoLink("");
+          setVideoLinkInputClass(normal);
+        }, 1500);
+        // add to video to Video Modal
+        const data = await response.json();
+        // combine the json response into one dict
+        let combineVideosLikes = Object.assign(data.video, data.like_status);
+        let copyVideos = Array.from(props.videos);
+        copyVideos.push(combineVideosLikes);
+        props.setVideos(copyVideos);
       }
     }
   };
@@ -104,51 +118,63 @@ function AddVideoModal(props) {
           style={{ height: "280px" }}
           className="flex flex-col items-center justify-center"
         >
-          <form
-            onSubmit={(e) => refreshToken(e, handleAddVideo)}
-            className="content flex flex-col items-center gap-6"
-          >
+          {successMsg === true ? (
             <div
-              style={{ width: "400px", maxWidth: "400px" }}
-              className="flex items-center justify-center flex-col"
+              className="p-4 mb-4 text-base text-green-800 rounded-lg bg-green-50"
+              role="alert"
             >
-              <label htmlFor="videolink" className="block text-sm font-medium">
-                Youtube Link
-              </label>
-              <input
-                onChange={(e) => {
-                  setVideoLink(e.target.value);
-                  checkLink();
-                }}
-                onBlur={checkLink}
-                type="text"
-                id="videolink"
-                className={videoLinkInputClass}
-                required
-                placeholder="https://www.youtube.com/..."
-              />
-              {videoLinkInputClass === error ? (
-                <div
-                  style={{ textAlign: "center" }}
-                  className="text-sm text-red-600 dark:text-red-500"
-                >
-                  <div>Please enter a valid Youtube link.</div>
-                  <div>
-                    Example: https://www.youtube.com/watch?v=M-qFkPblAic
-                  </div>
-                </div>
-              ) : null}
+              <span className="font-medium">Video successfully added 😊</span>
             </div>
-            <div className="flex items-center justify-center flex-col gap-1">
-              <button
-                type="submit"
-                style={{ backgroundColor: "#4285f4" }}
-                className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          ) : (
+            <form
+              onSubmit={(e) => refreshToken(e, handleAddVideo)}
+              className="content flex flex-col items-center gap-6"
+            >
+              <div
+                style={{ width: "400px", maxWidth: "400px" }}
+                className="flex items-center justify-center flex-col"
               >
-                Add Video
-              </button>
-            </div>
-          </form>
+                <label
+                  htmlFor="videolink"
+                  className="block text-sm font-medium"
+                >
+                  Youtube Link
+                </label>
+                <input
+                  onChange={(e) => {
+                    setVideoLink(e.target.value);
+                    checkLink();
+                  }}
+                  onBlur={checkLink}
+                  type="text"
+                  id="videolink"
+                  className={videoLinkInputClass}
+                  required
+                  placeholder="https://www.youtube.com/..."
+                />
+                {videoLinkInputClass === error ? (
+                  <div
+                    style={{ textAlign: "center" }}
+                    className="text-sm text-red-600 dark:text-red-500"
+                  >
+                    <div>Please enter a valid Youtube link.</div>
+                    <div>
+                      Example: https://www.youtube.com/watch?v=M-qFkPblAic
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+              <div className="flex items-center justify-center flex-col gap-1">
+                <button
+                  type="submit"
+                  style={{ backgroundColor: "#4285f4" }}
+                  className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                >
+                  Add Video
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </Popup>

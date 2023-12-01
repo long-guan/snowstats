@@ -34,7 +34,6 @@ function VideoModal(props) {
     );
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
       let combineVideosLikes = [];
       for (let i = 0; i < data.videos.length; i++) {
         combineVideosLikes.push(
@@ -137,7 +136,7 @@ function VideoModal(props) {
       modal
       nested
       onOpen={() => {
-        getVideos(props.query.name);
+        refreshToken(null, getVideos, props.query.name);
         props.setOpen(createOpenArray()); // closes all tooltips
       }}
       onClose={() => {
@@ -367,6 +366,8 @@ function VideoModal(props) {
         openAddVideoMod={openAddVideoMod}
         setOpenAddVideoMod={setOpenAddVideoMod}
         query={props.query}
+        videos={videos}
+        setVideos={setVideos}
       />
     </Popup>
   );

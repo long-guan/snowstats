@@ -29,8 +29,11 @@ export function createOpenArray() {
 
 // check if access token is valid, if invalid,
 // request new access token before running the next HTTP request as nextHttpFn
-export async function refreshToken(e, nextHttpFn, nextParam = null) {
-  e.preventDefault();
+// e is used for forms and defaults to null when not used
+export async function refreshToken(e = null, nextHttpFn, nextParam = null) {
+  if (e !== null) {
+    e.preventDefault();
+  }
   let currentDateTime = new Date();
   let accessTokenExpiry = localStorage.getItem("access_token_expiry");
   if (accessTokenExpiry === null) {

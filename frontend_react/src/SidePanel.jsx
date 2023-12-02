@@ -6,12 +6,14 @@ import { selectIcon } from "./helperFunctions";
 import youtube_social_icon from "./assets/youtube_social_icon_red.png";
 import news_icon from "./assets/news.png";
 import VideoModal from "./VideoModal";
+import ConditionModal from "./ConditionModal";
 
 function SidePanel(props) {
   const [sidePanelWidth, setPanelWidth] = useState(0);
   const [query, setQuery] = useState(stevens_pass_runs[0]);
   const [hoverBackground, setHoverBackground] = useState(["", ""]);
   const [openVidMod, setOpenVidMod] = useState(false);
+  const [openComMod, setOpenComMod] = useState(false);
 
   // calculates width of side panel
   function calcWidthSidePanel() {
@@ -143,7 +145,7 @@ function SidePanel(props) {
                   hoverBackground[1]
                 }
                 onClick={() => {
-                  alert("sorry, this feature is coming soon 😔");
+                  setOpenComMod(true);
                 }}
               >
                 <img style={{ height: "20px" }} src={news_icon} alt="" />
@@ -155,6 +157,12 @@ function SidePanel(props) {
             <VideoModal
               openVidMod={openVidMod}
               setOpenVidMod={setOpenVidMod}
+              query={query}
+              setOpen={props.setOpen}
+            />
+            <ConditionModal
+              openComMod={openComMod}
+              setOpenComMod={setOpenComMod}
               query={query}
               setOpen={props.setOpen}
             />

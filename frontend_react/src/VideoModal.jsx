@@ -171,6 +171,7 @@ function VideoModal(props) {
               src={selectIcon(props.query.category)}
               alt="category"
             />
+            <div>| Videos</div>
           </div>
           <Popup
             trigger={() => (

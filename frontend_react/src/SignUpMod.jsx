@@ -18,6 +18,7 @@ function SignUpModal(props) {
   const [passwordClass, setPasswordClass] = useState(normal);
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [successMsg, setSuccessMsg] = useState(false); // used to track if form is successfully submitted
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -42,8 +43,17 @@ function SignUpModal(props) {
       }
     );
     if (response.ok) {
-      props.setOpenSignUpMod(false);
-      props.setOpenLogMod(true);
+      setSuccessMsg(true);
+      setTimeout(() => {
+        props.setOpenSignUpMod(false);
+        props.setOpenLogMod(true);
+        setSuccessMsg(false);
+        setUsernameClass(normal);
+        setPasswordClass(normal);
+        setPassword("");
+        setUsername("");
+        setConfirmPassword("");
+      }, 1500);
     } else {
       setUsernameClass(error);
     }
@@ -132,76 +142,87 @@ function SignUpModal(props) {
           style={{ height: "380px" }}
           className="flex flex-col items-center justify-center"
         >
-          <form
-            onSubmit={handleSignUp}
-            className="content flex flex-col items-center gap-6"
-          >
-            <div>
-              <label htmlFor="username" className="block text-sm font-medium">
-                Username
-              </label>
-              <input
-                onChange={(e) => setUsername(e.target.value)}
-                type="text"
-                id="username"
-                className={usernameClass}
-                placeholder="Username"
-                required
-                onBlur={checkUserName}
-              />
+          {successMsg === true ? (
+            <div
+              className="p-4 mb-4 text-base text-green-800 rounded-lg bg-green-50"
+              role="alert"
+            >
+              <span className="font-medium">
+                Account successfully created 😊
+              </span>
             </div>
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium">
-                Password
-              </label>
-              <input
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                type="password"
-                id="password"
-                className={passwordClass}
-                required
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="confirm-password"
-                className="block text-sm font-medium"
-              >
-                Confirm password
-              </label>
-              <input
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                type="password"
-                id="confirm-password"
-                className={passwordClass}
-                required
-              />
-            </div>
-            <div className="flex items-center justify-center flex-col gap-1">
-              {usernameClass === error ? (
-                <p className="text-sm text-red-600 dark:text-red-500">
-                  {usernameError}
-                </p>
-              ) : null}
-              {passwordClass === error ? (
-                <p className="text-sm text-red-600 dark:text-red-500">
-                  {passwordError}
-                </p>
-              ) : null}
-              <div className="text-base cursor-pointer acc-link">
-                Already have an account?
+          ) : (
+            <form
+              onSubmit={handleSignUp}
+              className="content flex flex-col items-center gap-6"
+            >
+              <div>
+                <label htmlFor="username" className="block text-sm font-medium">
+                  Username
+                </label>
+                <input
+                  onChange={(e) => setUsername(e.target.value)}
+                  type="text"
+                  id="username"
+                  className={usernameClass}
+                  placeholder="Username"
+                  required
+                  onBlur={checkUserName}
+                />
               </div>
-              <button
-                type="submit"
-                style={{ backgroundColor: "#4285f4" }}
-                className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-              >
-                Create account
-              </button>
-            </div>
-          </form>
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium">
+                  Password
+                </label>
+                <input
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  type="password"
+                  id="password"
+                  className={passwordClass}
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="confirm-password"
+                  className="block text-sm font-medium"
+                >
+                  Confirm password
+                </label>
+                <input
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  type="password"
+                  id="confirm-password"
+                  className={passwordClass}
+                  required
+                />
+              </div>
+              <div className="flex items-center justify-center flex-col gap-1">
+                {usernameClass === error ? (
+                  <p className="text-sm text-red-600 dark:text-red-500">
+                    {usernameError}
+                  </p>
+                ) : null}
+                {passwordClass === error ? (
+                  <p className="text-sm text-red-600 dark:text-red-500">
+                    {passwordError}
+                  </p>
+                ) : null}
+                <div className="text-base cursor-pointer acc-link">
+                  Already have an account?
+                </div>
+                <button
+                  type="submit"
+                  style={{ backgroundColor: "#4285f4" }}
+                  className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                >
+                  Create account
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </Popup>

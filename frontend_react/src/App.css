@@ -177,3 +177,22 @@ area:hover,
   background-color: #dcdada;
   cursor: pointer;
 }
+
+.snow-condition-btn,
+.trail-condition-btn {
+  border-width: 1px;
+  color: rgb(26, 115, 232);
+  border-color: rgb(26, 115, 232);
+  font-size: small;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 26px;
+  border-radius: 13px;
+}
+
+.snow-condition-btn:hover,
+.trail-condition-btn:hover {
+  background-color: #dcdada;
+}

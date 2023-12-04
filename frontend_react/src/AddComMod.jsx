@@ -18,9 +18,10 @@ function AddComModal(props) {
 
   const handleAddCom = async () => {
     const data = {
-      src: comment,
+      date: date,
       runId: props.query.name,
       userId: localStorage.getItem("user_id"),
+      comment: comment,
     };
     const response = await fetch(
       `${import.meta.env.VITE_DJANGO_API}/api/videos/`,
@@ -57,7 +58,7 @@ function AddComModal(props) {
       }}
       contentStyle={{
         width: "50%",
-        height: "50%",
+        height: "75%",
         backgroundColor: "#FFF",
         boxShadow:
           "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
@@ -77,10 +78,7 @@ function AddComModal(props) {
             Add a review for {props.query.title}
           </div>
         </div>
-        <div
-          style={{ height: "280px" }}
-          className="flex flex-col items-center justify-center"
-        >
+        <div style={{ height: "100%" }} className="flex flex-col">
           {successMsg === true ? (
             <div
               className="p-4 mb-4 text-base text-green-800 rounded-lg bg-green-50"
@@ -90,14 +88,19 @@ function AddComModal(props) {
             </div>
           ) : (
             <form
+              style={{
+                paddingLeft: "15px",
+                paddingRight: "15px",
+              }}
               onSubmit={(e) => refreshToken(e, handleAddCom)}
-              className="content flex flex-col items-center gap-6"
+              className="content flex flex-col gap-6"
             >
-              <div
-                style={{ width: "400px", maxWidth: "400px" }}
-                className="flex flex-col"
-              >
-                <label htmlFor="date" className="block text-sm font-medium">
+              <div style={{ maxWidth: "140px" }} className="flex flex-col">
+                <label
+                  style={{ fontSize: "15px", fontWeight: "bold" }}
+                  htmlFor="date"
+                  className="block text-sm font-medium"
+                >
                   Date
                 </label>
                 <input
@@ -110,54 +113,104 @@ function AddComModal(props) {
                   required
                 />
               </div>
-              <div
-                style={{ width: "400px", maxWidth: "400px" }}
-                className="flex flex-col"
-              >
-                <label htmlFor="comment" className="block text-sm font-medium">
+              <div className="flex flex-col">
+                <label
+                  style={{ fontSize: "15px", fontWeight: "bold" }}
+                  htmlFor="comment"
+                  className="block text-sm font-medium"
+                >
                   Review
                 </label>
-                <input
+                <textarea
                   onChange={(e) => {
                     setComment(e.target.value);
                   }}
-                  type="text"
                   id="comment"
+                  rows="4"
+                  style={{ width: "100%", padding: "5px" }}
                   className={normal}
                   required
                   placeholder="Share your thoughts so others know what to expect"
-                />
+                ></textarea>
               </div>
               <div>
-                <h3>Snow Description</h3>
-                <div className="flex gap-1">
-                  <div>Champagne Powder</div>
-                  <div>Deep</div>
-                  <div>Pow</div>
-                  <div>Groomers</div>
-                  <div>Slush</div>
-                  <div>Wet</div>
-                  <div>Choppy</div>
-                  <div>Corn</div>
-                  <div>Mashed Potatoes</div>
-                  <div>Moguls</div>
-                  <div>Hard Pack</div>
-                  <div>Dust on Crust</div>
-                  <div>Cascade Concrete</div>
-                  <div>Icy</div>
+                <div style={{ fontSize: "15px", fontWeight: "bold" }}>
+                  Snow Conditions
+                </div>
+                <div className="flex gap-1 flex-wrap">
+                  <button type="button" className="snow-condition-btn">
+                    Champagne Powder
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Deep
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Pow
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Groomers
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Slush
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Wet
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Choppy
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Corn
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Mashed Potatoes
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Moguls
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Hard Pack
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Dust on Crust
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Cascade Concrete
+                  </button>
+                  <button type="button" className="snow-condition-btn">
+                    Icy
+                  </button>
                 </div>
               </div>
               <div>
-                <h3>Trail Features</h3>
-                <div className="flex gap-1">
-                  <div>Crowded</div>
-                  <div>Narrow</div>
-                  <div>Wide</div>
-                  <div>Side hits</div>
-                  <div>Cat Track</div>
-                  <div>Flat</div>
-                  <div>Straight</div>
-                  <div>Curvy</div>
+                <div style={{ fontSize: "15px", fontWeight: "bold" }}>
+                  Trail Features
+                </div>
+                <div className="flex gap-1 flex-wrap">
+                  <button type="button" className="trail-condition-btn">
+                    Crowded
+                  </button>
+                  <button type="button" className="trail-condition-btn">
+                    Narrow
+                  </button>
+                  <button type="button" className="trail-condition-btn">
+                    Wide
+                  </button>
+                  <button type="button" className="trail-condition-btn">
+                    Side hits
+                  </button>
+                  <button type="button" className="trail-condition-btn">
+                    Cat Track
+                  </button>
+                  <button type="button" className="trail-condition-btn">
+                    Flat
+                  </button>
+                  <button type="button" className="trail-condition-btn">
+                    Straight
+                  </button>
+                  <button type="button" className="trail-condition-btn">
+                    Curvy
+                  </button>
                 </div>
               </div>
               <div className="flex items-center justify-center flex-col gap-1">

@@ -36,4 +36,4 @@ def run():
     for feature in trail_features:
         TrailFeatureVO.objects.create(category=feature)
 
-    print("run_data successfully imported")
+    print("condition data successfully imported")

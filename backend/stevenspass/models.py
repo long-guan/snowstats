@@ -92,15 +92,16 @@ class Dislike(models.Model):
     )
 
 
-class Conditions(models.Model):
-    run = models.OneToOneField(
+class Condition(models.Model):
+    run = models.ForeignKey(
         Run,
         related_name="conditions",
         on_delete=models.CASCADE
     )
-    user = models.ManyToManyField(
+    user = models.ForeignKey(
         User,
         related_name="conditions",
+        on_delete=models.CASCADE
     )
     snow_condition = models.ManyToManyField(
         SnowConditionVO,

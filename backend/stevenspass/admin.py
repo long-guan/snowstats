@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (
     Run, CategoryVO, Video, Like, Dislike,
-    Conditions, SnowConditionVO, TrailFeatureVO
+    Condition, SnowConditionVO, TrailFeatureVO
 )
 
 
@@ -61,8 +61,8 @@ class DislikeAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(Conditions)
-class ConditionsAdmin(admin.ModelAdmin):
+@admin.register(Condition)
+class ConditionAdmin(admin.ModelAdmin):
     list_display = (
         "comment",
         "run",

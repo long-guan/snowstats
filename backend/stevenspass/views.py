@@ -1,5 +1,7 @@
 from django.views.decorators.http import require_http_methods
-from .models import Run, Video, Like, Dislike
+from .models import (
+    Run, Video, Like, Dislike, Condition, SnowConditionVO, TrailFeatureVO
+)
 from django.http import JsonResponse
 from common.json import ModelEncoder
 import json
@@ -13,6 +15,7 @@ from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from datetime import datetime
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from .serializers import ConditionSerializer
 
 
 class RunListEncoder(ModelEncoder):
@@ -43,12 +46,41 @@ class VideoListEncoder(ModelEncoder):
                 "likes": o.get_total_likes(),
                 "dislikes": o.get_total_dislikes(),
                 "total": o.get_overall(),
-                # "userliked": request.user
             },
             "user": {
                 "username": o.user.username,
             }
         }
+
+
+# class ConditionListEncoder(ModelEncoder):
+#     model = Condition
+#     properties = [
+#         "comment"
+#     ]
+
+#     def get_extra_data(self, o):
+#         snow_condition = []
+#         snow_condition_all = o.snow_condition.category.all()
+#         print(snow_condition_all)
+#         for condition in snow_condition_all:
+#             snow_condition.append(condition)
+#         trail_feature = []
+#         trail_feature_all = o.trail_feature
+#         print(trail_feature_all)
+#         for feature in trail_feature_all:
+#             trail_feature.append(feature)
+#         return {
+#             "run": {
+#                 "title": o.run.title,
+#                 "id": o.run.id,
+#             },
+#             "user": {
+#                 "username": o.user.username,
+#             },
+#             "snow_condition": snow_condition,
+#             "trail_feature": trail_feature
+#         }
 
 
 @require_http_methods(["GET"])
@@ -355,4 +387,71 @@ class LoginView(APIView):
                "user_id": user.id,
                "access_token_expiry": access_token_expiry
             }
+        )
+
+
+class ConditionView(APIView):
+    # allows unauthenticated users to view videos
+    # but only authenticated users to post
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+    def post(self, request):
+        content = json.loads(request.body)
+        video_input = {}
+        try:
+            run = Run.objects.get(id=content["runId"])
+            video_input["run"] = run
+        except Run.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid run id"},
+                status=400,
+            )
+        try:
+            user = User.objects.get(id=content["userId"])
+            if (request.user == user):
+                video_input["user"] = user
+            else:
+                return JsonResponse(
+                    {"message": "Unauthorized user"},
+                    status=401
+                )
+        except User.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid user id"},
+                status=400,
+            )
+        try:
+            snow_condition = SnowConditionVO.objects.get(category=content["snow_condition"])
+            if (request.user == user):
+                video_input["user"] = user
+            else:
+                return JsonResponse(
+                    {"message": "Unauthorized user"},
+                    status=401
+                )
+        except User.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid user id"},
+                status=400,
+            )
+        video_input["src"] = content["src"]
+        video = Video.objects.create(**video_input)
+        return JsonResponse(
+            {
+                "video": video,
+                "like_status": {
+                    "like_status": False,
+                    "dislike_status": False
+                }
+            },
+            encoder=VideoListEncoder,
+            safe=False,
+        )
+
+    def get(self, request):
+        reviews = Condition.objects.all()
+        data = ConditionSerializer(reviews, many=True).data
+        # return HttpResponse(data)
+        return JsonResponse(
+            {"reviews": data},
         )

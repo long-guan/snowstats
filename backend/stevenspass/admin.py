@@ -1,8 +1,10 @@
 from django.contrib import admin
-from .models import Run, CategoryVO, Video, Like, Dislike, Conditions
+from .models import (
+    Run, CategoryVO, Video, Like, Dislike,
+    Conditions, SnowConditionVO, TrailFeatureVO
+)
 
 
-# Register your models here.
 @admin.register(Run)
 class RunAdmin(admin.ModelAdmin):
     list_display = (
@@ -14,6 +16,20 @@ class RunAdmin(admin.ModelAdmin):
 
 @admin.register(CategoryVO)
 class CategoryVOAdmin(admin.ModelAdmin):
+    list_display = (
+        "category",
+    )
+
+
+@admin.register(SnowConditionVO)
+class SnowConditionVOAdmin(admin.ModelAdmin):
+    list_display = (
+        "category",
+    )
+
+
+@admin.register(TrailFeatureVO)
+class TrailFeatureVOAdmin(admin.ModelAdmin):
     list_display = (
         "category",
     )

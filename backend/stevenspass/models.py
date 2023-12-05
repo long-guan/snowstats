@@ -9,6 +9,20 @@ class CategoryVO(models.Model):
         return f"{self.category}"
 
 
+class SnowConditionVO(models.Model):
+    category = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.category}"
+
+
+class TrailFeatureVO(models.Model):
+    category = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.category}"
+
+
 class Run(models.Model):
     id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=50)
@@ -88,5 +102,14 @@ class Conditions(models.Model):
         User,
         related_name="conditions",
     )
+    snow_condition = models.ManyToManyField(
+        SnowConditionVO,
+        related_name="conditions"
+    )
+    trail_feature = models.ManyToManyField(
+        TrailFeatureVO,
+        related_name="conditions"
+    )
+    date = models.DateField(auto_now=False, auto_now_add=False)
     comment = models.CharField(max_length=150)
     created_at = models.DateTimeField(auto_now=False, auto_now_add=True)

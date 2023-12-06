@@ -179,7 +179,7 @@ area:hover,
 }
 
 .snow-condition-btn,
-.trail-condition-btn {
+.trail-feature-btn {
   border-width: 1px;
   font-size: small;
   padding-top: 2px;
@@ -195,13 +195,13 @@ area:hover,
   border-color: rgb(26, 115, 232);
 }
 
-.trail-condition-btn {
+.trail-feature-btn {
   color: rgb(95, 26, 232);
   border-color: rgb(95, 26, 232);
 }
 
 .snow-condition-btn:hover,
-.trail-condition-btn:hover {
+.trail-feature-btn:hover {
   background-color: #dcdada;
 }
 

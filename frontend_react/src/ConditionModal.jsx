@@ -121,10 +121,11 @@ function ConditionModal(props) {
                 maxHeight: "500px",
                 paddingLeft: "25px",
                 paddingRight: "25px",
+                minWidth: "665px",
               }}
             >
               {reviews.map((review) => (
-                <div className="flex flex-col gap-2" key={review.id}>
+                <div className="flex flex-col" key={review.id}>
                   <div className="flex justify-between">
                     <div style={{ fontWeight: "bold" }}>
                       @{review.user.username}
@@ -139,39 +140,46 @@ function ConditionModal(props) {
                     </span>
                     <span>{review.comment}</span>
                   </div>
-                  <div className="flex flex-wrap gap-1">
-                    <div
-                      style={{
-                        fontSize: "15px",
-                        color: "rgb(26, 115, 232)",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Snow Conditions:{" "}
-                    </div>
-                    {review.snow_condition.map((condition) => (
-                      <div className="snow-condition" key={condition.category}>
-                        {condition.category}
+                  {review.snow_condition.length > 0 ? (
+                    <div className="flex flex-wrap gap-1">
+                      <div
+                        style={{
+                          fontSize: "15px",
+                          color: "rgb(26, 115, 232)",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Snow Conditions:{" "}
                       </div>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    <div
-                      style={{
-                        fontSize: "15px",
-                        color: "rgb(95, 26, 232)",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Trail Features:{" "}
+                      {review.snow_condition.map((condition) => (
+                        <div
+                          className="snow-condition"
+                          key={condition.category}
+                        >
+                          {condition.category}
+                        </div>
+                      ))}
                     </div>
-                    {review.trail_feature.map((feature) => (
-                      <div className="trail-feature" key={feature.category}>
-                        {feature.category}
+                  ) : null}
+                  {review.trail_feature.length > 0 ? (
+                    <div className="flex flex-wrap gap-1">
+                      <div
+                        style={{
+                          fontSize: "15px",
+                          color: "rgb(95, 26, 232)",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Trail Features:{" "}
                       </div>
-                    ))}
-                  </div>
-                  <hr />
+                      {review.trail_feature.map((feature) => (
+                        <div className="trail-feature" key={feature.category}>
+                          {feature.category}
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                  <hr className="mb-2 mt-2" />
                 </div>
               ))}
             </div>
@@ -184,6 +192,8 @@ function ConditionModal(props) {
         query={props.query}
         openAddComMod={openAddComMod}
         setOpenAddComMod={setOpenAddComMod}
+        reviews={reviews}
+        setReviews={setReviews}
       />
     </Popup>
   );

@@ -2,6 +2,7 @@ import Popup from "reactjs-popup";
 import { useState } from "react";
 import { refreshToken } from "./helperFunctions";
 import SnowConditionBtn from "./SnowConditionBtn";
+import TrailFeatureBtn from "./TrailFeatureBtn";
 
 const normal =
   "bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500";
@@ -21,13 +22,15 @@ function AddComModal(props) {
 
   const handleAddCom = async () => {
     const data = {
+      run_id: props.query.name,
+      user_id: localStorage.getItem("user_id"),
       date: date,
-      runId: props.query.name,
-      userId: localStorage.getItem("user_id"),
       comment: comment,
+      snow_condition: snowConditions,
+      trail_feature: trailFeatures,
     };
     const response = await fetch(
-      `${import.meta.env.VITE_DJANGO_API}/api/videos/`,
+      `${import.meta.env.VITE_DJANGO_API}/api/conditions/`,
       {
         method: "POST",
         headers: new Headers({
@@ -40,13 +43,19 @@ function AddComModal(props) {
     if (response.ok) {
       setSuccessMsg(true);
       setTimeout(() => {
-        props.setOpenAddVideoMod(false);
+        props.setOpenAddComMod(false);
         setSuccessMsg(false);
         setComment("");
+        setDate("");
+        setSnowConditions([]);
+        setTrailFeatures([]);
       }, 1500);
-      // add to video to Video Modal
+
       const data = await response.json();
-      console.log(data);
+      // add review to Condition Modal
+      let copyReviews = Array.from(props.reviews);
+      copyReviews.push(data.reviews);
+      props.setReviews(copyReviews);
     }
   };
 
@@ -58,6 +67,11 @@ function AddComModal(props) {
       // onOpen={() => {}}
       onClose={() => {
         props.setOpenAddComMod(false);
+        setSuccessMsg(false);
+        setComment("");
+        setDate("");
+        setSnowConditions([]);
+        setTrailFeatures([]);
       }}
       contentStyle={{
         width: "50%",
@@ -81,18 +95,20 @@ function AddComModal(props) {
             Add a review for {props.query.title}
           </div>
         </div>
-        <div style={{ height: "100%" }} className="flex flex-col">
+        <div
+          style={{ height: "460px" }}
+          className="flex flex-col items-center justify-center"
+        >
           {successMsg === true ? (
             <div
               className="p-4 mb-4 text-base text-green-800 rounded-lg bg-green-50"
               role="alert"
             >
-              <span className="font-medium">Review successfully added 😊</span>
+              <div className="font-medium">Review successfully added 😊</div>
             </div>
           ) : (
             <form
               style={{
-                paddingTop: "5px",
                 paddingLeft: "15px",
                 paddingRight: "15px",
               }}
@@ -142,20 +158,90 @@ function AddComModal(props) {
                   Snow Conditions
                 </div>
                 <div className="flex gap-1 flex-wrap">
-                  <SnowConditionBtn condition="Champagne Powder" />
-                  <SnowConditionBtn condition="Deep" />
-                  <SnowConditionBtn condition="Pow" />
-                  <SnowConditionBtn condition="Groomers" />
-                  <SnowConditionBtn condition="Slush" />
-                  <SnowConditionBtn condition="Wet" />
-                  <SnowConditionBtn condition="Choppy" />
-                  <SnowConditionBtn condition="Corn" />
-                  <SnowConditionBtn condition="Mashed Potatoes" />
-                  <SnowConditionBtn condition="Moguls" />
-                  <SnowConditionBtn condition="Hard Pack" />
-                  <SnowConditionBtn condition="Dust on Crust" />
-                  <SnowConditionBtn condition="Cascade Concrete" />
-                  <SnowConditionBtn condition="Icy" />
+                  <SnowConditionBtn
+                    condition="Champagne Powder"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"1"}
+                  />
+                  <SnowConditionBtn
+                    condition="Deep"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"2"}
+                  />
+                  <SnowConditionBtn
+                    condition="Pow"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"3"}
+                  />
+                  <SnowConditionBtn
+                    condition="Groomers"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"4"}
+                  />
+                  <SnowConditionBtn
+                    condition="Slush"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"5"}
+                  />
+                  <SnowConditionBtn
+                    condition="Wet"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"6"}
+                  />
+                  <SnowConditionBtn
+                    condition="Choppy"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"7"}
+                  />
+                  <SnowConditionBtn
+                    condition="Corn"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"8"}
+                  />
+                  <SnowConditionBtn
+                    condition="Mashed Potatoes"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"9"}
+                  />
+                  <SnowConditionBtn
+                    condition="Moguls"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"10"}
+                  />
+                  <SnowConditionBtn
+                    condition="Hard Pack"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"11"}
+                  />
+                  <SnowConditionBtn
+                    condition="Dust on Crust"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"12"}
+                  />
+                  <SnowConditionBtn
+                    condition="Cascade Concrete"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"13"}
+                  />
+                  <SnowConditionBtn
+                    condition="Icy"
+                    snowConditions={snowConditions}
+                    setSnowConditions={setSnowConditions}
+                    id={"14"}
+                  />
                 </div>
               </div>
               <div>
@@ -163,30 +249,54 @@ function AddComModal(props) {
                   Trail Features
                 </div>
                 <div className="flex gap-1 flex-wrap">
-                  <button type="button" className="trail-condition-btn">
-                    Crowded
-                  </button>
-                  <button type="button" className="trail-condition-btn">
-                    Narrow
-                  </button>
-                  <button type="button" className="trail-condition-btn">
-                    Wide
-                  </button>
-                  <button type="button" className="trail-condition-btn">
-                    Side hits
-                  </button>
-                  <button type="button" className="trail-condition-btn">
-                    Cat Track
-                  </button>
-                  <button type="button" className="trail-condition-btn">
-                    Flat
-                  </button>
-                  <button type="button" className="trail-condition-btn">
-                    Straight
-                  </button>
-                  <button type="button" className="trail-condition-btn">
-                    Curvy
-                  </button>
+                  <TrailFeatureBtn
+                    feature="Crowded"
+                    trailFeatures={trailFeatures}
+                    setTrailFeatures={setTrailFeatures}
+                    id="1"
+                  />
+                  <TrailFeatureBtn
+                    feature="Narrow"
+                    trailFeatures={trailFeatures}
+                    setTrailFeatures={setTrailFeatures}
+                    id="2"
+                  />
+                  <TrailFeatureBtn
+                    feature="Wide"
+                    trailFeatures={trailFeatures}
+                    setTrailFeatures={setTrailFeatures}
+                    id="3"
+                  />
+                  <TrailFeatureBtn
+                    feature="Side hits"
+                    trailFeatures={trailFeatures}
+                    setTrailFeatures={setTrailFeatures}
+                    id="4"
+                  />
+                  <TrailFeatureBtn
+                    feature="Cat Track"
+                    trailFeatures={trailFeatures}
+                    setTrailFeatures={setTrailFeatures}
+                    id="5"
+                  />
+                  <TrailFeatureBtn
+                    feature="Flat"
+                    trailFeatures={trailFeatures}
+                    setTrailFeatures={setTrailFeatures}
+                    id="6"
+                  />
+                  <TrailFeatureBtn
+                    feature="Straight"
+                    trailFeatures={trailFeatures}
+                    setTrailFeatures={setTrailFeatures}
+                    id="7"
+                  />
+                  <TrailFeatureBtn
+                    feature="Curvy"
+                    trailFeatures={trailFeatures}
+                    setTrailFeatures={setTrailFeatures}
+                    id="8"
+                  />
                 </div>
               </div>
               <div className="flex items-center justify-center flex-col gap-1">

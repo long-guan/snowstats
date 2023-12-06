@@ -84,7 +84,13 @@ function ConditionModal(props) {
                   width: "36px",
                   height: "36px",
                 }}
-                onClick={() => setOpenAddComMod(true)}
+                onClick={() => {
+                  if (localStorage.getItem("access_token") === null) {
+                    alert("Please sign in to add a review");
+                  } else {
+                    setOpenAddComMod(true);
+                  }
+                }}
               >
                 <button>
                   <img

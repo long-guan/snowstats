@@ -185,7 +185,13 @@ function VideoModal(props) {
                   width: "36px",
                   height: "36px",
                 }}
-                onClick={() => setOpenAddVideoMod(true)}
+                onClick={() => {
+                  if (localStorage.getItem("access_token") === null) {
+                    alert("Please sign in to add a video");
+                  } else {
+                    setOpenAddVideoMod(true);
+                  }
+                }}
               >
                 <button>
                   <img

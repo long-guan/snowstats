@@ -7,22 +7,16 @@ import add_comment from "./assets/add_comment.png";
 import AddComModal from "./AddComMod";
 
 function ConditionModal(props) {
-  const [review, setReview] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [openAddComMod, setOpenAddComMod] = useState(false);
 
-  async function getComments(runId) {
-    // if logged in, send access_token to see which videos user liked/disliked
+  async function getReviews(runId) {
     let header = new Headers({
       "Content-type": "application/json",
     });
-    if (localStorage.getItem("access_token") !== null) {
-      header = new Headers({
-        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        "Content-type": "application/json",
-      });
-    }
+
     const response = await fetch(
-      `${import.meta.env.VITE_DJANGO_API}/api/videos/${runId}/`,
+      `${import.meta.env.VITE_DJANGO_API}/api/conditions/${runId}/`,
       {
         method: "GET",
         headers: header,
@@ -30,13 +24,8 @@ function ConditionModal(props) {
     );
     if (response.ok) {
       const data = await response.json();
-      let combineVideosLikes = [];
-      for (let i = 0; i < data.videos.length; i++) {
-        combineVideosLikes.push(
-          Object.assign(data.videos[i], data.like_status[i])
-        );
-      }
-      setComments(combineVideosLikes);
+      console.log(data.reviews);
+      setReviews(data.reviews);
     }
   }
 
@@ -46,14 +35,14 @@ function ConditionModal(props) {
       modal
       nested
       onOpen={() => {
-        // refreshToken(null, getComments, props.query.name);
+        refreshToken(null, getReviews, props.query.name);
         props.setOpen(createOpenArray()); // closes all tooltips
       }}
       onClose={() => {
         props.setOpenComMod(false);
       }}
       contentStyle={{
-        width: "85%",
+        width: "60%",
         height: "85%",
         backgroundColor: "#FFF",
         boxShadow:
@@ -120,14 +109,76 @@ function ConditionModal(props) {
           </Popup>
         </div>
         <div
-          className="content flex flex-col items-center"
+          className="content flex flex-col items-center justify-center"
           style={{
-            overflowY: "scroll",
-            maxHeight: "92%",
-            paddingBottom: "20px",
-            maxWidth: "500px",
+            width: "100%",
           }}
-        ></div>
+        >
+          {reviews.length > 0 ? (
+            <div
+              style={{
+                overflowY: "scroll",
+                maxHeight: "500px",
+                paddingLeft: "25px",
+                paddingRight: "25px",
+              }}
+            >
+              {reviews.map((review) => (
+                <div className="flex flex-col gap-2" key={review.id}>
+                  <div className="flex justify-between">
+                    <div style={{ fontWeight: "bold" }}>
+                      @{review.user.username}
+                    </div>
+                    <div style={{ color: "rgb(101, 110, 94)" }}>
+                      {review.date}
+                    </div>
+                  </div>
+                  <div>
+                    <span style={{ fontSize: "15px", fontWeight: "bold" }}>
+                      Comment:{" "}
+                    </span>
+                    <span>{review.comment}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    <div
+                      style={{
+                        fontSize: "15px",
+                        color: "rgb(26, 115, 232)",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Snow Conditions:{" "}
+                    </div>
+                    {review.snow_condition.map((condition) => (
+                      <div className="snow-condition" key={condition.category}>
+                        {condition.category}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    <div
+                      style={{
+                        fontSize: "15px",
+                        color: "rgb(95, 26, 232)",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Trail Features:{" "}
+                    </div>
+                    {review.trail_feature.map((feature) => (
+                      <div className="trail-feature" key={feature.category}>
+                        {feature.category}
+                      </div>
+                    ))}
+                  </div>
+                  <hr />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div>There are currently no reviews on the conditions 😔</div>
+          )}
+        </div>
       </div>
       <AddComModal
         query={props.query}

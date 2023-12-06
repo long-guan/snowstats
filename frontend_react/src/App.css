@@ -181,6 +181,32 @@ area:hover,
 .snow-condition-btn,
 .trail-condition-btn {
   border-width: 1px;
+  font-size: small;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 26px;
+  border-radius: 13px;
+}
+
+.snow-condition-btn {
+  color: rgb(26, 115, 232);
+  border-color: rgb(26, 115, 232);
+}
+
+.trail-condition-btn {
+  color: rgb(95, 26, 232);
+  border-color: rgb(95, 26, 232);
+}
+
+.snow-condition-btn:hover,
+.trail-condition-btn:hover {
+  background-color: #dcdada;
+}
+
+.snow-condition {
+  border-width: 1px;
   color: rgb(26, 115, 232);
   border-color: rgb(26, 115, 232);
   font-size: small;
@@ -192,7 +218,15 @@ area:hover,
   border-radius: 13px;
 }
 
-.snow-condition-btn:hover,
-.trail-condition-btn:hover {
-  background-color: #dcdada;
+.trail-feature {
+  border-width: 1px;
+  color: rgb(95, 26, 232);
+  border-color: rgb(95, 26, 232);
+  font-size: small;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 26px;
+  border-radius: 13px;
 }

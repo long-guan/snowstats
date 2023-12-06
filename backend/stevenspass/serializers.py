@@ -48,7 +48,8 @@ class ConditionSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = [
-            'run', 'user', 'snow_condition', 'trail_feature', 'date', 'comment'
+            'run', 'user', 'snow_condition',
+            'trail_feature', 'date', 'comment', "id"
         ]
         model = Condition
         depth = 1

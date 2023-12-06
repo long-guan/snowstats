@@ -1,6 +1,7 @@
 import Popup from "reactjs-popup";
 import { useState } from "react";
 import { refreshToken } from "./helperFunctions";
+import SnowConditionBtn from "./SnowConditionBtn";
 
 const normal =
   "bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500";
@@ -14,6 +15,8 @@ const normal =
 function AddComModal(props) {
   const [comment, setComment] = useState("");
   const [date, setDate] = useState("");
+  const [snowConditions, setSnowConditions] = useState([]);
+  const [trailFeatures, setTrailFeatures] = useState([]);
   const [successMsg, setSuccessMsg] = useState(false); // used to track if form is successfully submitted
 
   const handleAddCom = async () => {
@@ -89,6 +92,7 @@ function AddComModal(props) {
           ) : (
             <form
               style={{
+                paddingTop: "5px",
                 paddingLeft: "15px",
                 paddingRight: "15px",
               }}
@@ -119,7 +123,7 @@ function AddComModal(props) {
                   htmlFor="comment"
                   className="block text-sm font-medium"
                 >
-                  Review
+                  Comment:
                 </label>
                 <textarea
                   onChange={(e) => {
@@ -138,48 +142,20 @@ function AddComModal(props) {
                   Snow Conditions
                 </div>
                 <div className="flex gap-1 flex-wrap">
-                  <button type="button" className="snow-condition-btn">
-                    Champagne Powder
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Deep
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Pow
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Groomers
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Slush
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Wet
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Choppy
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Corn
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Mashed Potatoes
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Moguls
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Hard Pack
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Dust on Crust
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Cascade Concrete
-                  </button>
-                  <button type="button" className="snow-condition-btn">
-                    Icy
-                  </button>
+                  <SnowConditionBtn condition="Champagne Powder" />
+                  <SnowConditionBtn condition="Deep" />
+                  <SnowConditionBtn condition="Pow" />
+                  <SnowConditionBtn condition="Groomers" />
+                  <SnowConditionBtn condition="Slush" />
+                  <SnowConditionBtn condition="Wet" />
+                  <SnowConditionBtn condition="Choppy" />
+                  <SnowConditionBtn condition="Corn" />
+                  <SnowConditionBtn condition="Mashed Potatoes" />
+                  <SnowConditionBtn condition="Moguls" />
+                  <SnowConditionBtn condition="Hard Pack" />
+                  <SnowConditionBtn condition="Dust on Crust" />
+                  <SnowConditionBtn condition="Cascade Concrete" />
+                  <SnowConditionBtn condition="Icy" />
                 </div>
               </div>
               <div>
@@ -219,7 +195,7 @@ function AddComModal(props) {
                   style={{ backgroundColor: "#4285f4" }}
                   className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
                 >
-                  Add Video
+                  Add Review
                 </button>
               </div>
             </form>

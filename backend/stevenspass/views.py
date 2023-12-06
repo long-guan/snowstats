@@ -54,36 +54,6 @@ class VideoListEncoder(ModelEncoder):
         }
 
 
-# class ConditionListEncoder(ModelEncoder):
-#     model = Condition
-#     properties = [
-#         "comment"
-#     ]
-
-#     def get_extra_data(self, o):
-#         snow_condition = []
-#         snow_condition_all = o.snow_condition.category.all()
-#         print(snow_condition_all)
-#         for condition in snow_condition_all:
-#             snow_condition.append(condition)
-#         trail_feature = []
-#         trail_feature_all = o.trail_feature
-#         print(trail_feature_all)
-#         for feature in trail_feature_all:
-#             trail_feature.append(feature)
-#         return {
-#             "run": {
-#                 "title": o.run.title,
-#                 "id": o.run.id,
-#             },
-#             "user": {
-#                 "username": o.user.username,
-#             },
-#             "snow_condition": snow_condition,
-#             "trail_feature": trail_feature
-#         }
-
-
 @require_http_methods(["GET"])
 def api_list_runs(request):
     if request.method == "GET":
@@ -476,7 +446,23 @@ class ConditionView(APIView):
     def get(self, request):
         reviews = Condition.objects.all()
         data = ConditionSerializer(reviews, many=True).data
-        # return HttpResponse(data)
+        return JsonResponse(
+            {"reviews": data},
+        )
+
+
+@require_http_methods(['GET'])
+def api_get_reviews(request, run_id):
+    if request.method == "GET":
+        try:
+            run = Run.objects.get(id=run_id)
+        except Run.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid run id"},
+                status=400,
+            )
+        reviews = Condition.objects.filter(run=run)
+        data = ConditionSerializer(reviews, many=True).data
         return JsonResponse(
             {"reviews": data},
         )

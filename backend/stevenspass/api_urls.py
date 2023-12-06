@@ -8,6 +8,7 @@ from .views import (
     LoginView,
     VideoView,
     ConditionView,
+    api_get_reviews
 )
 
 
@@ -25,5 +26,6 @@ urlpatterns = [
          api_create_new_user,
          name="api_check_username"),
     path("login/", LoginView.as_view(), name="login"),
-    path("conditions/", ConditionView.as_view(), name="condition_view")
+    path("conditions/", ConditionView.as_view(), name="condition_view"),
+    path("conditions/<int:run_id>/", api_get_reviews, name="api_get_reviews")
 ]

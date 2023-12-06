@@ -1,6 +1,6 @@
 from django.views.decorators.http import require_http_methods
 from .models import (
-    Run, Video, Like, Dislike, Condition, SnowConditionVO, TrailFeatureVO
+    Run, Video, Like, Dislike, Condition
 )
 from django.http import JsonResponse
 from common.json import ModelEncoder
@@ -16,6 +16,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from datetime import datetime
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from .serializers import ConditionSerializer
+from django.db import IntegrityError
 
 
 class RunListEncoder(ModelEncoder):
@@ -391,25 +392,25 @@ class LoginView(APIView):
 
 
 class ConditionView(APIView):
-    # allows unauthenticated users to view videos
-    # but only authenticated users to post
+    # allows unauthenticated users to view reviews
+    # but only authenticated users to post reviews
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def post(self, request):
         content = json.loads(request.body)
-        video_input = {}
+        condition_input = {}
         try:
-            run = Run.objects.get(id=content["runId"])
-            video_input["run"] = run
+            run = Run.objects.get(id=content["run_id"])
+            condition_input["run"] = run
         except Run.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid run id"},
                 status=400,
             )
         try:
-            user = User.objects.get(id=content["userId"])
+            user = User.objects.get(id=content["user_id"])
             if (request.user == user):
-                video_input["user"] = user
+                condition_input["user"] = user
             else:
                 return JsonResponse(
                     {"message": "Unauthorized user"},
@@ -418,34 +419,58 @@ class ConditionView(APIView):
         except User.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid user id"},
+                status=400,
+            )
+        date = content["date"]
+        # validate that year, month, and day is all numbers
+        if (
+            date[0:4].isnumeric() is not True
+            or
+            date[5:7].isnumeric() is not True
+            or
+            date[8:].isnumeric() is not True
+            or
+            date[4] != "-"
+            or
+            date[7] != "-"
+            or
+            len(date) != 10
+        ):
+            return JsonResponse(
+                {"message": "Date must be in YYYY-MM-DD format"},
+                status=400,
+            )
+        # validate that year and month is > opening date
+        if (int(date[0:4]) < 2023 and int(date[5:7]) < 12):
+            return JsonResponse(
+                {"message": "Reviews must be from this season"}
+            )
+        condition_input["date"] = (date)
+        condition_input['comment'] = content['comment']
+        condition = Condition.objects.create(**condition_input)
+        try:
+            for id in content["snow_condition"]:
+                condition.snow_condition.add(id)
+        except IntegrityError:
+            # deletes the Condition
+            condition.delete()
+            return JsonResponse(
+                {"message": "Invalid snow_condition category id"},
                 status=400,
             )
         try:
-            snow_condition = SnowConditionVO.objects.get(category=content["snow_condition"])
-            if (request.user == user):
-                video_input["user"] = user
-            else:
-                return JsonResponse(
-                    {"message": "Unauthorized user"},
-                    status=401
-                )
-        except User.DoesNotExist:
+            for id in content["trail_feature"]:
+                condition.trail_feature.add(id)
+        except IntegrityError:
+            # deletes the Condition
+            condition.delete()
             return JsonResponse(
-                {"message": "Invalid user id"},
+                {"message": "Invalid trail_feature category id"},
                 status=400,
             )
-        video_input["src"] = content["src"]
-        video = Video.objects.create(**video_input)
+        data = ConditionSerializer(condition).data
         return JsonResponse(
-            {
-                "video": video,
-                "like_status": {
-                    "like_status": False,
-                    "dislike_status": False
-                }
-            },
-            encoder=VideoListEncoder,
-            safe=False,
+            {"reviews": data},
         )
 
     def get(self, request):

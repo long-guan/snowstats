@@ -17,6 +17,7 @@ class RunAdmin(admin.ModelAdmin):
 @admin.register(CategoryVO)
 class CategoryVOAdmin(admin.ModelAdmin):
     list_display = (
+        "id",
         "category",
     )
 
@@ -24,6 +25,7 @@ class CategoryVOAdmin(admin.ModelAdmin):
 @admin.register(SnowConditionVO)
 class SnowConditionVOAdmin(admin.ModelAdmin):
     list_display = (
+        "id",
         "category",
     )
 

@@ -34,6 +34,8 @@ To run this application locally using Docker:
 - Filtering of options for search bar as the user
 - Backend error handling for every API endpoint
 - Frontend error handling and error messages for account creation form, video posting form, and review posting form
+- Utilizes JWT access token to authenticate and authorize users
+- Utilizes JWT refresh token to enable users to be logged in for longer periods of times
 - Backend scripts to load data from saved JSON data for when the database needs to be wiped and reset
 - Authorization where only signed in users can post videos or reviews
 - REST API design
@@ -43,13 +45,20 @@ To run this application locally using Docker:
 
 ### Endpoints
 
-| Action                         | Method | URL                                         |
-| ------------------------------ | ------ | ------------------------------------------- |
-| List manufacturers             | GET    | http://localhost:8100/api/manufacturers/    |
-| Create a manufacturer          | POST   | http://localhost:8100/api/manufacturers/    |
-| Get a specific manufacturer    | GET    | http://localhost:8100/api/manufacturers/id/ |
-| Update a specific manufacturer | PUT    | http://localhost:8100/api/manufacturers/id/ |
-| Delete a specific manufacturer | DELETE | http://localhost:8100/api/manufacturers/id/ |
+| Action                                      | Method | URL                                                                 |
+| ------------------------------------------- | ------ | ------------------------------------------------------------------- |
+| Get conditions for a specific run (trail)   | GET    | https://longproductionbackend.net/api/conditions/<int:run_id>/      |
+| Get all conditions                          | GET    | https://longproductionbackend.net/api/conditions/                   |
+| Add a condition                             | POST   | https://longproductionbackend.net/api/conditions/                   |
+| Create a new user                           | POST   | https://longproductionbackend.net/api/user/                         |
+| Check if a username already exist           | GET    | https://longproductionbackend.net/api/user/<slug:username>          |
+| Get a list of all the runs (trails)         | GET    | https://longproductionbackend.net/api/runs/                         |
+| Get a list of all the videos from every run | GET    | https://longproductionbackend.net/api/videos/                       |
+| Get list of videos from a specific run      | GET    | https://longproductionbackend.net/api/videos/<int:run_id>/          |
+| Add a video to a specific run               | POST   | https://longproductionbackend.net/api/videos/                       |
+| Like a specific video                       | POST   | https://longproductionbackend.net/api/videos/like/<int:video_id>    |
+| Disike a specific video                     | POST   | https://longproductionbackend.net/api/videos/dislike/<int:video_id> |
+| Login and obtain token                      | POST   | https://longproductionbackend.net/api/login/                        |
 
 ---
 

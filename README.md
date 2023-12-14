@@ -30,9 +30,26 @@ To run this application locally using Docker:
 - Users are able to create an account
 - Users can view, post, and like videos
 - Users can post reviews of the ski trails
-- Search
-- REST API
+- Search bar for ski runs
+- Filtering of options for search bar as the user
+- Backend error handling for every API endpoint
+- Frontend error handling and error messages for account creation form, video posting form, and review posting form
+- Backend scripts to load data from saved JSON data for when the database needs to be wiped and reset
+- Authorization where only signed in users can post videos or reviews
+- REST API design
 - SSL certificate for backend and frontend domain
+
+---
+
+### Endpoints
+
+| Action                         | Method | URL                                         |
+| ------------------------------ | ------ | ------------------------------------------- |
+| List manufacturers             | GET    | http://localhost:8100/api/manufacturers/    |
+| Create a manufacturer          | POST   | http://localhost:8100/api/manufacturers/    |
+| Get a specific manufacturer    | GET    | http://localhost:8100/api/manufacturers/id/ |
+| Update a specific manufacturer | PUT    | http://localhost:8100/api/manufacturers/id/ |
+| Delete a specific manufacturer | DELETE | http://localhost:8100/api/manufacturers/id/ |
 
 ---
 

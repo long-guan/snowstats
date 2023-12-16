@@ -62,6 +62,12 @@ To run this application locally using Docker:
 
 ---
 
+### Data Tables
+
+![Data Tables](/readme/data_tables.png "Data Tables")
+
+---
+
 ### Libraries Used
 
 - react-img-mapper: used to create image maps for clicking on each trail
@@ -73,7 +79,7 @@ To run this application locally using Docker:
 
 ### Challenges
 
-- 10/26/23: To toggle on and off the tooltip (popup) to display each runs name, a booleans has to be set. Instead of creating a bunch of useState boolean variables for each area, I'm going to store all the boolean variables in an array and associate corresponding index of the array to the area.name
+- To toggle on and off the tooltip (popup) to display each runs name, a booleans has to be set. Instead of creating a bunch of useState boolean variables for each area, I'm going to store all the boolean variables in an array of boolean and associate it corresponding to the index of the array to the area.name
 
 ---
 

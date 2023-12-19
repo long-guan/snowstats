@@ -2,11 +2,11 @@ import Popup from "reactjs-popup";
 import { selectIcon } from "./helperFunctions";
 import { useState } from "react";
 import { createOpenArray } from "./helperFunctions";
-import thumbs_up_selected from "./assets/thumbs_up_selected.png";
-import thumbs_up_unselected from "./assets/thumbs_up_unselected.png";
-import thumbs_down_selected from "./assets/thumbs_down_selected.png";
-import thumbs_down_unselected from "./assets/thumbs_down_unselected.png";
-import add_video from "./assets/add_video.png";
+import thumbs_up_selected from "./assets/thumbs_up_selected.webp";
+import thumbs_up_unselected from "./assets/thumbs_up_unselected.webp";
+import thumbs_down_selected from "./assets/thumbs_down_selected.webp";
+import thumbs_down_unselected from "./assets/thumbs_down_unselected.webp";
+import add_video from "./assets/add_video.webp";
 import AddVideoModal from "./AddVideoMod";
 import { refreshToken } from "./helperFunctions";
 

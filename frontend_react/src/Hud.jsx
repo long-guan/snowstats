@@ -1,11 +1,11 @@
 import SearchBar from "./SearchBar";
 import ProfileSignIn from "./ProfileSignIn";
 import HudCategoryBtn from "./HudCategoryBtn";
-import green_circle from "./assets/green_circle.png";
-import blue_square from "./assets/blue_square.png";
-import black_diamond from "./assets/black_diamond.png";
-import double_black_diamond from "./assets/double_black_diamond.png";
-import chair_lift from "./assets/chair_lift.png";
+import green_circle from "./assets/green_circle.webp";
+import blue_square from "./assets/blue_square.webp";
+import black_diamond from "./assets/black_diamond.webp";
+import double_black_diamond from "./assets/double_black_diamond.webp";
+import chair_lift from "./assets/chair_lift.webp";
 
 function Hud(props) {
   function openPopups(indexStart, indexEnd) {
@@ -74,6 +74,7 @@ function Hud(props) {
           toggleIdx={0}
           alt="green runs"
           btnName="Easiest"
+          height="20px"
         />
         <HudCategoryBtn
           src={blue_square}
@@ -82,6 +83,7 @@ function Hud(props) {
           toggleIdx={1}
           alt="blue runs"
           btnName="More Difficult"
+          height="20px"
         />
         <HudCategoryBtn
           src={black_diamond}
@@ -90,6 +92,7 @@ function Hud(props) {
           toggleIdx={2}
           alt="black runs"
           btnName="Advanced"
+          height="20px"
         />
         <HudCategoryBtn
           src={double_black_diamond}
@@ -98,6 +101,7 @@ function Hud(props) {
           toggleIdx={3}
           alt="double black runs"
           btnName="Experts Only"
+          height="17px"
         />
         <HudCategoryBtn
           src={chair_lift}
@@ -106,6 +110,7 @@ function Hud(props) {
           toggleIdx={4}
           alt="chair lifts"
           btnName="Chairlifts"
+          height="20px"
         />
       </div>
       <SearchBar

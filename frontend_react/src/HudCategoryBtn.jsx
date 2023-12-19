@@ -8,7 +8,11 @@ function HudCategoryBtn(props) {
       className={"text-sm category-btn " + props.toggle[props.toggleIdx]}
       onClick={handleClick}
     >
-      <img src={props.src} alt={props.alt} style={{ height: "20px" }} />{" "}
+      <img
+        src={props.src}
+        alt={props.alt}
+        style={{ height: props.height, width: props.height }}
+      />{" "}
       {props.btnName}
     </div>
   );

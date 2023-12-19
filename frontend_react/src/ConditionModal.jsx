@@ -3,7 +3,7 @@ import { selectIcon } from "./helperFunctions";
 import { useState } from "react";
 import { createOpenArray } from "./helperFunctions";
 import { refreshToken } from "./helperFunctions";
-import add_comment from "./assets/add_comment.png";
+import add_comment from "./assets/add_comment.webp";
 import AddComModal from "./AddComMod";
 
 function ConditionModal(props) {

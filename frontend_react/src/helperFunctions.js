@@ -1,8 +1,8 @@
-import green_circle from "./assets/green_circle.png";
-import blue_square from "./assets/blue_square.png";
-import black_diamond from "./assets/black_diamond.png";
-import double_black_diamond from "./assets/double_black_diamond.png";
-import chair_lift from "./assets/chair_lift.png";
+import green_circle from "./assets/green_circle.webp";
+import blue_square from "./assets/blue_square.webp";
+import black_diamond from "./assets/black_diamond.webp";
+import double_black_diamond from "./assets/double_black_diamond.webp";
+import chair_lift from "./assets/chair_lift.webp";
 
 // returns icon depending on category in stevens_pass_runs json file
 export function selectIcon(category) {

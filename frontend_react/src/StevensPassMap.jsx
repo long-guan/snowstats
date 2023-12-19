@@ -1,6 +1,6 @@
 // import ImageMapper from "react-img-mapper";
 import ImageMapper from "/react-img-mapper/src/imagemapper.tsx";
-import stevens_pass_map from "./assets/stevens_pass_map.jpg";
+import stevens_pass_map from "./assets/stevens_pass_map.webp";
 import stevens_pass_runs from "./assets/stevens_pass_runs.json";
 import { useState, useEffect } from "react";
 import Hud from "./Hud";

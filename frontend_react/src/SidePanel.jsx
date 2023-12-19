@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import right_arrow from "./assets/right_arrow.png";
+import right_arrow from "./assets/right_arrow.webp";
 import ski_lift_picture from "./assets/ski_lift_picture.webp";
 import stevens_pass_runs from "./assets/stevens_pass_runs.json";
 import { selectIcon } from "./helperFunctions";
-import youtube_social_icon from "./assets/youtube_social_icon_red.png";
-import news_icon from "./assets/news.png";
+import youtube_social_icon from "./assets/youtube_social_icon_red.webp";
+import news_icon from "./assets/news.webp";
 import VideoModal from "./VideoModal";
 import ConditionModal from "./ConditionModal";
 

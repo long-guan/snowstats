@@ -89,3 +89,7 @@ To run this application locally using Docker:
 - Add a location to add reviews on the road conditions
 - Add a location to add reviews on the general snow conditions
 - Allow users without accounts to comment on road conditions or general snow conditions
+- Add lazy loading
+- Add caching
+- Add redux
+- Add typescript

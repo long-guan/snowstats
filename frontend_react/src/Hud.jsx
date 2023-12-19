@@ -1,10 +1,11 @@
 import SearchBar from "./SearchBar";
 import ProfileSignIn from "./ProfileSignIn";
-import GreenRunsBtn from "./GreenRunsBtn";
-import BlueRunsBtn from "./BlueRunsBtn";
-import BlackRunsBtn from "./BlackRunsBtn";
-import DoubleBlackRunsBtn from "./DoubleBlackRunsBtn";
-import ChairLiftsBtn from "./ChairLiftsBtn";
+import HudCategoryBtn from "./HudCategoryBtn";
+import green_circle from "./assets/green_circle.png";
+import blue_square from "./assets/blue_square.png";
+import black_diamond from "./assets/black_diamond.png";
+import double_black_diamond from "./assets/double_black_diamond.png";
+import chair_lift from "./assets/chair_lift.png";
 
 function Hud(props) {
   function openPopups(indexStart, indexEnd) {
@@ -66,11 +67,46 @@ function Hud(props) {
     <div className="hud">
       <ProfileSignIn />
       <div className="flex flex-row gap-1 categorybtn-cont">
-        <GreenRunsBtn toggle={props.toggle} toggleOnOff={toggleOnOff} />
-        <BlueRunsBtn toggle={props.toggle} toggleOnOff={toggleOnOff} />
-        <BlackRunsBtn toggle={props.toggle} toggleOnOff={toggleOnOff} />
-        <DoubleBlackRunsBtn toggle={props.toggle} toggleOnOff={toggleOnOff} />
-        <ChairLiftsBtn toggle={props.toggle} toggleOnOff={toggleOnOff} />
+        <HudCategoryBtn
+          src={green_circle}
+          toggle={props.toggle}
+          toggleOnOff={toggleOnOff}
+          toggleIdx={0}
+          alt="green runs"
+          btnName="Easiest"
+        />
+        <HudCategoryBtn
+          src={blue_square}
+          toggle={props.toggle}
+          toggleOnOff={toggleOnOff}
+          toggleIdx={1}
+          alt="blue runs"
+          btnName="More Difficult"
+        />
+        <HudCategoryBtn
+          src={black_diamond}
+          toggle={props.toggle}
+          toggleOnOff={toggleOnOff}
+          toggleIdx={2}
+          alt="black runs"
+          btnName="Advanced"
+        />
+        <HudCategoryBtn
+          src={double_black_diamond}
+          toggle={props.toggle}
+          toggleOnOff={toggleOnOff}
+          toggleIdx={3}
+          alt="double black runs"
+          btnName="Experts Only"
+        />
+        <HudCategoryBtn
+          src={chair_lift}
+          toggle={props.toggle}
+          toggleOnOff={toggleOnOff}
+          toggleIdx={4}
+          alt="chair lifts"
+          btnName="Chairlifts"
+        />
       </div>
       <SearchBar
         openRunSelection={props.openRunSelection}

@@ -90,6 +90,7 @@ To run this application locally using Docker:
 - Add a location to add reviews on the general snow conditions
 - Allow users without accounts to comment on road conditions or general snow conditions
 - Add lazy loading
-- Add caching
+- Implement caching
 - Add redux
 - Add typescript
+- Deploy react frontend to another hosting site that allows changing of the Cache-Control header for static files to score 100/100 in Lighthouse Report (currently 99 because GitHub pages does not allow Cache-Control header to change)

@@ -54,9 +54,9 @@ function StevensPassMap() {
 
   // updates dimensions whenever the screen resizes
   window.addEventListener("resize", () => {
-    setMapperWidth(window.innerWidth);
-    setMapperHeight(viewWidth * (1452 / 2400));
-    setScaleRatio(viewWidth / 2400);
+    setMapperWidth(document.documentElement.clientWidth);
+    setMapperHeight(document.documentElement.clientWidth * (1452 / 2400));
+    setScaleRatio(document.documentElement.clientWidth / 2400);
   });
 
   useEffect(() => {

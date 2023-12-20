@@ -13,7 +13,7 @@ function HudCategoryBtn(props) {
         alt={props.alt}
         style={{ height: props.height, width: props.height }}
       />{" "}
-      {props.btnName}
+      <span className="category-btn-name">{props.btnName}</span>
     </div>
   );
 }

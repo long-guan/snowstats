@@ -17,7 +17,7 @@ area:hover,
   top: 0;
   left: 0;
   z-index: 4;
-  margin-top: 20px;
+  margin-top: 1%;
   margin-left: 20%;
   display: flex;
   justify-content: space-around;
@@ -229,4 +229,10 @@ area:hover,
   padding-right: 5px;
   height: 26px;
   border-radius: 13px;
+}
+
+@media screen and (max-width: 1200px) {
+  /* .category-btn-name {
+    display: none;
+  } */
 }

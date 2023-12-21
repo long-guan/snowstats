@@ -18,11 +18,11 @@ area:hover,
   left: 0;
   z-index: 4;
   margin-top: 1%;
-  margin-left: 20%;
+  margin-left: 22%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 80vw;
+  width: 78vw;
   max-height: 42px;
 }
 

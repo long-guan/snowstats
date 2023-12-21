@@ -28,6 +28,10 @@ function SidePanel(props) {
       categoryContLeft -
       categoryContWidth +
       searchBarContWidth;
+    console.log(categoryContWidth);
+    console.log(categoryContLeft);
+    console.log(searchBarContLeft);
+    console.log(searchBarContWidth);
     return sidePanelWidth;
   }
 

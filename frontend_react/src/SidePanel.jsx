@@ -15,7 +15,7 @@ function SidePanel(props) {
   const [openVidMod, setOpenVidMod] = useState(false);
   const [openComMod, setOpenComMod] = useState(false);
 
-  // calculates width of side panel
+  // calculates width of side panel using the position of category buttons
   function calcWidthSidePanel() {
     let categoryCont = document.querySelector(".categorybtn-cont");
     let searchbarCont = document.querySelector(".searchbar-cont");
@@ -28,10 +28,6 @@ function SidePanel(props) {
       categoryContLeft -
       categoryContWidth +
       searchBarContWidth;
-    console.log(categoryContWidth);
-    console.log(categoryContLeft);
-    console.log(searchBarContLeft);
-    console.log(searchBarContWidth);
     return sidePanelWidth;
   }
 

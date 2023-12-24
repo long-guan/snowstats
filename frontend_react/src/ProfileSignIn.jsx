@@ -48,7 +48,7 @@ function ProfileSignIn(props) {
           onClick={() => {
             setOpenLogMod(true);
           }}
-          className="profile-sign-in text-sm"
+          className="profile-sign-in"
         >
           Sign In
         </button>

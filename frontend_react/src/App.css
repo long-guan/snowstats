@@ -43,6 +43,7 @@ area:hover,
 }
 
 .profile-sign-in {
+  font-size: medium;
   background-color: #21c83d;
   color: black;
   font-weight: bold;
@@ -231,8 +232,75 @@ area:hover,
   border-radius: 13px;
 }
 
-@media screen and (max-width: 1200px) {
-  /* .category-btn-name {
-    display: none;
+.category-btn-style {
+  height: 20px;
+  width: 20px;
+}
+
+.search-bar-svg-cont {
+  height: 42px;
+}
+
+.search-bar-svg {
+  color: rgb(198, 199, 202);
+  height: 16px;
+  width: 16px;
+}
+
+#default-search {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 4px;
+}
+
+@media screen and (max-width: 625px) {
+  /* .category-btn,
+  .searchbar-cont,
+  .profile-sign-in {
+    scale: 0.5;
   } */
+
+  .searchbar-cont {
+    max-width: 150px;
+  }
+
+  #default-search {
+    max-width: 150px;
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    /* border-radius: 10px; */
+  }
+
+  .search-bar-svg-cont {
+    height: 32px;
+  }
+
+  .search-bar-svg {
+    height: 12px;
+    width: 12px;
+  }
+
+  .profile-sign-in {
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .category-btn-style {
+    height: 10px;
+    width: 10px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .category-btn-name {
+    display: none;
+  }
 }

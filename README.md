@@ -94,3 +94,4 @@ To run this application locally using Docker:
 - Add redux
 - Add typescript
 - Deploy react frontend to another hosting site that allows changing of the Cache-Control header for static files to score 100/100 in Lighthouse Report (currently 99 because GitHub pages does not allow Cache-Control header to change)
+- Add tests for backend and frontend

@@ -7,9 +7,6 @@ import { selectIcon } from "./helperFunctions";
 // style for when search bar is not focused
 const notFocusedStyle = {
   borderRadius: "20px",
-  maxWidth: "200px",
-  paddingTop: "10px",
-  paddingBottom: "10px",
   backgroundColor: "#fff",
 };
 
@@ -17,9 +14,6 @@ const notFocusedStyle = {
 const focusedStyle = {
   borderTopLeftRadius: "20px",
   borderTopRightRadius: "20px",
-  maxWidth: "200px",
-  paddingTop: "10px",
-  paddingBottom: "10px",
   backgroundColor: "#fff",
 };
 
@@ -159,12 +153,9 @@ function SearchBar(props) {
         Search Trails
       </label>
       <div className="relative">
-        <div
-          style={{ height: "42px" }}
-          className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-        >
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg
-            className="w-4 h-4 text-gray-500 dark:text-gray-400"
+            className="search-bar-svg"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -182,7 +173,7 @@ function SearchBar(props) {
         <input
           type="search"
           id="default-search"
-          className="block w-full p-1 pl-10 text-sm border focus:outline-none shadow-lg"
+          className="block w-full text-sm border focus:outline-none shadow-lg"
           style={style}
           placeholder="Search..."
           required

@@ -74,7 +74,6 @@ function Hud(props) {
           toggleIdx={0}
           alt="green runs"
           btnName="Easiest"
-          height="20px"
         />
         <HudCategoryBtn
           src={blue_square}
@@ -83,7 +82,6 @@ function Hud(props) {
           toggleIdx={1}
           alt="blue runs"
           btnName="More Difficult"
-          height="20px"
         />
         <HudCategoryBtn
           src={black_diamond}
@@ -92,7 +90,6 @@ function Hud(props) {
           toggleIdx={2}
           alt="black runs"
           btnName="Advanced"
-          height="20px"
         />
         <HudCategoryBtn
           src={double_black_diamond}
@@ -101,7 +98,6 @@ function Hud(props) {
           toggleIdx={3}
           alt="double black runs"
           btnName="Experts Only"
-          height="17px"
         />
         <HudCategoryBtn
           src={chair_lift}
@@ -110,7 +106,6 @@ function Hud(props) {
           toggleIdx={4}
           alt="chair lifts"
           btnName="Chairlifts"
-          height="20px"
         />
       </div>
       <SearchBar

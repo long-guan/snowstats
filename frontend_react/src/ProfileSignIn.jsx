@@ -38,7 +38,7 @@ function ProfileSignIn(props) {
   };
 
   return (
-    <div>
+    <div className="flex">
       {signedIn ? (
         <button onClick={handleLogout} className="profile-sign-in text-sm">
           Sign Out

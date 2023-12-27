@@ -82,11 +82,13 @@ function SidePanel(props) {
             paddingTop: "20px",
           }}
         >
-          <div className="flex justify-between">
-            <div style={{ fontWeight: "bold" }}>{query.title}</div>
+          <div className="flex justify-between items-center">
+            <div style={{ fontWeight: "bold" }} className="side-panel-title">
+              {query.title}
+            </div>
             <div>
               <img
-                style={{ height: "20px" }}
+                className="side-panel-category-icon"
                 src={selectIcon(query.category)}
                 alt="category"
               />
@@ -123,7 +125,7 @@ function SidePanel(props) {
                 }
               >
                 <img
-                  style={{ height: "15px" }}
+                  className="side-panel-youtube"
                   src={youtube_social_icon}
                   alt="youtube"
                 />
@@ -148,7 +150,7 @@ function SidePanel(props) {
                   setOpenComMod(true);
                 }}
               >
-                <img style={{ height: "20px" }} src={news_icon} alt="" />
+                <img className="side-panel-news" src={news_icon} alt="" />
               </div>
               <div>
                 <div>Conditions</div>

@@ -256,6 +256,22 @@ area:hover,
   padding-right: 4px;
 }
 
+.side-panel-youtube {
+  height: 15px;
+}
+
+.side-panel-news {
+  height: 20px;
+}
+
+.side-panel-title {
+  font-size: 20px;
+}
+
+.side-panel-category-icon {
+  height: 20px;
+}
+
 @media screen and (max-width: 625px) {
   .searchbar-cont {
     max-width: 150px;
@@ -290,6 +306,32 @@ area:hover,
   .category-btn-style {
     height: 10px;
     width: 10px;
+  }
+
+  .side-panel-btn {
+    font-size: 10px;
+  }
+
+  .side-panel-btn-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+  }
+
+  .side-panel-youtube {
+    height: 12px;
+  }
+
+  .side-panel-news {
+    height: 15px;
+  }
+
+  .side-panel-title {
+    font-size: 15px;
+  }
+
+  .side-panel-category-icon {
+    height: 15px;
   }
 }
 
@@ -326,6 +368,32 @@ area:hover,
   .category-btn-style {
     height: 8px;
     width: 8px;
+  }
+
+  .side-panel-btn {
+    font-size: 8px;
+  }
+
+  .side-panel-btn-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+  }
+
+  .side-panel-youtube {
+    height: 9px;
+  }
+
+  .side-panel-news {
+    height: 12px;
+  }
+
+  .side-panel-title {
+    font-size: 10px;
+  }
+
+  .side-panel-category-icon {
+    height: 10px;
   }
 }
 

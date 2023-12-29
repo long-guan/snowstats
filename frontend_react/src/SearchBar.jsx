@@ -207,8 +207,6 @@ function SearchBar(props) {
             id="drop-down"
             size="4"
             style={{
-              maxWidth: "191.5px",
-              maxHeight: "168px",
               boxShadow:
                 "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
               borderBottomLeftRadius: "20px",
@@ -225,10 +223,6 @@ function SearchBar(props) {
                 <li
                   className="text-sm searchbar-option"
                   id={run.id}
-                  style={{
-                    height: "42px",
-                    paddingTop: "10px",
-                  }}
                   key={run.name}
                   onClick={() => {
                     setShowDropDown(false); // disables tooltips hover
@@ -240,11 +234,11 @@ function SearchBar(props) {
                   }}
                 >
                   <img
-                    style={{ height: "20px", paddingLeft: "10px" }}
+                    className="drop-down-image"
                     src={selectIcon(run.category)}
                     alt="category"
                   />
-                  <div>{run.title}</div>
+                  <div className="drop-down-text">{run.title}</div>
                 </li>
               ))}
             </ul>

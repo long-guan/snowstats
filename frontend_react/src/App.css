@@ -75,11 +75,6 @@ area:hover,
   background-color: #f3f3f3;
 }
 
-.searchbar-option {
-  display: grid;
-  grid-template-columns: 41px 1fr;
-}
-
 .hover-background {
   background-color: #f3f3f3;
 }
@@ -272,6 +267,27 @@ area:hover,
   height: 20px;
 }
 
+#drop-down {
+  max-width: 191.5px;
+  max-height: 168px;
+}
+
+.searchbar-option {
+  display: grid;
+  grid-template-columns: 41px 1fr;
+  height: 42px;
+  padding-top: 10px;
+}
+
+.drop-down-image {
+  height: 20px;
+  padding-left: 10px;
+}
+
+.drop-down-text {
+  font-size: 14px;
+}
+
 @media screen and (max-width: 1100px) {
   .category-btn-name {
     display: none;
@@ -279,6 +295,21 @@ area:hover,
 }
 
 @media screen and (max-width: 625px) {
+  .drop-down-text {
+    font-size: 12px;
+  }
+
+  .drop-down-image {
+    height: 16px;
+    padding-left: 10px;
+  }
+
+  .searchbar-option {
+    grid-template-columns: 30px 1fr;
+    height: 32px;
+    padding-top: 7px;
+  }
+
   .searchbar-cont {
     max-width: 150px;
     max-height: 32px;
@@ -342,6 +373,21 @@ area:hover,
 }
 
 @media screen and (max-width: 475px) {
+  .drop-down-text {
+    font-size: 8px;
+  }
+
+  .drop-down-image {
+    height: 12px;
+    padding-left: 10px;
+  }
+
+  .searchbar-option {
+    grid-template-columns: 30px 1fr;
+    height: 28px;
+    padding-top: 5px;
+  }
+
   .searchbar-cont {
     max-width: 80px;
     max-height: 28px;
@@ -356,7 +402,7 @@ area:hover,
   }
 
   .search-bar-svg-cont {
-    height: 32px;
+    height: 28px;
   }
 
   .search-bar-svg {

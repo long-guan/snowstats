@@ -272,9 +272,16 @@ area:hover,
   height: 20px;
 }
 
+@media screen and (max-width: 1100px) {
+  .category-btn-name {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 625px) {
   .searchbar-cont {
     max-width: 150px;
+    max-height: 32px;
   }
 
   #default-search {
@@ -283,7 +290,6 @@ area:hover,
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 30px;
-    /* border-radius: 10px; */
   }
 
   .search-bar-svg-cont {
@@ -338,6 +344,7 @@ area:hover,
 @media screen and (max-width: 475px) {
   .searchbar-cont {
     max-width: 80px;
+    max-height: 28px;
   }
 
   #default-search {
@@ -394,11 +401,5 @@ area:hover,
 
   .side-panel-category-icon {
     height: 10px;
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  .category-btn-name {
-    display: none;
   }
 }

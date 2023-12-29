@@ -1,8 +1,42 @@
 import Popup from "reactjs-popup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const InfoPopup = (props) => {
   const [underline, setUnderline] = useState("");
+  const [popupFontSize, setPopupFontSize] = useState("16px");
+  const [iconSize, setIconSize] = useState("20px");
+
+  // make popup responsive
+  useEffect(() => {
+    getFontSize(props.mapperWidth);
+    getIconSize(props.mapperWidth);
+  }, [props.mapperWidth]);
+
+  // make popup font size responsive
+  function getFontSize(screenWidth) {
+    if (screenWidth <= 475) {
+      setPopupFontSize("8px");
+    } else if (screenWidth <= 625) {
+      setPopupFontSize("10px");
+    } else if (screenWidth <= 1100) {
+      setPopupFontSize("12px");
+    } else {
+      setPopupFontSize("16px");
+    }
+  }
+
+  // make popup icon responsive
+  function getIconSize(screenWidth) {
+    if (screenWidth <= 475) {
+      setIconSize("8px");
+    } else if (screenWidth <= 625) {
+      setIconSize("12px");
+    } else if (screenWidth <= 1100) {
+      setIconSize("16px");
+    } else {
+      setIconSize("20px");
+    }
+  }
 
   return (
     <Popup
@@ -26,6 +60,7 @@ const InfoPopup = (props) => {
         boxShadow:
           "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
         borderRadius: "10px",
+        fontSize: popupFontSize,
       }}
       arrowStyle={{
         color: "#FFF",
@@ -47,7 +82,7 @@ const InfoPopup = (props) => {
           setUnderline("");
         }}
       >
-        <img src={props.icon} alt="" style={{ height: "20px" }} />
+        <img src={props.icon} alt="" style={{ height: iconSize }} />
         {props.name}
       </div>
     </Popup>

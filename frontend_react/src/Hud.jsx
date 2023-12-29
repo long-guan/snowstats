@@ -6,6 +6,8 @@ import blue_square from "./assets/blue_square.webp";
 import black_diamond from "./assets/black_diamond.webp";
 import double_black_diamond from "./assets/double_black_diamond.webp";
 import chair_lift from "./assets/chair_lift.webp";
+// import { useEffect } from "react";
+import { createOpenArray } from "./helperFunctions";
 
 function Hud(props) {
   function openPopups(indexStart, indexEnd) {
@@ -18,14 +20,7 @@ function Hud(props) {
       }
     }
     props.setOpen(openArray);
-  }
-
-  function closePopups() {
-    let openArray = [];
-    for (let i = 0; i <= 49; i++) {
-      openArray.push(false);
-    }
-    return openArray;
+    props.setPopupOpened(true);
   }
 
   function toggleOnOff(idx) {
@@ -56,10 +51,11 @@ function Hud(props) {
         openPopups(42, 49);
       }
     } else {
+      props.setPopupOpened(false);
       props.setDisabled(false);
       props.setImgClickDisabled(false);
       props.setToggle(["", "", "", "", ""]);
-      props.setOpen(closePopups());
+      props.setOpen(createOpenArray());
     }
   }
 

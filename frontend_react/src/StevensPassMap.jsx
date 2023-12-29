@@ -17,6 +17,7 @@ function StevensPassMap() {
   const [imgClickDisabled, setImgClickDisabled] = useState(false); // allows clicking of runs/lifts
   const [toggle, setToggle] = useState(["", "", "", "", ""]); // toggle use to control category btn selection
   const [showPanel, setShowPanel] = useState(false); // shows or hides side panel
+  const [popupOpened, setPopupOpened] = useState(false); // for performance improvement since comparing an array of 49 values is too slow. used to track if any popups are opened
 
   const MAP = {
     name: "stevenspassmap",
@@ -53,10 +54,18 @@ function StevensPassMap() {
   };
 
   // updates dimensions whenever the screen resizes
+  // closes any opened popups whenever screen resizes
   window.addEventListener("resize", () => {
     setMapperWidth(document.documentElement.clientWidth);
     setMapperHeight(document.documentElement.clientWidth * (1452 / 2400));
     setScaleRatio(document.documentElement.clientWidth / 2400);
+    if (popupOpened === true) {
+      setOpen(createOpenArray());
+      setDisabled(false);
+      setImgClickDisabled(false);
+      setToggle(["", "", "", "", ""]);
+      setPopupOpened(false);
+    }
   });
 
   useEffect(() => {
@@ -99,6 +108,7 @@ function StevensPassMap() {
         openRunSelection={openRunSelection}
         showPanel={showPanel}
         setShowPanel={setShowPanel}
+        setPopupOpened={setPopupOpened}
       />
       <PopupHud
         scaleRatio={scaleRatio}
@@ -108,6 +118,7 @@ function StevensPassMap() {
         setRunSelection={setRunSelection}
         setShowPanel={setShowPanel}
         showPanel={showPanel}
+        setPopupOpened={setPopupOpened}
       />
     </div>
   );

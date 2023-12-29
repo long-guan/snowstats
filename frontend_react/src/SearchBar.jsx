@@ -153,7 +153,7 @@ function SearchBar(props) {
         Search Trails
       </label>
       <div className="relative">
-        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none search-bar-svg-cont">
           <svg
             className="search-bar-svg"
             aria-hidden="true"
@@ -242,7 +242,7 @@ function SearchBar(props) {
                   <img
                     style={{ height: "20px", paddingLeft: "10px" }}
                     src={selectIcon(run.category)}
-                    alt=""
+                    alt="category"
                   />
                   <div>{run.title}</div>
                 </li>

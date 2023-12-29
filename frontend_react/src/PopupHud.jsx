@@ -21,6 +21,7 @@ function PopupHud(props) {
           top={run.popup_settings.top}
           setShowPanel={props.setShowPanel}
           showPanel={props.showPanel}
+          mapperWidth={props.mapperWidth}
         />
       ))}
     </div>

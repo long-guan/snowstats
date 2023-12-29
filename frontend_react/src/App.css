@@ -234,6 +234,7 @@ area:hover,
 
 .search-bar-svg-cont {
   height: 42px;
+  padding-left: 12px;
 }
 
 .search-bar-svg {
@@ -276,7 +277,7 @@ area:hover,
   display: grid;
   grid-template-columns: 41px 1fr;
   height: 42px;
-  padding-top: 10px;
+  align-items: center;
 }
 
 .drop-down-image {
@@ -295,8 +296,15 @@ area:hover,
 }
 
 @media screen and (max-width: 625px) {
-  .drop-down-text {
+  .drop-down-text,
+  #default-search,
+  .profile-sign-in,
+  .side-panel-btn {
     font-size: 12px;
+  }
+
+  .side-panel-title {
+    font-size: 15px;
   }
 
   .drop-down-image {
@@ -307,7 +315,6 @@ area:hover,
   .searchbar-option {
     grid-template-columns: 30px 1fr;
     height: 32px;
-    padding-top: 7px;
   }
 
   .searchbar-cont {
@@ -317,7 +324,6 @@ area:hover,
 
   #default-search {
     max-width: 150px;
-    font-size: 12px;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 30px;
@@ -333,7 +339,6 @@ area:hover,
   }
 
   .profile-sign-in {
-    font-size: 12px;
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 5px;
@@ -343,10 +348,6 @@ area:hover,
   .category-btn-style {
     height: 10px;
     width: 10px;
-  }
-
-  .side-panel-btn {
-    font-size: 10px;
   }
 
   .side-panel-btn-circle {
@@ -363,29 +364,31 @@ area:hover,
     height: 15px;
   }
 
-  .side-panel-title {
-    font-size: 15px;
-  }
-
   .side-panel-category-icon {
     height: 15px;
   }
 }
 
 @media screen and (max-width: 475px) {
-  .drop-down-text {
-    font-size: 8px;
+  .drop-down-text,
+  #default-search,
+  .profile-sign-in,
+  .side-panel-btn {
+    font-size: 6px;
+  }
+
+  .side-panel-title {
+    font-size: 10px;
   }
 
   .drop-down-image {
     height: 12px;
-    padding-left: 10px;
+    padding-left: 7px;
   }
 
   .searchbar-option {
-    grid-template-columns: 30px 1fr;
+    grid-template-columns: 21px 1fr;
     height: 28px;
-    padding-top: 5px;
   }
 
   .searchbar-cont {
@@ -395,14 +398,14 @@ area:hover,
 
   #default-search {
     max-width: 80px;
-    font-size: 8px;
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 30px;
+    padding-left: 21px;
   }
 
   .search-bar-svg-cont {
     height: 28px;
+    padding-left: 8px;
   }
 
   .search-bar-svg {
@@ -411,20 +414,16 @@ area:hover,
   }
 
   .profile-sign-in {
-    font-size: 8px;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 3px;
     padding-right: 3px;
+    min-width: 28px;
   }
 
   .category-btn-style {
-    height: 8px;
-    width: 8px;
-  }
-
-  .side-panel-btn {
-    font-size: 8px;
+    height: 7px;
+    width: 7px;
   }
 
   .side-panel-btn-circle {
@@ -439,10 +438,6 @@ area:hover,
 
   .side-panel-news {
     height: 12px;
-  }
-
-  .side-panel-title {
-    font-size: 10px;
   }
 
   .side-panel-category-icon {

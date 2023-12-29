@@ -113,6 +113,7 @@ function Hud(props) {
         setToggle={props.setToggle}
         showPanel={props.showPanel}
         setShowPanel={props.setShowPanel}
+        mapperWidth={props.mapperWidth}
       />
     </div>
   );

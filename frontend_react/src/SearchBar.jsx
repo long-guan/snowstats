@@ -5,16 +5,16 @@ import SidePanel from "./SidePanel";
 import { selectIcon } from "./helperFunctions";
 
 // style for when search bar is not focused
-const notFocusedStyle = {
+let notFocusedStyle = {
   borderRadius: "20px",
-  backgroundColor: "#fff",
+  backgroundColor: "#FFF",
 };
 
 // style for when search bar is focused
-const focusedStyle = {
+let focusedStyle = {
   borderTopLeftRadius: "20px",
   borderTopRightRadius: "20px",
-  backgroundColor: "#fff",
+  backgroundColor: "#FFF",
 };
 
 function SearchBar(props) {
@@ -102,6 +102,29 @@ function SearchBar(props) {
     }
   }
 
+  // responsive styling for the search bar radius
+  useEffect(() => {
+    if (showDropDown === true) {
+      if (props.mapperWidth <= 475) {
+        let newFocusedStyle = {
+          borderTopLeftRadius: "14px",
+          borderTopRightRadius: "14px",
+          backgroundColor: "#FFF",
+        };
+        setStyle(newFocusedStyle);
+      } else if (props.mapperWidth <= 625) {
+        let newFocusedStyle = {
+          borderTopLeftRadius: "16px",
+          borderTopRightRadius: "16px",
+          backgroundColor: "#FFF",
+        };
+        setStyle(newFocusedStyle);
+      } else {
+        setStyle(focusedStyle);
+      }
+    }
+  }, [showDropDown]);
+
   useEffect(() => {
     scroll();
     keySelection();
@@ -153,7 +176,7 @@ function SearchBar(props) {
         Search Trails
       </label>
       <div className="relative">
-        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none search-bar-svg-cont">
+        <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none search-bar-svg-cont">
           <svg
             className="search-bar-svg"
             aria-hidden="true"

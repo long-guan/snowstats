@@ -218,11 +218,9 @@ function VideoModal(props) {
           {videos.length > 0 ? (
             videos.map((video) => (
               <div
-                className="flex flex-col justify-center items-center gap-2"
+                className="flex flex-col justify-center items-center gap-2 video-modal-video"
                 style={{
                   backgroundColor: "black",
-                  width: "60%",
-                  height: "500px",
                   paddingTop: "1%",
                   paddingBottom: "6px",
                   paddingLeft: "1%",
@@ -235,7 +233,6 @@ function VideoModal(props) {
                 <iframe
                   width="100%"
                   height="100%"
-                  className="video-modal-video"
                   src={video.src}
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -265,14 +262,6 @@ function VideoModal(props) {
                       trigger={() => (
                         <div
                           className="flex justify-center items-center thumbs-up"
-                          style={{
-                            minWidth: "60px",
-                            borderRightStyle: "solid",
-                            borderRightColor: "black",
-                            borderRightWidth: "1px",
-                            borderTopLeftRadius: "12px",
-                            borderBottomLeftRadius: "12px",
-                          }}
                           onClick={(e) => {
                             refreshToken(e, likeVideo, video.id);
                           }}
@@ -314,15 +303,7 @@ function VideoModal(props) {
                     <Popup
                       trigger={() => (
                         <div
-                          className="flex justify-center items-center thumbs-up"
-                          style={{
-                            minWidth: "60px",
-                            borderLeftStyle: "solid",
-                            borderLeftColor: "black",
-                            borderLeftWidth: "1px",
-                            borderTopRightRadius: "12px",
-                            borderBottomRightRadius: "12px",
-                          }}
+                          className="flex justify-center items-center thumbs-down"
                           onClick={(e) => {
                             refreshToken(e, dislikeVideo, video.id);
                           }}

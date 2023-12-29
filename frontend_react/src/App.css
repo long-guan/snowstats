@@ -303,7 +303,8 @@ area:hover,
 }
 
 .video-modal-video {
-  min-height: 400px;
+  height: 500px;
+  width: 60%;
 }
 
 .add-video-btn {
@@ -315,7 +316,29 @@ area:hover,
   height: 36px;
 }
 
+.thumbs-up {
+  min-width: 60px;
+  border-right-style: solid;
+  border-right-color: black;
+  border-right-width: 1px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.thumbs-down {
+  min-width: 60px;
+  border-left-style: solid;
+  border-left-color: black;
+  border-left-width: 1px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
 @media screen and (max-width: 1100px) {
+  .video-modal-video {
+    min-height: 200px;
+  }
+
   .add-video-btn {
     border-radius: 15px;
     width: 30px;
@@ -341,6 +364,22 @@ area:hover,
 }
 
 @media screen and (max-width: 625px) {
+  .thumbs-up {
+    max-width: 40px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+
+  .thumbs-down {
+    min-width: 60px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
+  .video-modal-video {
+    min-width: 300px;
+  }
+
   .add-video-btn {
     border-radius: 14px;
     width: 28px;
@@ -426,6 +465,22 @@ area:hover,
 }
 
 @media screen and (max-width: 475px) {
+  .thumbs-up {
+    min-width: 30px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+
+  .thumbs-down {
+    min-width: 30px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
+  .video-modal-video {
+    min-width: 200px;
+  }
+
   .add-video-btn {
     border-radius: 12px;
     width: 24px;

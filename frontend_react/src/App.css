@@ -289,26 +289,84 @@ area:hover,
   font-size: 14px;
 }
 
+.video-modal-icon,
+.video-modal-thumbs {
+  height: 20px;
+}
+
+.video-modal-header {
+  font-size: 18px;
+}
+
+.video-modal-font {
+  font-size: 15px;
+}
+
+.video-modal-video {
+  min-height: 400px;
+}
+
+.add-video-btn {
+  border-radius: 18px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(26, 115, 232);
+  width: 36px;
+  height: 36px;
+}
+
 @media screen and (max-width: 1100px) {
+  .add-video-btn {
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+  }
+
   .category-btn-name {
     display: none;
+  }
+
+  .video-modal-header {
+    font-size: 16px;
+  }
+
+  .video-modal-icon,
+  .video-modal-thumbs {
+    height: 18px;
+  }
+
+  .video-modal-font {
+    font-size: 13px;
   }
 }
 
 @media screen and (max-width: 625px) {
+  .add-video-btn {
+    border-radius: 14px;
+    width: 28px;
+    height: 28px;
+  }
+
   .drop-down-text,
   #default-search,
   .profile-sign-in,
-  .side-panel-btn {
+  .side-panel-btn,
+  .side-panel-info,
+  .video-modal-font {
     font-size: 12px;
   }
 
-  .side-panel-title {
+  .side-panel-title,
+  .video-modal-header {
     font-size: 15px;
   }
 
+  .video-modal-thumbs,
   .drop-down-image {
     height: 16px;
+  }
+
+  .drop-down-image {
     padding-left: 10px;
   }
 
@@ -360,29 +418,40 @@ area:hover,
     height: 12px;
   }
 
-  .side-panel-news {
-    height: 15px;
-  }
-
-  .side-panel-category-icon {
+  .side-panel-news,
+  .side-panel-category-icon,
+  .video-modal-icon {
     height: 15px;
   }
 }
 
 @media screen and (max-width: 475px) {
+  .add-video-btn {
+    border-radius: 12px;
+    width: 24px;
+    height: 24px;
+  }
+
   .drop-down-text,
   #default-search,
   .profile-sign-in,
-  .side-panel-btn {
+  .side-panel-btn,
+  .side-panel-info,
+  .video-modal-font {
     font-size: 6px;
   }
 
-  .side-panel-title {
+  .side-panel-title,
+  .video-modal-header {
     font-size: 10px;
   }
 
+  .video-modal-thumbs,
   .drop-down-image {
     height: 12px;
+  }
+
+  .drop-down-image {
     padding-left: 7px;
   }
 
@@ -436,11 +505,9 @@ area:hover,
     height: 9px;
   }
 
-  .side-panel-news {
+  .side-panel-news,
+  .side-panel-category-icon,
+  .video-modal-icon {
     height: 12px;
-  }
-
-  .side-panel-category-icon {
-    height: 10px;
   }
 }

@@ -163,11 +163,11 @@ function VideoModal(props) {
           style={{ paddingLeft: "25px", paddingRight: "25px" }}
           className="header flex items-center justify-between"
         >
-          <div className="flex items-center justify-center gap-1">
+          <div className="flex items-center justify-center gap-1 video-modal-header">
             {" "}
             <div style={{ fontWeight: "bold" }}>{props.query.title}</div>
             <img
-              style={{ height: "20px" }}
+              className="video-modal-icon"
               src={selectIcon(props.query.category)}
               alt="category"
             />
@@ -177,14 +177,6 @@ function VideoModal(props) {
             trigger={() => (
               <div
                 className="flex items-center justify-center cursor-pointer add-video-btn"
-                style={{
-                  borderRadius: "18px",
-                  borderStyle: "solid",
-                  borderWidth: "1px",
-                  borderColor: "rgb(26, 115, 232)",
-                  width: "36px",
-                  height: "36px",
-                }}
                 onClick={() => {
                   if (localStorage.getItem("access_token") === null) {
                     alert("Please sign in to add a video");
@@ -195,7 +187,7 @@ function VideoModal(props) {
               >
                 <button>
                   <img
-                    style={{ height: "20px" }}
+                    className="video-modal-icon"
                     src={add_video}
                     alt="add video"
                   />
@@ -229,18 +221,21 @@ function VideoModal(props) {
                 className="flex flex-col justify-center items-center gap-2"
                 style={{
                   backgroundColor: "black",
-                  width: "600px",
-                  minHeight: "370px",
-
+                  width: "60%",
+                  height: "500px",
+                  paddingTop: "1%",
+                  paddingBottom: "6px",
+                  paddingLeft: "1%",
+                  paddingRight: "1%",
                   boxShadow:
                     "0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
                 }}
                 key={video.id}
               >
                 <iframe
-                  width="560"
-                  height="315"
-                  style={{ minHeight: "315px" }}
+                  width="100%"
+                  height="100%"
+                  className="video-modal-video"
                   src={video.src}
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -249,10 +244,8 @@ function VideoModal(props) {
                 <div
                   style={{
                     width: "100%",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
                   }}
-                  className="flex justify-between"
+                  className="flex justify-between video-modal-font"
                 >
                   <div
                     style={{
@@ -286,13 +279,13 @@ function VideoModal(props) {
                         >
                           {video.like_status === true ? (
                             <img
-                              style={{ height: "20px" }}
+                              className="video-modal-thumbs"
                               src={thumbs_up_selected}
                               alt="thumbs up filled in"
                             />
                           ) : (
                             <img
-                              style={{ height: "20px" }}
+                              className="video-modal-thumbs"
                               src={thumbs_up_unselected}
                               alt="thumbs up outline"
                             />
@@ -336,13 +329,13 @@ function VideoModal(props) {
                         >
                           {video.dislike_status === true ? (
                             <img
-                              style={{ height: "20px" }}
+                              className="video-modal-thumbs"
                               src={thumbs_down_selected}
                               alt="thumbs down filled in"
                             />
                           ) : (
                             <img
-                              style={{ height: "20px" }}
+                              className="video-modal-thumbs"
                               src={thumbs_down_unselected}
                               alt="thumbs down outline"
                             />

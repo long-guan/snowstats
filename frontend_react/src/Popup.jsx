@@ -15,7 +15,7 @@ const InfoPopup = (props) => {
   // make popup font size responsive
   function getFontSize(screenWidth) {
     if (screenWidth <= 475) {
-      setPopupFontSize("8px");
+      setPopupFontSize("6px");
     } else if (screenWidth <= 625) {
       setPopupFontSize("10px");
     } else if (screenWidth <= 1100) {
@@ -28,7 +28,7 @@ const InfoPopup = (props) => {
   // make popup icon responsive
   function getIconSize(screenWidth) {
     if (screenWidth <= 475) {
-      setIconSize("8px");
+      setIconSize("6px");
     } else if (screenWidth <= 625) {
       setIconSize("12px");
     } else if (screenWidth <= 1100) {

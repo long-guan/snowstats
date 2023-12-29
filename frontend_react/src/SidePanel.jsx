@@ -97,7 +97,7 @@ function SidePanel(props) {
           {query.category === "chairlift" ? (
             <>
               <hr />
-              <div>
+              <div className="side-panel-info">
                 <div>Vertical Rise: {query.lift_data.vertical_rise}</div>
                 <div>Riders Per Hour: {query.lift_data.riders_per_hour}</div>
                 <div>Chair Type: {query.lift_data.type}</div>

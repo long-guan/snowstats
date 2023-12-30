@@ -85,7 +85,7 @@ To run this application locally using Docker:
 
 ### Future Additions
 
-- Make the app responsive and usable on a mobile device
+- ~~Make the app responsive and usable on a mobile device~~ (Added responsiveness on 12/30/23, accommodating for screen sizes as small as 320px)
 - Add a location to add reviews on the road conditions
 - Add a location to add reviews on the general snow conditions
 - Allow users without accounts to comment on road conditions or general snow conditions

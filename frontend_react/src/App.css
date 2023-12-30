@@ -373,6 +373,14 @@ sign-up-header {
 }
 
 @media screen and (max-width: 625px) {
+  .add-video-header {
+    font-size: 16px;
+  }
+
+  .add-video-form {
+    scale: 0.9;
+  }
+
   .thumbs-up {
     max-width: 40px;
     border-top-left-radius: 12px;
@@ -474,6 +482,18 @@ sign-up-header {
 }
 
 @media screen and (max-width: 475px) {
+  .add-video-header {
+    font-size: 12px;
+  }
+
+  .add-video-form {
+    scale: 0.8;
+  }
+
+  .add-video-example {
+    display: none;
+  }
+
   .thumbs-up {
     min-width: 30px;
     border-top-left-radius: 12px;
@@ -595,6 +615,26 @@ sign-up-header {
   .sign-in-form {
     scale: 0.7;
     gap: 10px;
+  }
+}
+
+@media screen and (max-height: 440px) {
+  .add-video-header {
+    font-size: 12px;
+  }
+
+  .add-video-form {
+    scale: 0.7;
+  }
+}
+
+@media screen and (max-height: 350px) {
+  .add-video-header {
+    font-size: 12px;
+  }
+
+  .add-video-form {
+    scale: 0.65;
   }
 }
 

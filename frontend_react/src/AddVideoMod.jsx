@@ -110,12 +110,12 @@ function AddVideoModal(props) {
           &times;
         </button>
         <div className="header flex items-center justify-center">
-          <div style={{ fontWeight: "bold" }}>
-            Add a video for {props.query.title}
+          <div className="add-video-header" style={{ fontWeight: "bold" }}>
+            Add video | {props.query.title}
           </div>
         </div>
         <div
-          style={{ height: "280px" }}
+          style={{ height: "80%" }}
           className="flex flex-col items-center justify-center"
         >
           {successMsg === true ? (
@@ -128,11 +128,12 @@ function AddVideoModal(props) {
           ) : (
             <form
               onSubmit={(e) => refreshToken(e, handleAddVideo)}
-              className="content flex flex-col items-center gap-6"
+              style={{ width: "100%" }}
+              className="content flex flex-col items-center gap-1 add-video-form"
             >
               <div
-                style={{ width: "400px", maxWidth: "400px" }}
-                className="flex items-center justify-center flex-col"
+                style={{ width: "100%", maxWidth: "400px" }}
+                className="flex justify-center flex-col text-center"
               >
                 <label
                   htmlFor="videolink"
@@ -158,7 +159,7 @@ function AddVideoModal(props) {
                     className="text-sm text-red-600 dark:text-red-500"
                   >
                     <div>Please enter a valid Youtube link.</div>
-                    <div>
+                    <div className="add-video-example">
                       Example: https://www.youtube.com/watch?v=M-qFkPblAic
                     </div>
                   </div>

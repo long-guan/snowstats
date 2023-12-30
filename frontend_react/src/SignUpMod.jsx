@@ -119,7 +119,7 @@ function SignUpModal(props) {
         setConfirmPassword("");
       }}
       contentStyle={{
-        width: "30%",
+        width: "50%",
         height: "65%",
         backgroundColor: "#FFF",
         boxShadow:
@@ -154,7 +154,8 @@ function SignUpModal(props) {
           ) : (
             <form
               onSubmit={handleSignUp}
-              className="content flex flex-col items-center gap-6"
+              style={{ height: "100%" }}
+              className="content flex flex-col items-center"
             >
               <div>
                 <label htmlFor="username" className="block text-sm font-medium">
@@ -210,7 +211,13 @@ function SignUpModal(props) {
                     {passwordError}
                   </p>
                 ) : null}
-                <div className="text-base cursor-pointer acc-link">
+                <div
+                  onClick={() => {
+                    props.setOpenLogMod(true);
+                    props.setOpenSignUpMod(false);
+                  }}
+                  className="text-base cursor-pointer acc-link"
+                >
                   Already have an account?
                 </div>
                 <button

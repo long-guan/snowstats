@@ -56,7 +56,7 @@ function SignInModal(props) {
         setInputClass(normal);
       }}
       contentStyle={{
-        width: "30%",
+        width: "50%",
         height: "50%",
         backgroundColor: "#FFF",
         boxShadow:
@@ -73,15 +73,17 @@ function SignInModal(props) {
           &times;
         </button>
         <div className="header flex items-center justify-center">
-          <div style={{ fontWeight: "bold" }}>Sign in</div>
+          <div className="sign-in-header" style={{ fontWeight: "bold" }}>
+            Sign in
+          </div>
         </div>
         <div
-          style={{ height: "290px" }}
+          style={{ height: "90%" }}
           className="flex flex-col items-center justify-center"
         >
           <form
             onSubmit={handleLogin}
-            className="content flex flex-col items-center gap-6"
+            className="content flex flex-col items-center sign-in-form"
           >
             <div>
               <label htmlFor="username" className="block text-sm font-medium">
@@ -109,7 +111,7 @@ function SignInModal(props) {
                 required
               />
             </div>
-            <div className="flex items-center justify-center flex-col gap-1">
+            <div className="flex text-center items-center justify-center flex-col gap-1">
               {inputClass === error ? (
                 <p className="text-sm text-red-600 dark:text-red-500">
                   Invalid Username or Password
@@ -126,7 +128,7 @@ function SignInModal(props) {
               </div>
               <button
                 type="submit"
-                style={{ backgroundColor: "#4285f4" }}
+                style={{ backgroundColor: "#4285f4", maxWidth: "90px" }}
                 className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
               >
                 Sign in

@@ -169,7 +169,8 @@ area:hover,
 
 .thumbs-up:hover,
 .thumbs-down:hover,
-.add-video-btn:hover {
+.add-video-btn:hover,
+.add-condition-btn:hover {
   background-color: #dcdada;
   cursor: pointer;
 }
@@ -307,7 +308,8 @@ area:hover,
   width: 60%;
 }
 
-.add-video-btn {
+.add-video-btn,
+.add-condition-btn {
   border-radius: 18px;
   border-style: solid;
   border-width: 1px;
@@ -341,6 +343,10 @@ sign-up-header {
 
 .sign-in-form {
   gap: 16px;
+}
+
+.add-condition-icon {
+  height: 20px;
 }
 
 @media screen and (max-width: 1100px) {
@@ -478,6 +484,87 @@ sign-up-header {
   .side-panel-category-icon,
   .video-modal-icon {
     height: 15px;
+  }
+}
+
+@media screen and (max-width: 495px) {
+  .conditions-modal-header {
+    font-size: 14px;
+  }
+
+  .add-condition-btn {
+    border-radius: 15px;
+
+    width: 30px;
+    height: 30px;
+  }
+
+  .add-condition-icon {
+    height: 16px;
+  }
+
+  .condition-content,
+  .snow-condition,
+  .trail-feature {
+    font-size: 12px;
+  }
+
+  .snow-condition {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    height: 20px;
+    border-radius: 10px;
+  }
+
+  .trail-feature {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    height: 20px;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .conditions-modal-header {
+    font-size: 12px;
+  }
+
+  .add-condition-btn {
+    border-radius: 13px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .add-condition-icon {
+    height: 12px;
+  }
+
+  .condition-content,
+  .snow-condition,
+  .trail-feature {
+    font-size: 10px;
+  }
+
+  .snow-condition {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    height: 16px;
+    border-radius: 8px;
+  }
+
+  .trail-feature {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    height: 16px;
+    border-radius: 8px;
   }
 }
 

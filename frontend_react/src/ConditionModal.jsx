@@ -42,7 +42,7 @@ function ConditionModal(props) {
         props.setOpenComMod(false);
       }}
       contentStyle={{
-        width: "60%",
+        width: "65%",
         height: "85%",
         backgroundColor: "#FFF",
         boxShadow:
@@ -59,31 +59,28 @@ function ConditionModal(props) {
           &times;
         </button>
         <div
-          style={{ paddingLeft: "25px", paddingRight: "25px" }}
+          style={{ paddingLeft: "10px", paddingRight: "10px" }}
           className="header flex items-center justify-between"
         >
           <div className="flex items-center justify-center gap-1">
             {" "}
-            <div style={{ fontWeight: "bold" }}>{props.query.title}</div>
+            <div
+              className="conditions-modal-header"
+              style={{ fontWeight: "bold" }}
+            >
+              {props.query.title}
+            </div>
             <img
-              style={{ height: "20px" }}
+              className="add-condition-icon"
               src={selectIcon(props.query.category)}
               alt="category"
             />
-            <div>| Conditions</div>
+            <div className="conditions-modal-header">| Conditions</div>
           </div>
           <Popup
             trigger={() => (
               <div
-                className="flex items-center justify-center cursor-pointer add-video-btn"
-                style={{
-                  borderRadius: "18px",
-                  borderStyle: "solid",
-                  borderWidth: "1px",
-                  borderColor: "rgb(26, 115, 232)",
-                  width: "36px",
-                  height: "36px",
-                }}
+                className="flex items-center justify-center cursor-pointer add-condition-btn"
                 onClick={() => {
                   if (localStorage.getItem("access_token") === null) {
                     alert("Please sign in to add a review");
@@ -94,7 +91,7 @@ function ConditionModal(props) {
               >
                 <button>
                   <img
-                    style={{ height: "20px" }}
+                    className="add-condition-icon"
                     src={add_comment}
                     alt="add video"
                   />
@@ -118,39 +115,49 @@ function ConditionModal(props) {
           className="content flex flex-col items-center justify-center"
           style={{
             width: "100%",
+            height: "90%",
           }}
         >
           {reviews.length > 0 ? (
             <div
               style={{
                 overflowY: "scroll",
-                maxHeight: "500px",
-                paddingLeft: "25px",
-                paddingRight: "25px",
-                minWidth: "665px",
+                height: "100%",
+                paddingLeft: "10px",
+                paddingRight: "10px",
+                minWidth: "200px",
               }}
             >
               {reviews.map((review) => (
                 <div className="flex flex-col" key={review.id}>
                   <div className="flex justify-between">
-                    <div style={{ fontWeight: "bold" }}>
+                    <div
+                      className="condition-content"
+                      style={{ fontWeight: "bold" }}
+                    >
                       @{review.user.username}
                     </div>
-                    <div style={{ color: "rgb(101, 110, 94)" }}>
+                    <div
+                      className="condition-content"
+                      style={{ color: "rgb(101, 110, 94)" }}
+                    >
                       {review.date}
                     </div>
                   </div>
                   <div>
-                    <span style={{ fontSize: "15px", fontWeight: "bold" }}>
+                    <span
+                      className="condition-content"
+                      style={{ fontWeight: "bold" }}
+                    >
                       Comment:{" "}
                     </span>
-                    <span>{review.comment}</span>
+                    <span className="condition-content">{review.comment}</span>
                   </div>
                   {review.snow_condition.length > 0 ? (
                     <div className="flex flex-wrap gap-1">
                       <div
+                        className="condition-content"
                         style={{
-                          fontSize: "15px",
                           color: "rgb(26, 115, 232)",
                           fontWeight: "bold",
                         }}
@@ -159,7 +166,7 @@ function ConditionModal(props) {
                       </div>
                       {review.snow_condition.map((condition) => (
                         <div
-                          className="snow-condition"
+                          className="snow-condition condition-content"
                           key={condition.category}
                         >
                           {condition.category}
@@ -170,8 +177,8 @@ function ConditionModal(props) {
                   {review.trail_feature.length > 0 ? (
                     <div className="flex flex-wrap gap-1">
                       <div
+                        className="condition-content"
                         style={{
-                          fontSize: "15px",
                           color: "rgb(95, 26, 232)",
                           fontWeight: "bold",
                         }}
@@ -179,7 +186,10 @@ function ConditionModal(props) {
                         Trail Features:{" "}
                       </div>
                       {review.trail_feature.map((feature) => (
-                        <div className="trail-feature" key={feature.category}>
+                        <div
+                          className="trail-feature condition-content"
+                          key={feature.category}
+                        >
                           {feature.category}
                         </div>
                       ))}
@@ -190,7 +200,9 @@ function ConditionModal(props) {
               ))}
             </div>
           ) : (
-            <div>There are currently no reviews on the conditions 😔</div>
+            <div className="condition-content">
+              There are currently no reviews on the conditions 😔
+            </div>
           )}
         </div>
       </div>

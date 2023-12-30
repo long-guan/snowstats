@@ -494,7 +494,10 @@ sign-up-header {
 @media screen and (max-width: 495px) {
   .condition-form,
   .snow-condition-btn,
-  .trail-feature-btn {
+  .trail-feature-btn,
+  .condition-content,
+  .snow-condition,
+  .trail-feature {
     font-size: 12px;
   }
 
@@ -511,12 +514,6 @@ sign-up-header {
 
   .add-condition-icon {
     height: 16px;
-  }
-
-  .condition-content,
-  .snow-condition,
-  .trail-feature {
-    font-size: 12px;
   }
 
   .snow-condition {

@@ -107,7 +107,9 @@ function AddComModal(props) {
               className="p-4 mb-4 text-base text-green-800 rounded-lg bg-green-50"
               role="alert"
             >
-              <div className="font-medium">Review successfully added 😊</div>
+              <div className="condition-content">
+                Review successfully added 😊
+              </div>
             </div>
           ) : (
             <form

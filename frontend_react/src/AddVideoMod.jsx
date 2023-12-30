@@ -123,7 +123,9 @@ function AddVideoModal(props) {
               className="p-4 mb-4 text-base text-green-800 rounded-lg bg-green-50"
               role="alert"
             >
-              <span className="font-medium">Video successfully added 😊</span>
+              <span className="font-medium text-center">
+                Video successfully added 😊
+              </span>
             </div>
           ) : (
             <form

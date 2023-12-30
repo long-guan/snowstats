@@ -149,7 +149,7 @@ function SignUpModal(props) {
               className="p-4 mb-4 text-base text-green-800 rounded-lg bg-green-50"
               role="alert"
             >
-              <span className="font-medium">
+              <span className="font-medium text-center">
                 Account successfully created 😊
               </span>
             </div>

@@ -349,6 +349,10 @@ sign-up-header {
   height: 20px;
 }
 
+.condition-form {
+  font-size: 15px;
+}
+
 @media screen and (max-width: 1100px) {
   .video-modal-video {
     min-height: 200px;
@@ -488,6 +492,12 @@ sign-up-header {
 }
 
 @media screen and (max-width: 495px) {
+  .condition-form,
+  .snow-condition-btn,
+  .trail-feature-btn {
+    font-size: 12px;
+  }
+
   .conditions-modal-header {
     font-size: 14px;
   }
@@ -545,7 +555,9 @@ sign-up-header {
 
   .condition-content,
   .snow-condition,
-  .trail-feature {
+  .trail-feature,
+  .snow-condition-btn,
+  .trail-feature-btn {
     font-size: 10px;
   }
 

@@ -5,7 +5,7 @@ import SnowConditionBtn from "./SnowConditionBtn";
 import TrailFeatureBtn from "./TrailFeatureBtn";
 
 const normal =
-  "bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500";
+  "bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 condition-form";
 
 // const success =
 //   "bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500";
@@ -74,7 +74,7 @@ function AddComModal(props) {
         setTrailFeatures([]);
       }}
       contentStyle={{
-        width: "50%",
+        width: "60%",
         height: "75%",
         backgroundColor: "#FFF",
         boxShadow:
@@ -90,13 +90,16 @@ function AddComModal(props) {
         >
           &times;
         </button>
-        <div className="header flex items-center justify-center">
-          <div style={{ fontWeight: "bold" }}>
+        <div className="header flex flex-col items-center justify-center">
+          <div
+            style={{ fontWeight: "bold" }}
+            className="conditions-modal-header"
+          >
             Add a review for {props.query.title}
           </div>
         </div>
         <div
-          style={{ height: "460px" }}
+          style={{ height: "85%", overflowY: "scroll" }}
           className="flex flex-col items-center justify-center"
         >
           {successMsg === true ? (
@@ -109,17 +112,19 @@ function AddComModal(props) {
           ) : (
             <form
               style={{
-                paddingLeft: "15px",
-                paddingRight: "15px",
+                height: "90%",
+                paddingLeft: "10px",
+
+                paddingRight: "10px",
               }}
               onSubmit={(e) => refreshToken(e, handleAddCom)}
               className="content flex flex-col gap-6"
             >
               <div style={{ maxWidth: "140px" }} className="flex flex-col">
                 <label
-                  style={{ fontSize: "15px", fontWeight: "bold" }}
+                  style={{ fontWeight: "bold" }}
                   htmlFor="date"
-                  className="block text-sm font-medium"
+                  className="block condition-form"
                 >
                   Date
                 </label>
@@ -135,9 +140,9 @@ function AddComModal(props) {
               </div>
               <div className="flex flex-col">
                 <label
-                  style={{ fontSize: "15px", fontWeight: "bold" }}
+                  style={{ fontWeight: "bold" }}
                   htmlFor="comment"
-                  className="block text-sm font-medium"
+                  className="block condition-form"
                 >
                   Comment:
                 </label>
@@ -154,7 +159,7 @@ function AddComModal(props) {
                 ></textarea>
               </div>
               <div>
-                <div style={{ fontSize: "15px", fontWeight: "bold" }}>
+                <div className="condition-form" style={{ fontWeight: "bold" }}>
                   Snow Conditions
                 </div>
                 <div className="flex gap-1 flex-wrap">
@@ -245,7 +250,7 @@ function AddComModal(props) {
                 </div>
               </div>
               <div>
-                <div style={{ fontSize: "15px", fontWeight: "bold" }}>
+                <div className="condition-form" style={{ fontWeight: "bold" }}>
                   Trail Features
                 </div>
                 <div className="flex gap-1 flex-wrap">
@@ -302,7 +307,7 @@ function AddComModal(props) {
               <div className="flex items-center justify-center flex-col gap-1">
                 <button
                   type="submit"
-                  style={{ backgroundColor: "#4285f4" }}
+                  style={{ backgroundColor: "#4285f4", maxWidth: "120px" }}
                   className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
                 >
                   Add Review

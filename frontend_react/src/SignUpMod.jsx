@@ -119,7 +119,7 @@ function SignUpModal(props) {
         setConfirmPassword("");
       }}
       contentStyle={{
-        width: "50%",
+        width: "60%",
         height: "65%",
         backgroundColor: "#FFF",
         boxShadow:
@@ -136,10 +136,12 @@ function SignUpModal(props) {
           &times;
         </button>
         <div className="header flex items-center justify-center">
-          <div style={{ fontWeight: "bold" }}>Sign up</div>
+          <div className="sign-up-header" style={{ fontWeight: "bold" }}>
+            Sign up
+          </div>
         </div>
         <div
-          style={{ height: "380px" }}
+          style={{ height: "90%" }}
           className="flex flex-col items-center justify-center"
         >
           {successMsg === true ? (
@@ -155,7 +157,7 @@ function SignUpModal(props) {
             <form
               onSubmit={handleSignUp}
               style={{ height: "100%" }}
-              className="content flex flex-col items-center"
+              className="content flex flex-col items-center justify-center sign-up-form"
             >
               <div>
                 <label htmlFor="username" className="block text-sm font-medium">
@@ -216,13 +218,13 @@ function SignUpModal(props) {
                     props.setOpenLogMod(true);
                     props.setOpenSignUpMod(false);
                   }}
-                  className="text-base cursor-pointer acc-link"
+                  className="text-base cursor-pointer acc-link text-center"
                 >
                   Already have an account?
                 </div>
                 <button
                   type="submit"
-                  style={{ backgroundColor: "#4285f4" }}
+                  style={{ backgroundColor: "#4285f4", maxWidth: "140px" }}
                   className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
                 >
                   Create account
